@@ -1,0 +1,347 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Let's Invite - Luxury Indian Wedding Video Invite Design System */
+
+@layer base {
+  :root {
+    /* Ivory & cream backgrounds */
+    --background: 40 33% 98%;
+    --foreground: 30 10% 15%;
+
+    /* Warm ivory card */
+    --card: 40 40% 97%;
+    --card-foreground: 30 10% 15%;
+
+    --popover: 40 33% 96%;
+    --popover-foreground: 30 10% 15%;
+
+    /* Luxurious gold primary */
+    --primary: 38 72% 50%;
+    --primary-foreground: 40 33% 98%;
+
+    /* Rose pink secondary */
+    --secondary: 350 60% 88%;
+    --secondary-foreground: 350 45% 25%;
+
+    /* Soft peach muted */
+    --muted: 30 30% 92%;
+    --muted-foreground: 30 15% 45%;
+
+    /* Rose gold accent */
+    --accent: 15 70% 92%;
+    --accent-foreground: 15 55% 35%;
+
+    --destructive: 0 72% 50%;
+    --destructive-foreground: 0 85% 97%;
+
+    --border: 35 25% 88%;
+    --input: 35 25% 90%;
+    --ring: 38 72% 50%;
+
+    --radius: 0.75rem;
+
+    /* Custom luxury tokens */
+    --gold: 38 72% 50%;
+    --gold-light: 40 65% 70%;
+    --gold-dark: 35 80% 35%;
+    --ivory: 40 33% 98%;
+    --cream: 40 40% 95%;
+    --rose: 350 60% 75%;
+    --rose-light: 350 60% 92%;
+    --peach: 25 70% 90%;
+    --burgundy: 350 45% 25%;
+
+    /* Gradients */
+    --gradient-gold: linear-gradient(135deg, hsl(38 72% 55%) 0%, hsl(35 80% 40%) 100%);
+    --gradient-rose: linear-gradient(135deg, hsl(350 60% 88%) 0%, hsl(15 70% 92%) 100%);
+    --gradient-luxury: linear-gradient(180deg, hsl(40 40% 97%) 0%, hsl(40 33% 94%) 100%);
+    --gradient-shimmer: linear-gradient(90deg, transparent 0%, hsl(38 72% 75% / 0.3) 50%, transparent 100%);
+
+    /* Shadows */
+    --shadow-soft: 0 4px 20px -4px hsl(30 20% 20% / 0.08);
+    --shadow-card: 0 8px 30px -8px hsl(30 20% 20% / 0.1);
+    --shadow-elevated: 0 20px 50px -15px hsl(30 20% 20% / 0.15);
+    --shadow-glow: 0 0 40px hsl(38 72% 50% / 0.2);
+
+    /* Typography */
+    --font-display: 'Playfair Display', serif;
+    --font-elegant: 'Cormorant Garamond', serif;
+    --font-body: 'Poppins', sans-serif;
+
+    --sidebar-background: 40 40% 97%;
+    --sidebar-foreground: 30 10% 15%;
+    --sidebar-primary: 38 72% 50%;
+    --sidebar-primary-foreground: 40 33% 98%;
+    --sidebar-accent: 350 60% 88%;
+    --sidebar-accent-foreground: 350 45% 25%;
+    --sidebar-border: 35 25% 88%;
+    --sidebar-ring: 38 72% 50%;
+
+    --chart-1: 38 72% 50%;
+    --chart-2: 350 60% 75%;
+    --chart-3: 25 70% 70%;
+    --chart-4: 15 55% 55%;
+    --chart-5: 350 45% 35%;
+  }
+
+  .dark {
+    --background: 30 15% 8%;
+    --foreground: 40 30% 95%;
+
+    --card: 30 15% 12%;
+    --card-foreground: 40 30% 95%;
+
+    --popover: 30 15% 15%;
+    --popover-foreground: 40 30% 95%;
+
+    --primary: 38 75% 55%;
+    --primary-foreground: 30 15% 8%;
+
+    --secondary: 350 40% 25%;
+    --secondary-foreground: 350 60% 88%;
+
+    --muted: 30 10% 20%;
+    --muted-foreground: 30 20% 65%;
+
+    --accent: 15 50% 20%;
+    --accent-foreground: 15 70% 85%;
+
+    --destructive: 0 72% 50%;
+    --destructive-foreground: 0 85% 97%;
+
+    --border: 30 15% 20%;
+    --input: 30 15% 20%;
+    --ring: 38 75% 55%;
+
+    --gold: 38 75% 55%;
+    --gold-light: 40 65% 65%;
+    --gold-dark: 35 80% 45%;
+    --ivory: 30 15% 12%;
+    --cream: 30 15% 15%;
+    --rose: 350 50% 50%;
+    --rose-light: 350 40% 25%;
+    --peach: 25 50% 25%;
+    --burgundy: 350 60% 80%;
+
+    --sidebar-background: 30 15% 12%;
+    --sidebar-foreground: 40 30% 95%;
+    --sidebar-primary: 38 75% 55%;
+    --sidebar-primary-foreground: 30 15% 8%;
+    --sidebar-accent: 350 40% 25%;
+    --sidebar-accent-foreground: 350 60% 88%;
+    --sidebar-border: 30 15% 20%;
+    --sidebar-ring: 38 75% 55%;
+
+    --chart-1: 38 75% 55%;
+    --chart-2: 350 50% 55%;
+    --chart-3: 25 50% 50%;
+    --chart-4: 15 45% 45%;
+    --chart-5: 350 55% 65%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .font-elegant {
+    font-family: var(--font-elegant);
+  }
+
+  .font-body {
+    font-family: var(--font-body);
+  }
+
+  .bg-gradient-gold {
+    background: var(--gradient-gold);
+  }
+
+  .bg-gradient-rose {
+    background: var(--gradient-rose);
+  }
+
+  .bg-gradient-luxury {
+    background: var(--gradient-luxury);
+  }
+
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .shadow-elevated {
+    box-shadow: var(--shadow-elevated);
+  }
+
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .text-gold {
+    color: hsl(var(--gold));
+  }
+
+  .text-rose {
+    color: hsl(var(--rose));
+  }
+
+  .text-burgundy {
+    color: hsl(var(--burgundy));
+  }
+
+  .bg-ivory {
+    background-color: hsl(var(--ivory));
+  }
+
+  .bg-cream {
+    background-color: hsl(var(--cream));
+  }
+
+  .bg-rose-light {
+    background-color: hsl(var(--rose-light));
+  }
+
+  .bg-peach {
+    background-color: hsl(var(--peach));
+  }
+
+  .border-gold {
+    border-color: hsl(var(--gold));
+  }
+
+  /* Shimmer animation */
+  .shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .shimmer::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gradient-shimmer);
+    animation: shimmer 3s infinite;
+  }
+
+  @keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+
+  /* Fade animations */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 20px hsl(38 72% 50% / 0.3); }
+    50% { box-shadow: 0 0 40px hsl(38 72% 50% / 0.5); }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.5s ease-out forwards;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  /* Stagger animation delays */
+  .stagger-1 { animation-delay: 0.1s; }
+  .stagger-2 { animation-delay: 0.2s; }
+  .stagger-3 { animation-delay: 0.3s; }
+  .stagger-4 { animation-delay: 0.4s; }
+  .stagger-5 { animation-delay: 0.5s; }
+
+  /* Video container styles */
+  .video-preview {
+    @apply relative rounded-2xl overflow-hidden shadow-elevated;
+    aspect-ratio: 9/16;
+  }
+
+  .video-preview video {
+    @apply w-full h-full object-cover;
+  }
+
+  /* WhatsApp button */
+  .whatsapp-float {
+    @apply fixed bottom-6 right-6 z-50 flex items-center gap-2 px-5 py-3 rounded-full shadow-elevated transition-all duration-300 hover:scale-105;
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    color: white;
+  }
+
+  /* Gold underline effect */
+  .gold-underline {
+    @apply relative inline-block;
+  }
+
+  .gold-underline::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-full h-0.5 origin-left scale-x-0 transition-transform duration-300;
+    background: var(--gradient-gold);
+  }
+
+  .gold-underline:hover::after {
+    @apply scale-x-100;
+  }
+
+  /* Luxury card hover */
+  .luxury-card {
+    @apply bg-card rounded-2xl shadow-card transition-all duration-500;
+  }
+
+  .luxury-card:hover {
+    @apply shadow-elevated -translate-y-1;
+  }
+}
