@@ -17,7 +17,7 @@ const engagementDesigns = [
 ];
 
 const Engagement = () => {
-  const whatsappLink = "https://wa.me/919999999999?text=Hi!%20I%27m%20interested%20in%20Engagement%20%2F%20Ring%20Ceremony%20Video%20Invites.";
+  const whatsappLink = "https://wa.me/918141721001?text=Hi!%20I%27m%20interested%20in%20Engagement%20%2F%20Ring%20Ceremony%20Video%20Invites.";
 
   return (
     <div className="min-h-screen bg-background">
@@ -60,7 +60,7 @@ const Engagement = () => {
               </Button>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {engagementDesigns.map((design, index) => (
                 <div
                   key={`${design.title}-${index}`}

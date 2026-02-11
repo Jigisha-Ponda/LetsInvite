@@ -7,13 +7,14 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navLinks = [
+    { name: "About Us", href: "/about-us" },
     { name: "Wedding", href: "/wedding" },
     { name: "Save The Date", href: "/save-the-date" },
     { name: "Engagement", href: "/engagement" },
     { name: "Birthday", href: "/birthday" },
   ];
 
-  const whatsappLink = "https://wa.me/919999999999?text=Hi!%20I%27m%20interested%20in%20your%20AI%20video%20invites.";
+  const whatsappLink = "https://wa.me/918141721001?text=Hi!%20I%27m%20interested%20in%20your%20AI%20video%20invites.";
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-card/80 backdrop-blur-md border-b border-border">

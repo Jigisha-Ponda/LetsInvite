@@ -8,6 +8,7 @@ import Wedding from "./pages/Wedding";
 import SaveTheDate from "./pages/SaveTheDate";
 import Engagement from "./pages/Engagement";
 import Birthday from "./pages/Birthday";
+import AboutUs from "./pages/AboutUs";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -24,6 +25,7 @@ const App = () => (
           <Route path="/save-the-date" element={<SaveTheDate />} />
           <Route path="/engagement" element={<Engagement />} />
           <Route path="/birthday" element={<Birthday />} />
+          <Route path="/about-us" element={<AboutUs />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

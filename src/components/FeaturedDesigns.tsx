@@ -3,6 +3,7 @@ import weddingImage from "../assets/wedding-invite-1.jpg";
 import saveTheDateImage from "../assets/save-the-date-1.jpg";
 import engagementImage from "../assets/engagement-1.jpg";
 import birthdayImage from "../assets/birthda-1.jpg";
+import weddingVideo from "../assets/videos/video.mp4";
 
 const featuredDesigns = [
   {
@@ -10,6 +11,7 @@ const featuredDesigns = [
     title: "Royal Wedding Elegance",
     category: "Wedding",
     price: "₹2,999",
+    videoSrc: weddingVideo,
   },
   {
     image: saveTheDateImage,

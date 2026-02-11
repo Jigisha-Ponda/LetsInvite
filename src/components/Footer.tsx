@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Sparkles, Instagram, Youtube, Mail, Phone } from "lucide-react";
 
 const Footer = () => {
-  const whatsappLink = "https://wa.me/919999999999?text=Hi!%20I%27m%20interested%20in%20your%20AI%20video%20invites.";
+  const whatsappLink = "https://wa.me/918141721001?text=Hi!%20I%27m%20interested%20in%20your%20AI%20video%20invites.";
 
   return (
     <footer className="bg-card border-t border-border">
@@ -80,7 +80,7 @@ const Footer = () => {
                   className="flex items-center gap-2 font-body text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   <Phone className="w-4 h-4" />
-                  +91 99999 99999
+                  +91 81417 21001
                 </a>
               </li>
               <li>
@@ -115,7 +115,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="font-body text-sm text-muted-foreground">
-            © 2025 Let's Invite. All rights reserved.
+            © 2026 Invita. All rights reserved.
           </p>
           <p className="font-body text-sm text-muted-foreground">
             Made with ❤️ in India

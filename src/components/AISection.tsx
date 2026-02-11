@@ -36,7 +36,7 @@ const AISection = () => {
                 { icon: Zap, title: "Lightning Fast", desc: "24-48 hour delivery" },
                 { icon: Palette, title: "Fully Custom", desc: "Tailored to your style" },
                 { icon: Clock, title: "Quick Edits", desc: "Fast revision turnaround" },
-                { icon: Sparkles, title: "Premium Quality", desc: "4K cinematic videos" },
+                { icon: Sparkles, title: "Premium Quality", desc: "HD cinematic videos" },
               ].map((feature) => (
                 <div
                   key={feature.title}

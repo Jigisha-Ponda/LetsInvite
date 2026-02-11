@@ -19,7 +19,7 @@ const weddingDesigns = [
 ];
 
 const Wedding = () => {
-  const whatsappLink = "https://wa.me/919999999999?text=Hi!%20I%27m%20interested%20in%20Wedding%20Video%20Invites.";
+  const whatsappLink = "https://wa.me/998141721001?text=Hi!%20I%27m%20interested%20in%20Wedding%20Video%20Invites.";
 
   return (
     <div className="min-h-screen bg-background">
