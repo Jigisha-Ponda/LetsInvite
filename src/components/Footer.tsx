@@ -89,7 +89,7 @@ const Footer = () => {
                   className="flex items-center gap-2 font-body text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   <Mail className="w-4 h-4" />
-                  contact@invyta.com
+                  hello@invyta.com
                 </a>
               </li>
             </ul>
