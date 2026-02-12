@@ -1,3 +1,4 @@
+import { useQuery } from "@tanstack/react-query";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import WhatsAppFloat from "../components/WhatsAppFloat";
@@ -5,21 +6,18 @@ import VideoCard from "../components/VideoCard";
 import { Button } from "../components/ui/button";
 import { MessageCircle, Filter } from "lucide-react";
 import birthdayImage from "../assets/birthda-1.jpg";
-import heroImage from "../assets/hero-wedding-bg.jpg";
-
-const birthdayDesigns = [
-  { image: birthdayImage, title: "Sparkling Birthday Bash", category: "Birthday", price: "₹1,499" },
-  { image: heroImage, title: "Confetti Celebration", category: "Birthday", price: "₹1,799" },
-  { image: birthdayImage, title: "Kids Party Magic", category: "Birthday", price: "₹1,299" },
-  { image: heroImage, title: "Elegant Adult Party", category: "Birthday", price: "₹1,999" },
-  { image: birthdayImage, title: "First Birthday Special", category: "Birthday", price: "₹2,499" },
-  { image: heroImage, title: "Milestone Celebration", category: "Birthday", price: "₹2,299" },
-  { image: birthdayImage, title: "Themed Party Invite", category: "Birthday", price: "₹1,699" },
-  { image: heroImage, title: "Golden Birthday", category: "Birthday", price: "₹1,899" },
-];
+import { fetchDesignsByCategoryName } from "../lib/designs";
+import { hasSupabaseConfig } from "../lib/supabase";
 
 const Birthday = () => {
   const whatsappLink = "https://wa.me/918141721001?text=Hi!%20I%27m%20interested%20in%20Birthday%20Video%20Invites.";
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ["birthday-designs"],
+    queryFn: () => fetchDesignsByCategoryName("Birthday"),
+    enabled: hasSupabaseConfig,
+    staleTime: 60_000,
+  });
+  const birthdayDesigns = data ?? [];
 
   return (
     <div className="min-h-screen bg-background">
@@ -56,23 +54,44 @@ const Birthday = () => {
               <p className="font-body text-muted-foreground">
                 Showing <span className="font-semibold text-foreground">{birthdayDesigns.length} designs</span>
               </p>
-              <Button variant="outline" size="sm">
+              {/* <Button variant="outline" size="sm">
                 <Filter className="w-4 h-4" />
                 Filter
-              </Button>
+              </Button> */}
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {birthdayDesigns.map((design, index) => (
-                <div
-                  key={`${design.title}-${index}`}
-                  className="animate-fade-in"
-                  style={{ animationDelay: `${index * 0.05}s` }}
-                >
-                  <VideoCard {...design} />
-                </div>
-              ))}
-            </div>
+            {!hasSupabaseConfig && (
+              <p className="font-body text-sm text-muted-foreground">
+                Supabase env values are missing. Add `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` in your `.env`.
+              </p>
+            )}
+            {hasSupabaseConfig && isLoading && (
+              <p className="font-body text-sm text-muted-foreground">Loading birthday designs...</p>
+            )}
+            {hasSupabaseConfig && isError && (
+              <p className="font-body text-sm text-red-500">
+                Failed to load birthday designs from ProductTemplate.
+              </p>
+            )}
+            {hasSupabaseConfig && !isLoading && !isError && birthdayDesigns.length === 0 && (
+              <p className="font-body text-sm text-muted-foreground">
+                No birthday designs found in ProductTemplate for category_name = Birthday.
+              </p>
+            )}
+
+            {hasSupabaseConfig && !isLoading && !isError && birthdayDesigns.length > 0 && (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                {birthdayDesigns.map((design, index) => (
+                  <div
+                    key={`${design.title}-${index}`}
+                    className="animate-fade-in"
+                    style={{ animationDelay: `${index * 0.05}s` }}
+                  >
+                    <VideoCard {...design} />
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </section>
 
@@ -95,7 +114,7 @@ const Birthday = () => {
         </section>
       </main>
       <Footer />
-      <WhatsAppFloat />
+      {/* <WhatsAppFloat /> */}
     </div>
   );
 };

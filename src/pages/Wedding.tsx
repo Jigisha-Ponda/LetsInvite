@@ -19,7 +19,7 @@ const weddingDesigns = [
 ];
 
 const Wedding = () => {
-  const whatsappLink = "https://wa.me/998141721001?text=Hi!%20I%27m%20interested%20in%20Wedding%20Video%20Invites.";
+  const whatsappLink = "https://wa.me/918141721001?text=Hi!%20I%27m%20interested%20in%20Wedding%20Video%20Invites.";
 
   return (
     <div className="min-h-screen bg-background">
@@ -57,10 +57,10 @@ const Wedding = () => {
               <p className="font-body text-muted-foreground">
                 Showing <span className="font-semibold text-foreground">{weddingDesigns.length} designs</span>
               </p>
-              <Button variant="outline" size="sm">
+              {/* <Button variant="outline" size="sm">
                 <Filter className="w-4 h-4" />
                 Filter
-              </Button>
+              </Button> */}
             </div>
 
             {/* Grid */}
@@ -97,7 +97,7 @@ const Wedding = () => {
         </section>
       </main>
       <Footer />
-      <WhatsAppFloat />
+      {/* <WhatsAppFloat /> */}
     </div>
   );
 };

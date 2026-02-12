@@ -54,10 +54,10 @@ const Engagement = () => {
               <p className="font-body text-muted-foreground">
                 Showing <span className="font-semibold text-foreground">{engagementDesigns.length} designs</span>
               </p>
-              <Button variant="outline" size="sm">
+              {/* <Button variant="outline" size="sm">
                 <Filter className="w-4 h-4" />
                 Filter
-              </Button>
+              </Button> */}
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -93,7 +93,7 @@ const Engagement = () => {
         </section>
       </main>
       <Footer />
-      <WhatsAppFloat />
+      {/* <WhatsAppFloat /> */}
     </div>
   );
 };

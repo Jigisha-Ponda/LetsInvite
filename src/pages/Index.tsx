@@ -1,5 +1,5 @@
 import Header from "../components/Header";
-import HeroSection from "../components/HeroSection";
+import InteractiveHeroSection from "../components/InteractiveHeroSection";
 import TabsCarouselSection from "../components/TabsCarouselSection";
 import CategoriesSection from "../components/CategoriesSection";
 import WhyChooseUs from "../components/WhyChooseUs";
@@ -10,13 +10,15 @@ import Testimonials from "../components/Testimonials";
 import CTASection from "../components/CTASection";
 import Footer from "../components/Footer";
 import WhatsAppFloat from "../components/WhatsAppFloat";
+import HeroSection from "../components/HeroSection";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
       <main>
-        <HeroSection />
+        <InteractiveHeroSection />
+        {/* <HeroSection/> */}
         <TabsCarouselSection />
         <HowItWorks />
         <CategoriesSection />
@@ -27,7 +29,7 @@ const Index = () => {
         <CTASection />
       </main>
       <Footer />
-      <WhatsAppFloat />
+      {/* <WhatsAppFloat /> */}
     </div>
   );
 };

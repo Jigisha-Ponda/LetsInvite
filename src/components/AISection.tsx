@@ -2,7 +2,7 @@ import { Sparkles, Zap, Clock, Palette } from "lucide-react";
 
 const AISection = () => {
   return (
-    <section id="ai-section" className="py-16 lg:py-24 bg-secondary overflow-hidden relative">
+    <section id="ai-section" className="py-16 bg-secondary overflow-hidden relative">
       {/* Decorative Background */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-20 left-10 w-72 h-72 rounded-full bg-primary blur-3xl" />

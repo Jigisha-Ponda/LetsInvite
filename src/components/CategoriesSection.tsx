@@ -38,7 +38,7 @@ const categories = [
 
 const CategoriesSection = () => {
   return (
-    <section className="py-16 lg:py-24 bg-cream">
+    <section className="py-16 bg-ivory">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-12 lg:mb-16">

@@ -1,8 +1,11 @@
 import { MessageCircle, Play } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import type { MouseEvent } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "./ui/button";
 
 interface VideoCardProps {
+  id?: string;
   image: string;
   title: string;
   category: string;
@@ -29,13 +32,16 @@ const toYouTubeEmbedUrl = (url?: string) => {
   return null;
 };
 
-const VideoCard = ({ image, title, category, price, whatsappMessage, videoSrc }: VideoCardProps) => {
+const VideoCard = ({ id, image, title, category, price, whatsappMessage, videoSrc }: VideoCardProps) => {
   const defaultMessage = `Hi! I'm interested in the "${title}" video invite design.`;
-  const whatsappLink = `https://wa.me/918141721001?text=${encodeURIComponent(whatsappMessage || defaultMessage)}`;
+  const baseMessage = whatsappMessage?.trim() || defaultMessage;
+  const messageWithVideo = videoSrc ? `${baseMessage}\n\nVideo link: ${videoSrc}` : baseMessage;
+  const whatsappLink = `https://wa.me/918141721001?text=${encodeURIComponent(messageWithVideo)}`;
   const [isPlaying, setIsPlaying] = useState(false);
   const hasVideo = Boolean(videoSrc);
   const youtubeEmbedUrl = toYouTubeEmbedUrl(videoSrc);
   const videoRef = useRef<HTMLVideoElement | null>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!isPlaying) return;
@@ -44,8 +50,30 @@ const VideoCard = ({ image, title, category, price, whatsappMessage, videoSrc }:
     video.play().catch(() => {});
   }, [isPlaying]);
 
+  const handleCardClick = (event: MouseEvent<HTMLDivElement>) => {
+    if (!id) return;
+    const target = event.target as HTMLElement;
+    if (target.closest("button, a, video, iframe")) return;
+    navigate(`/design/${id}`);
+  };
+
   return (
-    <div className="group luxury-card overflow-hidden">
+    <div
+      className={`group luxury-card overflow-hidden ${id ? "cursor-pointer" : ""}`}
+      onClick={handleCardClick}
+      role={id ? "button" : undefined}
+      tabIndex={id ? 0 : undefined}
+      onKeyDown={
+        id
+          ? (event) => {
+              if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                navigate(`/design/${id}`);
+              }
+            }
+          : undefined
+      }
+    >
       {/* Video Preview Container */}
       <div className="relative aspect-[9/14] overflow-hidden bg-muted">
         {!isPlaying && (

@@ -3,15 +3,21 @@ import { Link } from "react-router-dom";
 import { Menu, X, Sparkles } from "lucide-react";
 import { Button } from "./ui/button";
 
+const WhatsAppIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" aria-hidden="true" className={className} fill="currentColor">
+    <path d="M20.52 3.48A11.8 11.8 0 0 0 12.07 0C5.58 0 .3 5.28.3 11.77c0 2.07.54 4.1 1.57 5.89L0 24l6.51-1.82a11.72 11.72 0 0 0 5.56 1.42h.01c6.49 0 11.77-5.28 11.77-11.77 0-3.14-1.22-6.09-3.33-8.35Zm-8.45 18.1h-.01a9.76 9.76 0 0 1-4.97-1.35l-.36-.21-3.86 1.08 1.03-3.77-.24-.39a9.77 9.77 0 0 1-1.5-5.17C2.16 6.36 6.64 1.88 12.07 1.88c2.61 0 5.06 1.02 6.9 2.88a9.7 9.7 0 0 1 2.84 6.9c0 5.42-4.41 9.92-9.74 9.92Zm5.35-7.39c-.29-.14-1.73-.85-2-.95-.27-.1-.46-.14-.65.14-.19.29-.75.95-.92 1.14-.17.19-.33.22-.62.07-.29-.14-1.21-.45-2.31-1.42-.86-.77-1.44-1.72-1.6-2.01-.17-.29-.02-.44.13-.58.13-.13.29-.33.44-.5.14-.17.19-.29.29-.48.1-.19.05-.36-.02-.5-.07-.14-.65-1.57-.89-2.14-.24-.58-.48-.5-.65-.51-.17-.01-.36-.01-.55-.01-.19 0-.5.07-.77.36-.26.29-1 1-1 2.44s1.03 2.84 1.17 3.03c.14.19 2.01 3.07 4.87 4.3.68.29 1.22.47 1.63.6.69.22 1.32.19 1.82.11.56-.08 1.73-.7 1.98-1.38.24-.68.24-1.26.17-1.38-.07-.12-.26-.19-.55-.33Z" />
+  </svg>
+);
+
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navLinks = [
     { name: "About Us", href: "/about-us" },
-    { name: "Wedding", href: "/wedding" },
-    { name: "Save The Date", href: "/save-the-date" },
-    { name: "Engagement", href: "/engagement" },
     { name: "Birthday", href: "/birthday" },
+    { name: "Baby Shower", href: "/save-the-date" },
+    { name: "Gender Reveal", href: "/engagement" },
+    { name: "Welcome Party", href: "/birthday" },
   ];
 
   const whatsappLink = "https://wa.me/918141721001?text=Hi!%20I%27m%20interested%20in%20your%20AI%20video%20invites.";
@@ -45,7 +51,8 @@ const Header = () => {
           <div className="hidden lg:flex items-center gap-4">
             <Button variant="whatsapp" asChild>
               <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
-                Order on WhatsApp
+                <WhatsAppIcon className="w-5 h-5" />
+                Chat With Us
               </a>
             </Button>
           </div>

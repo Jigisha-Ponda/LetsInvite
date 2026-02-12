@@ -32,15 +32,15 @@ const baseSlides = [
 ];
 
 const tabs = [
-  {
-    key: "engagement",
-    label: "Engagement & Ring Ceremony",
-    icon: ringCeremony,
-    title: "Engagement & Ring Ceremony",
-    highlight: "Invitation",
-    href: "/engagement",
-    slides: [engagementImage, weddingImage, heroWeddingImage, saveTheDateImage, birthdayImage],
-  },
+  // {
+  //   key: "engagement",
+  //   label: "Engagement & Ring Ceremony",
+  //   icon: ringCeremony,
+  //   title: "Engagement & Ring Ceremony",
+  //   highlight: "Invitation",
+  //   href: "/engagement",
+  //   slides: [engagementImage, weddingImage, heroWeddingImage, saveTheDateImage, birthdayImage],
+  // },
   {
     key: "birthday",
     label: "Birthday Party Invitation",
@@ -50,38 +50,38 @@ const tabs = [
     href: "/birthday",
     slides: [birthday1, birthday2, birthday3, birthday4, birthday5],
   },
-  {
-    key: "anniversary",
-    label: "Anniversary Party Invitation",
-    icon: anniversaryInvitation,
-    title: "Anniversary Party",
-    highlight: "Invitation",
-    href: "/wedding",
-    slides: [party, heroWeddingImage, saveTheDateImage, weddingImage, engagementImage],
-  },
-  {
-    key: "digital-wedding",
-    label: "Digital Wedding Invitation",
-    icon: digitalWeddingInvitation,
-    title: "Digital Wedding",
-    highlight: "Invitation",
-    href: "/wedding",
-    slides: [weddingImage, saveTheDateImage, engagementImage, heroWeddingImage, weddingImage],
-  },
-  {
-    key: "pooja",
-    label: "Pooja/Path Invitation",
-    icon: poojaInvitation,
-    title: "Pooja/Path",
-    highlight: "Invitation",
-    href: "/wedding",
-    slides: baseSlides,
-  },
-  {
+ {
     key: "baby-shower",
     label: "Baby Shower Invitation",
     icon: babyShowerInvitation,
     title: "Baby Shower",
+    highlight: "Invitation",
+    href: "/birthday",
+    slides: baseSlides,
+  },
+  {
+    key: "gender-reveal",
+    label: "Gender Reveal Invitation",
+    icon: digitalWeddingInvitation,
+    title: "Gender Reveal",
+    highlight: "Invitation",
+    href: "/wedding",
+    slides: [weddingImage, saveTheDateImage, engagementImage, heroWeddingImage, weddingImage],
+  },
+  // {
+  //   key: "pooja",
+  //   label: "Pooja/Path Invitation",
+  //   icon: poojaInvitation,
+  //   title: "Pooja/Path",
+  //   highlight: "Invitation",
+  //   href: "/wedding",
+  //   slides: baseSlides,
+  // },
+  {
+    key: "welcome-party",
+    label: "Welcome Party Invitation",
+    icon: babyShowerInvitation,
+    title: "Welcome Party",
     highlight: "Invitation",
     href: "/birthday",
     slides: baseSlides,
@@ -134,7 +134,7 @@ const TabsCarouselSection = () => {
   }, [api, current.key]);
 
   return (
-    <section id="tabs-carousel" className="relative py-16 lg:py-24 bg-ivory overflow-hidden">
+    <section id="tabs-carousel" className="relative py-16 bg-ivory overflow-hidden">
       <div
         className="absolute left-0 top-0 bottom-0 w-40 opacity-10"
         // style={{

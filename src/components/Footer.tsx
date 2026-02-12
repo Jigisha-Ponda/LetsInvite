@@ -29,10 +29,10 @@ const Footer = () => {
             <h4 className="font-display text-lg font-semibold text-foreground mb-4">Categories</h4>
             <ul className="space-y-2">
               {[
-                { name: "Wedding Invites", href: "/wedding" },
-                { name: "Save The Date", href: "/save-the-date" },
-                { name: "Engagement", href: "/engagement" },
                 { name: "Birthday", href: "/birthday" },
+                { name: "Baby Shower", href: "/wedding" },
+                { name: "Gender Reveal", href: "/save-the-date" },
+                { name: "Welcome Party", href: "/engagement" },
               ].map((link) => (
                 <li key={link.name}>
                   <Link
@@ -89,7 +89,7 @@ const Footer = () => {
                   className="flex items-center gap-2 font-body text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   <Mail className="w-4 h-4" />
-                  hello@letsinvite.in
+                  contact@invyta.com
                 </a>
               </li>
             </ul>
