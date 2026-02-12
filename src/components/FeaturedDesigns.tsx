@@ -1,39 +1,17 @@
+import { useQuery } from "@tanstack/react-query";
 import VideoCard from "./VideoCard";
-import weddingImage from "../assets/wedding-invite-1.jpg";
-import saveTheDateImage from "../assets/save-the-date-1.jpg";
-import engagementImage from "../assets/engagement-1.jpg";
-import birthdayImage from "../assets/birthda-1.jpg";
-import weddingVideo from "../assets/videos/video.mp4";
-
-const featuredDesigns = [
-  {
-    image: weddingImage,
-    title: "Royal Wedding Elegance",
-    category: "Wedding",
-    price: "₹2,999",
-    videoSrc: weddingVideo,
-  },
-  {
-    image: saveTheDateImage,
-    title: "Romantic Save The Date",
-    category: "Save The Date",
-    price: "₹1,999",
-  },
-  {
-    image: engagementImage,
-    title: "Golden Ring Ceremony",
-    category: "Engagement",
-    price: "₹2,499",
-  },
-  {
-    image: birthdayImage,
-    title: "Sparkling Birthday Bash",
-    category: "Birthday",
-    price: "₹1,499",
-  },
-];
+import { fetchFeaturedDesigns } from "../lib/designs";
+import { hasSupabaseConfig } from "../lib/supabase";
 
 const FeaturedDesigns = () => {
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ["featured-designs"],
+    queryFn: () => fetchFeaturedDesigns(4),
+    enabled: hasSupabaseConfig,
+    staleTime: 60_000,
+  });
+  const designs = data ?? [];
+
   return (
     <section id="featured" className="py-16 lg:py-24 bg-ivory">
       <div className="container mx-auto px-4">
@@ -48,17 +26,38 @@ const FeaturedDesigns = () => {
         </div>
 
         {/* Designs Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {featuredDesigns.map((design, index) => (
-            <div
-              key={design.title}
-              className="animate-fade-in"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <VideoCard {...design} />
-            </div>
-          ))}
-        </div>
+        {!hasSupabaseConfig && (
+          <p className="font-body text-sm text-muted-foreground">
+            Supabase env values are missing. Add `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` in your `.env`.
+          </p>
+        )}
+        {hasSupabaseConfig && isLoading && (
+          <p className="font-body text-sm text-muted-foreground">Loading featured designs...</p>
+        )}
+        {hasSupabaseConfig && isError && (
+          <p className="font-body text-sm text-red-500">
+            Failed to load featured designs from ProductTemplate.
+          </p>
+        )}
+        {hasSupabaseConfig && !isLoading && !isError && designs.length === 0 && (
+          <p className="font-body text-sm text-muted-foreground">
+            No featured designs found in ProductTemplate. If rows exist in Supabase dashboard, enable
+            anon SELECT policy (RLS) for ProductTemplate and ProductCategory.
+          </p>
+        )}
+        {hasSupabaseConfig && !isLoading && !isError && designs.length > 0 && (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {designs.map((design, index) => (
+              <div
+                key={`${design.title}-${index}`}
+                className="animate-fade-in"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <VideoCard {...design} />
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

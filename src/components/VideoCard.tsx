@@ -11,11 +11,30 @@ interface VideoCardProps {
   videoSrc?: string;
 }
 
+const toYouTubeEmbedUrl = (url?: string) => {
+  if (!url) return null;
+  const patterns = [
+    /youtube\.com\/watch\?v=([^?&/]+)/,
+    /youtube\.com\/shorts\/([^?&/]+)/,
+    /youtu\.be\/([^?&/]+)/,
+    /youtube\.com\/embed\/([^?&/]+)/,
+  ];
+
+  for (const pattern of patterns) {
+    const match = url.match(pattern);
+    if (match?.[1]) {
+      return `https://www.youtube.com/embed/${match[1]}?autoplay=1&mute=1&playsinline=1&rel=0`;
+    }
+  }
+  return null;
+};
+
 const VideoCard = ({ image, title, category, price, whatsappMessage, videoSrc }: VideoCardProps) => {
   const defaultMessage = `Hi! I'm interested in the "${title}" video invite design.`;
   const whatsappLink = `https://wa.me/918141721001?text=${encodeURIComponent(whatsappMessage || defaultMessage)}`;
   const [isPlaying, setIsPlaying] = useState(false);
   const hasVideo = Boolean(videoSrc);
+  const youtubeEmbedUrl = toYouTubeEmbedUrl(videoSrc);
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
   useEffect(() => {
@@ -36,19 +55,30 @@ const VideoCard = ({ image, title, category, price, whatsappMessage, videoSrc }:
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
           />
         )}
-        {hasVideo && isPlaying && (
-          <video
-            ref={videoRef}
-            className="h-full w-full object-cover"
-            src={videoSrc}
-            poster={image}
-            controls
-            autoPlay
-            muted
-            playsInline
-            preload="metadata"
-          />
-        )}
+        {hasVideo && isPlaying &&
+          (youtubeEmbedUrl ? (
+            <iframe
+              className="h-full w-full"
+              src={youtubeEmbedUrl}
+              title={title}
+              frameBorder="0"
+              allow="autoplay; encrypted-media; picture-in-picture"
+              allowFullScreen
+              referrerPolicy="strict-origin-when-cross-origin"
+            />
+          ) : (
+            <video
+              ref={videoRef}
+              className="h-full w-full object-cover"
+              src={videoSrc}
+              poster={image}
+              controls
+              autoPlay
+              muted
+              playsInline
+              preload="metadata"
+            />
+          ))}
         {/* Play Overlay */}
         {hasVideo && !isPlaying && (
           <button
