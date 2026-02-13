@@ -613,7 +613,7 @@ const AboutUs = () => {
       </main>
 
       <Footer />
-      <WhatsAppFloat />
+      {/* <WhatsAppFloat /> */}
     </div>
   );
 };

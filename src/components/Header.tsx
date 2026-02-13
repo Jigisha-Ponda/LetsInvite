@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Menu, X, Sparkles } from "lucide-react";
 import { Button } from "./ui/button";
 import logoIcon from "../assets/logo.png";
+import { NavLink } from "react-router-dom";
 
 const WhatsAppIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
   <svg viewBox="0 0 24 24" aria-hidden="true" className={className} fill="currentColor">
@@ -40,15 +41,32 @@ const Header = () => {
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
-              <Link
+              <>
+                <NavLink
+                  key={link.name}
+                  to={link.href}
+                  className={({ isActive }) =>
+                    `font-body text-sm transition-colors py-2 ${isActive
+                      ? "text-blue-600 font-semibold"
+                      : "text-foreground hover:text-primary"
+                    }`
+                  }
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {link.name}
+                </NavLink>
+                {/* <Link
                 key={link.name}
                 to={link.href}
                 className="font-body text-sm text-muted-foreground hover:text-primary transition-colors gold-underline"
               >
                 {link.name}
-              </Link>
+              </Link> */}
+              </>
+
             ))}
           </nav>
+
 
           {/* Desktop CTA */}
           <div className="hidden lg:flex items-center gap-4">
@@ -75,14 +93,33 @@ const Header = () => {
           <div className="lg:hidden py-4 border-t border-border animate-fade-in">
             <nav className="flex flex-col gap-4">
               {navLinks.map((link) => (
-                <Link
+                <NavLink
                   key={link.name}
                   to={link.href}
-                  className="font-body text-foreground hover:text-primary transition-colors py-2"
+                  className={({ isActive }) =>
+                    `font-body transition-colors py-2 ${isActive
+                      ? "text-blue-600 font-semibold"
+                      : "text-foreground hover:text-primary"
+                    }`
+                  }
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {link.name}
-                </Link>
+                </NavLink>
+                // <Link
+                //   key={link.name}
+                //   to={link.href}
+                //   // className="font-body text-foreground hover:text-primary transition-colors py-2"
+                //   className={({ isActive }) =>
+                //     `font-body transition-colors py-2 ${isActive
+                //       ? "text-blue-600 font-semibold"
+                //       : "text-foreground hover:text-primary"
+                //     }`
+                //   }
+                //   onClick={() => setIsMenuOpen(false)}
+                // >
+                //   {link.name}
+                // </Link>
               ))}
               <Button variant="whatsapp" className="mt-2" asChild>
                 <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
