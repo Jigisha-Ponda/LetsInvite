@@ -5,44 +5,47 @@ import weddingImage from "../assets/wedding-invite-1.jpg";
 import birthdayImage from "../assets/birthda-1.jpg";
 import engagementImage from "../assets/engagement-1.jpg";
 import saveTheDateImage from "../assets/save-the-date-1.jpg";
+import welcomePartyImage from "../assets/welcome-party.jpg";
+import genderRevealImage from "../assets/gender_reveal.png";
+import babyShower from "../assets/baby_shower.jpg";
 
 const occasionOptions = [
   {
-    key: "wedding",
-    label: "Wedding",
-    title: "Royal Wedding Stories, Framed in Motion",
-    subtitle:
-      "Grand, emotional, and elegant invites built for the biggest day of your life.",
-    image: weddingImage,
-    metric: "Most booked",
-  },
-  {
-    key: "birthday",
-    label: "Birthday",
-    title: "Fun Birthday Invites with Premium Style",
-    subtitle:
-      "Playful, vibrant, and personalized video invitations for every age and theme.",
-    image: birthdayImage,
-    metric: "Fast delivery",
-  },
-  {
-    key: "engagement",
-    label: "Engagement",
-    title: "Engagement Announcements That Feel Cinematic",
-    subtitle:
-      "Celebrate your beginning with invites that look polished and emotionally warm.",
-    image: engagementImage,
-    metric: "Top rated",
-  },
-  {
-    key: "save-the-date",
-    label: "Save The Date",
-    title: "Save The Date Designs Guests Actually Remember",
-    subtitle:
-      "Clean storytelling, elegant typography, and share-ready formats for instant impact.",
-    image: saveTheDateImage,
-    metric: "Trending now",
-  },
+  key: "birthday",
+  label: "Birthday",
+  title: "Vibrant Birthday Invites That Spark Joy",
+  subtitle:
+    "Colorful, energetic, and fully personalized digital invites for kids, teens, and milestone birthdays.",
+  image: birthdayImage,
+  metric: "Most loved",
+},
+{
+  key: "baby-shower",
+  label: "Baby Shower",
+  title: "Adorable Baby Shower Invites Full of Warmth",
+  subtitle:
+    "Sweet, elegant, and heart-melting designs to celebrate your little bundle of joy.",
+  image: babyShower,
+  metric: "Top picks",
+},
+{
+  key: "gender-reveal",
+  label: "Gender Reveal",
+  title: "Exciting Gender Reveal Invites with a Twist",
+  subtitle:
+    "Fun, suspense-filled digital invites that build excitement before the big reveal moment.",
+  image: genderRevealImage,
+  metric: "Trending",
+},
+{
+  key: "welcome-party",
+  label: "Welcome Party",
+  title: "Charming Welcome Party Invitations in Style",
+  subtitle:
+    "Fresh, modern, and share-ready invites to warmly welcome your loved ones or little star.",
+  image: welcomePartyImage,
+  metric: "Fast delivery",
+},
 ];
 
 const InteractiveHeroSection = () => {

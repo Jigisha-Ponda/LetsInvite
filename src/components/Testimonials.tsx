@@ -5,7 +5,7 @@ const testimonials = [
     name: "Priya & Arjun",
     location: "Mumbai",
     event: "Wedding",
-    quote: "Our wedding invite video was absolutely stunning! Everyone kept asking how we got such a cinematic video made. Let's Invite made our special day even more memorable.",
+    quote: "Our wedding invite video was absolutely stunning! Everyone kept asking how we got such a cinematic video made. Invyta made our special day even more memorable.",
     rating: 5,
   },
   {
@@ -34,7 +34,7 @@ const Testimonials = () => {
             Loved by <span className="text-gold">Thousands</span>
           </h2>
           <p className="font-body text-lg text-muted-foreground max-w-2xl mx-auto">
-            Real stories from real couples who made their celebrations extra special with Let's Invite.
+            Real stories from real couples who made their celebrations extra special with Invyta.
           </p>
         </div>
 

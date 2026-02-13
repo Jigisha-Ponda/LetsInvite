@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X, Sparkles } from "lucide-react";
 import { Button } from "./ui/button";
+import logoIcon from "../assets/logo.png";
 
 const WhatsAppIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
   <svg viewBox="0 0 24 24" aria-hidden="true" className={className} fill="currentColor">
@@ -27,12 +28,14 @@ const Header = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2">
-            <Sparkles className="w-6 h-6 text-primary" />
-            <span className="font-display text-xl lg:text-2xl font-bold text-foreground">
-              Let's <span className="text-gold">Invite</span>
-            </span>
+          <Link to="/" className="flex items-center">
+            <img
+              src={logoIcon}
+              alt="Invyta Logo"
+              className="h-10 lg:h-16 w-auto img-fluid"
+            />
           </Link>
+
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-8">

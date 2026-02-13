@@ -1,20 +1,26 @@
 import { Link } from "react-router-dom";
 import { Sparkles, Instagram, Youtube, Mail, Phone } from "lucide-react";
+import logoIcon from "../assets/logo.png";
 
 const Footer = () => {
   const whatsappLink = "https://wa.me/918141721001?text=Hi!%20I%27m%20interested%20in%20your%20AI%20video%20invites.";
 
   return (
     <footer className="bg-card border-t border-border">
-      <div className="container mx-auto px-4 py-12 lg:py-16">
+      <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Brand */}
           <div className="lg:col-span-1">
             <Link to="/" className="flex items-center gap-2 mb-4">
-              <Sparkles className="w-6 h-6 text-primary" />
+              {/* <Sparkles className="w-6 h-6 text-primary" />
               <span className="font-display text-xl font-bold text-foreground">
-                Let's <span className="text-gold">Invite</span>
-              </span>
+                Inv<span className="text-gold">yta</span>
+              </span> */}
+              <img
+              src={logoIcon}
+              alt="Invyta Logo"
+              className="h-10 lg:h-16 w-auto img-fluid"
+            />
             </Link>
             <p className="font-body text-sm text-muted-foreground mb-4">
               India's #1 AI Video Invite Studio. Creating cinematic, custom video invitations for your special moments.
