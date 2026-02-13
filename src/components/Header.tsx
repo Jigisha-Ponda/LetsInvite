@@ -19,7 +19,7 @@ const Header = () => {
     { name: "Birthday", href: "/birthday" },
     { name: "Baby Shower", href: "/save-the-date" },
     { name: "Gender Reveal", href: "/engagement" },
-    { name: "Welcome Party", href: "/birthday" },
+    { name: "Welcome Party", href: "/welcome-party" },
   ];
 
   const whatsappLink = "https://wa.me/918141721001?text=Hi!%20I%27m%20interested%20in%20your%20AI%20video%20invites.";
