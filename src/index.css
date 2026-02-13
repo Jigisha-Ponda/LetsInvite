@@ -33,8 +33,11 @@
 
 
     /* Rose pink secondary */
-    --secondary: 350 60% 88%;
-    --secondary-foreground: 350 45% 25%;
+    /* --secondary: 350 60% 88%;
+    --secondary-foreground: 350 45% 25%; */
+    --secondary: 217 60% 92%;
+    --secondary-foreground: 217 50% 30%;
+
 
     /* Soft peach muted */
     --muted: 30 30% 92%;
