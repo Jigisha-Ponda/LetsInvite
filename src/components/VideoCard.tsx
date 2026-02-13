@@ -47,7 +47,7 @@ const VideoCard = ({ id, image, title, category, price, whatsappMessage, videoSr
     if (!isPlaying) return;
     const video = videoRef.current;
     if (!video) return;
-    video.play().catch(() => {});
+    video.play().catch(() => { });
   }, [isPlaying]);
 
   const handleCardClick = (event: MouseEvent<HTMLDivElement>) => {
@@ -66,11 +66,11 @@ const VideoCard = ({ id, image, title, category, price, whatsappMessage, videoSr
       onKeyDown={
         id
           ? (event) => {
-              if (event.key === "Enter" || event.key === " ") {
-                event.preventDefault();
-                navigate(`/design/${id}`);
-              }
+            if (event.key === "Enter" || event.key === " ") {
+              event.preventDefault();
+              navigate(`/design/${id}`);
             }
+          }
           : undefined
       }
     >
@@ -138,7 +138,8 @@ const VideoCard = ({ id, image, title, category, price, whatsappMessage, videoSr
             Starting at <span className="text-primary font-semibold">{price}</span>
           </p>
         )}
-        <Button variant="whatsapp" size="sm" className="w-full" asChild>
+        <Button variant="whatsapp" size="sm" className="w-full bg-[linear-gradient(110deg,hsl(240,60%,36%)_0%,hsl(232,66%,40%)_30%,hsl(222,72%,46%)_65%,hsl(212,82%,54%)_100%)] 
+ text-white px-5 py-2 rounded-lg transition-all duration-300 hover:brightness-110 hover:-translate-y-0.5" asChild>
           <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
             <MessageCircle className="w-4 h-4" />
             Inquire Now

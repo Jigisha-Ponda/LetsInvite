@@ -21,13 +21,13 @@
     --popover-foreground: 30 10% 15%;
 
     /* Luxurious gold primary */
-      /* --primary: 38 72% 50%;
+    /* --primary: 38 72% 50%;
     --primary-foreground: 40 33% 98%; */
     --primary: 218 74% 41%;
     --primary-foreground: 0 0% 100%;
     /* --primary: 243 50% 44%;
 --primary-foreground: 0 0% 100%; */
-/* --primary: 319 61% 46%;
+    /* --primary: 319 61% 46%;
 --primary-foreground: 0 0% 100%; */
 
 
@@ -65,7 +65,8 @@
     --gold-light: 40 65% 70%;
     --gold-dark: 35 80% 35%;
     --ivory: 40 33% 98%;
-    --cream: 40 40% 95%;
+    /* --cream: 40 40% 95%; */
+    --cream: 220 20% 94%;
     --rose: 350 60% 75%;
     --rose-light: 350 60% 92%;
     --peach: 25 70% 90%;
@@ -73,13 +74,23 @@
 
     /* Gradients */
     /* --gradient-gold: linear-gradient(135deg, hsl(38 72% 55%) 0%, hsl(35 80% 40%) 100%); */
-    --gradient-gold: linear-gradient(135deg,hsl(217 74% 50%) 0%,hsl(217 74% 35%) 100%);
+    /* --gradient-gold: linear-gradient(135deg,hsl(217 74% 50%) 0%,hsl(217 74% 35%) 100%); */
+    /* --gradient-gold: linear-gradient(
+  135deg,
+  hsl(217 74% 50%) 0%,
+  hsl(217 74% 35%) 100%
+); */
+    --gradient-gold: linear-gradient(110deg,
+        hsl(240, 60%, 36%) 0%,
+        hsl(232, 66%, 40%) 30%,
+        hsl(222, 72%, 46%) 65%,
+        hsl(212, 82%, 54%) 100%);
     /* --gradient-gold: linear-gradient(
   135deg,
   hsl(243 50% 55%) 0%,
   hsl(243 50% 35%) 100%
 ); */
-/* --gradient-gold: linear-gradient(
+    /* --gradient-gold: linear-gradient(
   135deg,
   hsl(319 70% 55%) 0%,
   hsl(330 65% 40%) 100%
@@ -186,7 +197,12 @@
     @apply bg-background text-foreground font-body antialiased;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-display;
   }
 }
@@ -279,34 +295,74 @@
   }
 
   @keyframes shimmer {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
+    0% {
+      transform: translateX(-100%);
+    }
+
+    100% {
+      transform: translateX(100%);
+    }
   }
 
   /* Fade animations */
   @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(40px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   @keyframes scaleIn {
-    from { opacity: 0; transform: scale(0.95); }
-    to { opacity: 1; transform: scale(1); }
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
   }
 
   @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-10px);
+    }
   }
 
   @keyframes pulse-glow {
-    0%, 100% { box-shadow: 0 0 20px hsl(38 72% 50% / 0.3); }
-    50% { box-shadow: 0 0 40px hsl(38 72% 50% / 0.5); }
+
+    0%,
+    100% {
+      box-shadow: 0 0 20px hsl(38 72% 50% / 0.3);
+    }
+
+    50% {
+      box-shadow: 0 0 40px hsl(38 72% 50% / 0.5);
+    }
   }
 
   .animate-fade-in {
@@ -330,11 +386,25 @@
   }
 
   /* Stagger animation delays */
-  .stagger-1 { animation-delay: 0.1s; }
-  .stagger-2 { animation-delay: 0.2s; }
-  .stagger-3 { animation-delay: 0.3s; }
-  .stagger-4 { animation-delay: 0.4s; }
-  .stagger-5 { animation-delay: 0.5s; }
+  .stagger-1 {
+    animation-delay: 0.1s;
+  }
+
+  .stagger-2 {
+    animation-delay: 0.2s;
+  }
+
+  .stagger-3 {
+    animation-delay: 0.3s;
+  }
+
+  .stagger-4 {
+    animation-delay: 0.4s;
+  }
+
+  .stagger-5 {
+    animation-delay: 0.5s;
+  }
 
   /* Video container styles */
   .video-preview {
