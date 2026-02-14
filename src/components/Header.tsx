@@ -18,8 +18,8 @@ const Header = () => {
     { name: "Home", href: "/"},
     { name: "Birthday", href: "/birthday" },
     { name: "Baby Shower", href: "/save-the-date" },
-    { name: "Gender Reveal", href: "/engagement" },
-    { name: "Welcome Party", href: "/welcome-party" },
+    // { name: "Gender Reveal", href: "/engagement" },
+    // { name: "Welcome Party", href: "/welcome-party" },
     { name: "About Us", href: "/about-us" },
   ];
 
