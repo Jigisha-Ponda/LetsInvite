@@ -15,17 +15,18 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navLinks = [
-    { name: "About Us", href: "/about-us" },
+    { name: "Home", href: "/"},
     { name: "Birthday", href: "/birthday" },
     { name: "Baby Shower", href: "/save-the-date" },
     { name: "Gender Reveal", href: "/engagement" },
     { name: "Welcome Party", href: "/welcome-party" },
+    { name: "About Us", href: "/about-us" },
   ];
 
   const whatsappLink = "https://wa.me/918141721001?text=Hi!%20I%27m%20interested%20in%20your%20AI%20video%20invites.";
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-card/80 backdrop-blur-md border-b border-border">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white backdrop-blur-md border-b border-border">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}

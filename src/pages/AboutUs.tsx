@@ -423,7 +423,7 @@ const AboutUs = () => {
               className="h-full w-full object-cover"
             />
           </div>
-          <div className="absolute inset-0 bg-gradient-luxury opacity-80" />
+          <div className="absolute inset-0 bg-cream opacity-80" />
 
           <div className="container mx-auto px-4 relative z-10">
             <motion.div
