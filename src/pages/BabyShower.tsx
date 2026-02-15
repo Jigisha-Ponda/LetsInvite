@@ -24,7 +24,7 @@ const BabyShower = () => {
       <Header />
       <main className="pt-16 lg:pt-20">
         {/* Hero Section */}
-        <section className="relative py-16 lg:py-24 bg-cream overflow-hidden">
+        <section className="relative py-16 lg:py-24 bg-secondary overflow-hidden">
           <div className="absolute inset-0 opacity-10">
             <img src={saveTheDateImage} alt="" className="w-full h-full object-cover" />
           </div>

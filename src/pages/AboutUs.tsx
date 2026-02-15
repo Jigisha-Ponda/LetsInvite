@@ -415,7 +415,7 @@ const AboutUs = () => {
 
       <main className="pt-16 lg:pt-20">
         {/* HERO */}
-        <section className="relative overflow-hidden bg-cream py-16 lg:py-24">
+        <section className="relative overflow-hidden bg-secondary py-16 lg:py-24">
           <div className="absolute inset-0 opacity-15">
             <img
               src={heroImage}
@@ -458,9 +458,9 @@ const AboutUs = () => {
                   </a>
                 </Button>
 
-                <Button variant="hero-outline" size="xl" asChild>
-                  <a href="/wedding">Explore Designs</a>
-                </Button>
+                {/* <Button variant="hero-outline" size="xl" asChild>
+                  <a href="/#featured">Explore Designs</a>
+                </Button> */}
               </div>
             </motion.div>
           </div>
