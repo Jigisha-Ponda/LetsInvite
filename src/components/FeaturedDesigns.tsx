@@ -6,14 +6,22 @@ import { hasSupabaseConfig } from "../lib/supabase";
 const FeaturedDesigns = () => {
   const { data, isLoading, isError } = useQuery({
     queryKey: ["featured-designs"],
-    queryFn: () => fetchFeaturedDesigns(4),
+    queryFn: () => fetchFeaturedDesigns(8),
     enabled: hasSupabaseConfig,
     staleTime: 60_000,
   });
   const designs = data ?? [];
 
+  const birthdayDesigns = designs
+    .filter((d) => d.category === "Birthday")
+    .slice(0, 4);
+
+  const babyShowerDesigns = designs
+    .filter((d) => d.category === "Baby Shower")
+    .slice(0, 4);
+
   return (
-    <section id="featured" className="py-16 bg-ivory">
+    <section id="featured" className="py-16 bg-white">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-12 lg:mb-16">
@@ -45,8 +53,8 @@ const FeaturedDesigns = () => {
             anon SELECT policy (RLS) for ProductTemplate and ProductCategory.
           </p>
         )}
-        {hasSupabaseConfig && !isLoading && !isError && designs.length > 0 && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* {hasSupabaseConfig && !isLoading && !isError && designs.length > 0 && (
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {designs.map((design, index) => (
               <div
                 key={`${design.title}-${index}`}
@@ -56,6 +64,53 @@ const FeaturedDesigns = () => {
                 <VideoCard {...design} />
               </div>
             ))}
+          </div>
+        )} */}
+
+        {hasSupabaseConfig && !isLoading && !isError && designs.length > 0 && (
+          <div className="space-y-16">
+
+            {/* 🎂 Birthday */}
+            {birthdayDesigns.length > 0 && (
+              <div>
+                <h3 className="font-display text-2xl font-semibold mb-6 text-start">
+                  Birthday <span className="text-gold">Invites</span>
+                </h3>
+
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                  {birthdayDesigns.map((design, index) => (
+                    <div
+                      key={`birthday-${design.id}`}
+                      className="animate-fade-in"
+                      style={{ animationDelay: `${index * 0.1}s` }}
+                    >
+                      <VideoCard {...design} />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* 👶 Baby Shower */}
+            {babyShowerDesigns.length > 0 && (
+              <div>
+                <h3 className="font-display text-2xl font-semibold mb-6 text-start">
+                  Baby Shower <span className="text-gold">Invites</span>
+                </h3>
+
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                  {babyShowerDesigns.map((design, index) => (
+                    <div
+                      key={`baby-${design.id}`}
+                      className="animate-fade-in"
+                      style={{ animationDelay: `${index * 0.1}s` }}
+                    >
+                      <VideoCard {...design} />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         )}
       </div>

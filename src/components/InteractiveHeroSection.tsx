@@ -11,41 +11,41 @@ import babyShower from "../assets/baby_shower.jpg";
 
 const occasionOptions = [
   {
-  key: "birthday",
-  label: "Birthday",
-  title: "Vibrant Birthday Invites That Spark Joy",
-  subtitle:
-    "Colorful, energetic, and fully personalized digital invites for kids, teens, and milestone birthdays.",
-  image: birthdayImage,
-  metric: "Most loved",
-},
-{
-  key: "baby-shower",
-  label: "Baby Shower",
-  title: "Adorable Baby Shower Invites Full of Warmth",
-  subtitle:
-    "Sweet, elegant, and heart-melting designs to celebrate your little bundle of joy.",
-  image: babyShower,
-  metric: "Top picks",
-},
-{
-  key: "gender-reveal",
-  label: "Gender Reveal",
-  title: "Exciting Gender Reveal Invites with a Twist",
-  subtitle:
-    "Fun, suspense-filled digital invites that build excitement before the big reveal moment.",
-  image: genderRevealImage,
-  metric: "Trending",
-},
-{
-  key: "welcome-party",
-  label: "Welcome Party",
-  title: "Charming Welcome Party Invitations in Style",
-  subtitle:
-    "Fresh, modern, and share-ready invites to warmly welcome your loved ones or little star.",
-  image: welcomePartyImage,
-  metric: "Fast delivery",
-},
+    key: "birthday",
+    label: "Birthday",
+    title: "Vibrant Birthday Invites That Spark Joy",
+    subtitle:
+      "Colorful, energetic, and fully personalized digital invites for kids, teens, and milestone birthdays.",
+    image: birthdayImage,
+    metric: "Most loved",
+  },
+  {
+    key: "baby-shower",
+    label: "Baby Shower",
+    title: "Adorable Baby Shower Invites Full of Warmth",
+    subtitle:
+      "Sweet, elegant, and heart-melting designs to celebrate your little bundle of joy.",
+    image: babyShower,
+    metric: "Top picks",
+  },
+  // {
+  //   key: "gender-reveal",
+  //   label: "Gender Reveal",
+  //   title: "Exciting Gender Reveal Invites with a Twist",
+  //   subtitle:
+  //     "Fun, suspense-filled digital invites that build excitement before the big reveal moment.",
+  //   image: genderRevealImage,
+  //   metric: "Trending",
+  // },
+  // {
+  //   key: "welcome-party",
+  //   label: "Welcome Party",
+  //   title: "Charming Welcome Party Invitations in Style",
+  //   subtitle:
+  //     "Fresh, modern, and share-ready invites to warmly welcome your loved ones or little star.",
+  //   image: welcomePartyImage,
+  //   metric: "Fast delivery",
+  // },
 ];
 
 const InteractiveHeroSection = () => {
@@ -83,34 +83,33 @@ const InteractiveHeroSection = () => {
               {activeOccasion.subtitle}
             </p>
 
-            <div className="mt-7 flex flex-wrap justify-center lg:justify-start gap-3">
+            {/* <div className="mt-7 flex flex-wrap justify-center lg:justify-start gap-3">
               {occasionOptions.map((item) => (
                 <button
                   key={item.key}
                   type="button"
                   onClick={() => setActiveKey(item.key)}
-                  className={`rounded-full px-4 py-2 text-sm font-body transition-all ${
-                    activeKey === item.key
+                  className={`rounded-full px-4 py-2 text-sm font-body transition-all ${activeKey === item.key
                       ? "bg-primary text-primary-foreground shadow-soft"
                       : "bg-white/15 text-white border border-white/25 hover:bg-white/25"
-                  }`}
+                    }`}
                 >
                   {item.label}
                 </button>
               ))}
-            </div>
+            </div> */}
 
-            <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            {/* <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <Button variant="hero" size="xl" asChild>
                 <a href="#tabs-carousel">
                   Explore Designs
                   <ArrowRight className="h-5 w-5" />
                 </a>
               </Button>
-              <Button variant="hero-outline" size="xl" asChild>
+              <Button variant="hero-outline" className="bg-white" size="xl" asChild>
                 <a href="#featured">View Featured</a>
               </Button>
-            </div>
+            </div> */}
           </div>
 
           {/* <div className="relative animate-scale-in">

@@ -32,12 +32,12 @@ const CTASection = () => {
                 Order on WhatsApp
               </a>
             </Button>
-            <Button variant="hero-outline" size="xl" asChild>
+            {/* <Button variant="hero-outline" size="xl" asChild>
               <a href="/wedding">
                 Browse All Designs
                 <ArrowRight className="w-5 h-5" />
               </a>
-            </Button>
+            </Button> */}
           </div>
 
           {/* Trust Line */}

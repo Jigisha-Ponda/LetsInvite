@@ -15,9 +15,9 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navLinks = [
-    { name: "Home", href: "/"},
+    { name: "Home", href: "/" },
     { name: "Birthday", href: "/birthday" },
-    { name: "Baby Shower", href: "/save-the-date" },
+    { name: "Baby Shower", href: "/baby-shower" },
     // { name: "Gender Reveal", href: "/engagement" },
     // { name: "Welcome Party", href: "/welcome-party" },
     { name: "About Us", href: "/about-us" },
@@ -26,7 +26,7 @@ const Header = () => {
   const whatsappLink = "https://wa.me/918141721001?text=Hi!%20I%27m%20interested%20in%20your%20AI%20video%20invites.";
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white backdrop-blur-md border-b border-border">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white backdrop-blur-md border-b border-border backdrop-blur-md border-gray-100 header">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
@@ -42,30 +42,21 @@ const Header = () => {
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
-              <>
-                <NavLink
-                  key={link.name}
-                  to={link.href}
-                  className={({ isActive }) =>
-                    `font-body text-sm transition-colors py-2 ${isActive
-                      ? "text-blue-600 font-semibold"
-                      : "text-foreground hover:text-primary"
-                    }`
-                  }
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {link.name}
-                </NavLink>
-                {/* <Link
+              <NavLink
                 key={link.name}
                 to={link.href}
-                className="font-body text-sm text-muted-foreground hover:text-primary transition-colors gold-underline"
+                className={({ isActive }) =>
+                  `font-body text-sm transition-colors py-2 ${isActive
+                    ? "text-blue-600 font-semibold"
+                    : "text-foreground hover:text-primary"
+                  }`
+                }
+                onClick={() => setIsMenuOpen(false)}
               >
                 {link.name}
-              </Link> */}
-              </>
-
+              </NavLink>
             ))}
+
           </nav>
 
 

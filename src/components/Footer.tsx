@@ -6,7 +6,7 @@ const Footer = () => {
   const whatsappLink = "https://wa.me/918141721001?text=Hi!%20I%27m%20interested%20in%20your%20AI%20video%20invites.";
 
   return (
-    <footer className="bg-cream border-t border-border">
+    <footer className="bg-secondary border-t border-border">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Brand */}
@@ -36,9 +36,9 @@ const Footer = () => {
             <ul className="space-y-2">
               {[
                 { name: "Birthday", href: "/birthday" },
-                { name: "Baby Shower", href: "/wedding" },
-                { name: "Gender Reveal", href: "/save-the-date" },
-                { name: "Welcome Party", href: "/engagement" },
+                { name: "Baby Shower", href: "/baby-shower" },
+                // { name: "Gender Reveal", href: "/save-the-date" },
+                // { name: "Welcome Party", href: "/engagement" },
               ].map((link) => (
                 <li key={link.name}>
                   <Link

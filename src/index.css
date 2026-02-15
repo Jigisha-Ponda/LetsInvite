@@ -103,8 +103,10 @@
 
     /* Shadows */
     --shadow-soft: 0 4px 20px -4px hsl(30 20% 20% / 0.08);
-    --shadow-card: 0 8px 30px -8px hsl(30 20% 20% / 0.1);
-    --shadow-elevated: 0 20px 50px -15px hsl(30 20% 20% / 0.15);
+    /* --shadow-card: 0 8px 30px -8px hsl(30 20% 20% / 0.1);
+    --shadow-elevated: 0 20px 50px -15px hsl(30 20% 20% / 0.15); */
+    --shadow-card: 0 8px 30px -6px hsl(0 0% 0% / 0.15);
+    --shadow-elevated: 0 25px 60px -12px hsl(0 0% 0% / 0.22);
     --shadow-glow: 0 0 40px hsl(38 72% 50% / 0.2);
 
     /* Typography */
@@ -232,6 +234,9 @@
     background: var(--gradient-luxury);
   }
 
+  .header{
+    box-shadow:2px 4px 40px #2623241a;
+  }
   .shadow-soft {
     box-shadow: var(--shadow-soft);
   }

@@ -7,8 +7,10 @@ export interface DesignItem {
   title: string;
   category: string;
   price?: string;
+  originalPrice?:string;
   subtitle?: string;
   description?: string;
+  heading?:string;
   whatsappMessage?: string;
   videoSrc?: string;
 }
@@ -25,8 +27,11 @@ const TEMPLATE_TITLE_COLUMN = import.meta.env.VITE_SUPABASE_TEMPLATE_TITLE_COLUM
 const TEMPLATE_IMAGE_COLUMN = import.meta.env.VITE_SUPABASE_TEMPLATE_IMAGE_COLUMN || "image_url";
 const TEMPLATE_VIDEO_COLUMN = import.meta.env.VITE_SUPABASE_TEMPLATE_VIDEO_COLUMN || "video_url";
 const TEMPLATE_PRICE_COLUMN = import.meta.env.VITE_SUPABASE_TEMPLATE_PRICE_COLUMN || "Price";
+const TEMPLATE_ORIGINAL_PRICE_COLUMN = import.meta.env.VITE_SUPABASE_TEMPLATE_ORIGINAL_PRICE_COLUMN || "OriginalPrice";
 const TEMPLATE_SUBTITLE_COLUMN =
   import.meta.env.VITE_SUPABASE_TEMPLATE_SUBTITLE_COLUMN || "Subtitle";
+const TEMPLATE_HEADING_COLUMN =
+  import.meta.env.VITE_SUPABASE_TEMPLATE_HEADING_COLUMN || "Heading";
 const TEMPLATE_DESCRIPTION_COLUMN =
   import.meta.env.VITE_SUPABASE_TEMPLATE_DESCRIPTION_COLUMN || "Description";
 const TEMPLATE_WHATSAPP_COLUMN =
@@ -44,13 +49,34 @@ const TEMPLATE_CARD_IMAGE_3_COLUMN =
 const TEMPLATE_CARD_IMAGE_4_COLUMN =
   import.meta.env.VITE_SUPABASE_TEMPLATE_CARD_IMAGE_4_COLUMN || "card_image4";
 
+// const toPriceLabel = (price: unknown) => {
+//   if (price === null || price === undefined || price === "") return undefined;
+//   if (typeof price === "number") return `₹${price.toLocaleString("en-IN")}`;
+//   if (typeof price !== "string") return undefined;
+//   if (price.startsWith("₹")) return price;
+//   return `₹${price}`;
+// };
 const toPriceLabel = (price: unknown) => {
   if (price === null || price === undefined || price === "") return undefined;
-  if (typeof price === "number") return `₹${price.toLocaleString("en-IN")}`;
-  if (typeof price !== "string") return undefined;
-  if (price.startsWith("₹")) return price;
-  return `₹${price}`;
+
+  if (typeof price === "number") {
+    return `₹${price.toLocaleString("en-IN")}`;
+  }
+
+  if (typeof price === "string") {
+    if (price.startsWith("₹")) return price;
+
+    const numericValue = Number(price.replace(/,/g, ""));
+    if (!isNaN(numericValue)) {
+      return `₹${numericValue.toLocaleString("en-IN")}`;
+    }
+
+    return `₹${price}`;
+  }
+
+  return undefined;
 };
+
 
 const asString = (value: unknown) => (typeof value === "string" && value.trim() ? value.trim() : null);
 const asNumber = (value: unknown) => (typeof value === "number" ? value : null);
@@ -128,7 +154,17 @@ const mapTemplateToDesign = (row: GenericRow): DesignItem | null => {
     title,
     category: fallbackCategory,
     price: toPriceLabel(pickValue(row, [TEMPLATE_PRICE_COLUMN, "price", "Price"])),
+    originalPrice: toPriceLabel(
+  pickValue(row, [
+    TEMPLATE_ORIGINAL_PRICE_COLUMN,
+    "original_price",
+    "originalPrice",
+    "OriginalPrice",
+  ])
+),
+
     subtitle: pickString(row, [TEMPLATE_SUBTITLE_COLUMN, "subtitle", "Subtitle"]) ?? undefined,
+    heading: pickString(row, [TEMPLATE_SUBTITLE_COLUMN, "heading", "Heading"]) ?? undefined,
     description: pickString(row, [TEMPLATE_DESCRIPTION_COLUMN, "description", "Description"]) ?? undefined,
     videoSrc,
     whatsappMessage: TEMPLATE_WHATSAPP_COLUMN
@@ -142,7 +178,9 @@ const selectedTemplateColumns = [
   TEMPLATE_TITLE_COLUMN,
   TEMPLATE_VIDEO_COLUMN,
   TEMPLATE_PRICE_COLUMN,
+  TEMPLATE_ORIGINAL_PRICE_COLUMN,
   TEMPLATE_SUBTITLE_COLUMN,
+  TEMPLATE_HEADING_COLUMN,
   TEMPLATE_DESCRIPTION_COLUMN,
   TEMPLATE_CATEGORY_ID_COLUMN,
   TEMPLATE_CATEGORY_NAME_COLUMN,
@@ -160,10 +198,12 @@ const fetchTemplateRows = async (query: URLSearchParams): Promise<DesignItem[]> 
   const headers = getSupabaseHeaders();
   const templateRes = await fetch(buildSupabaseRestUrl(TEMPLATE_TABLE, query), { headers });
 
-  if (!templateRes.ok) {
-    const body = await templateRes.text();
-    throw new Error(`Supabase template query failed (${templateRes.status}): ${body}`);
-  }
+if (!templateRes.ok) {
+  const body = await templateRes.text();
+  console.error("Supabase Error:", templateRes.status, body);
+  throw new Error(body);
+}
+
 
   const templateRows = (await templateRes.json()) as GenericRow[];
   return templateRows.map(mapTemplateToDesign).filter((item): item is DesignItem => item !== null);

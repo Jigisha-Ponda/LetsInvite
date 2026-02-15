@@ -623,7 +623,7 @@ const Stat = ({ end, label, suffix = "" }: any) => {
   const isInView = useInView(ref, { once: true });
 
   return (
-    <div ref={ref} className="rounded-2xl bg-cream p-4 text-center">
+    <div ref={ref} className="rounded-2xl bg-secondary p-4 text-center">
       <p className="text-2xl font-bold text-primary">
         {isInView ? <CountUp end={end} duration={2} /> : 0}
         {suffix}

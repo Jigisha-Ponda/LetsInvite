@@ -129,7 +129,7 @@ const VideoCard = ({ id, image, title, category, price, whatsappMessage, videoSr
       </div>
 
       {/* Card Content */}
-      <div className="p-4">
+      <div className="p-4 bg-white">
         <h3 className="font-display text-lg font-semibold text-foreground mb-1 line-clamp-1">
           {title}
         </h3>

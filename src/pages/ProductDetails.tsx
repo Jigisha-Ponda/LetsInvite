@@ -97,7 +97,7 @@ const ProductDetails = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-white opacity-100">
       <Header />
       <main className="pt-20 pb-12">
         <div className="container mx-auto px-4">
@@ -119,13 +119,12 @@ const ProductDetails = () => {
           {design && (
             <>
               <div className="mt-6 mb-6 text-sm text-muted-foreground">
-                <Link to="/" className="hover:text-foreground">Home</Link> /{" "}
                 <span>{design.category}</span> / <span>{design.title}</span>
               </div>
 
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-                <div className="flex gap-4 items-start">
-                  <div className="w-28 shrink-0 flex flex-col gap-3">
+                <div className="flex flex-col lg:flex-row gap-4 items-start">
+                  <div className="w-100 lg:w-28 shrink-0 flex flex-row lg:flex-col mx-auto gap-3">
                     {galleryImages.map((thumb, index) => (
                       <button
                         key={`${thumb}-${index}`}
@@ -134,9 +133,8 @@ const ProductDetails = () => {
                           setSelectedIndex(index);
                           setIsPreviewOpen(true);
                         }}
-                        className={`rounded-xl overflow-hidden border-2 transition ${
-                          selectedIndex === index ? "border-primary" : "border-border"
-                        }`}
+                        className={`rounded-xl overflow-hidden border-2 transition ${selectedIndex === index ? "border-primary" : "border-border"
+                          }`}
                       >
                         <img
                           src={thumb}
@@ -181,10 +179,24 @@ const ProductDetails = () => {
 
                 <div>
                   <h1 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-2">{design.title}</h1>
+                  <h2 className="font-display text-xl text-foreground mb-2">
+                    {design.subtitle || "Description"}
+                  </h2>
                   {design.price && (
-                    <p className="font-display text-3xl text-foreground mb-6">{design.price}</p>
+                    <div className="flex items-center gap-3 mb-6">
+                      <p className="font-display text-3xl text-blue-600 font-semibold">
+                        {design.price}
+                      </p>
+                      {design.originalPrice && (
+                        <p className="text-lg text-muted-foreground ">
+                          <span className="line-through text-lg text-muted-foreground h">
+                            {design.originalPrice}
+                          </span>
+                          (50% off)
+                        </p>
+                      )}
+                    </div>
                   )}
-
                   <div className="space-y-4 mb-8">
                     <Button variant="whatsapp" size="lg" className="w-48" asChild>
                       <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
@@ -194,10 +206,10 @@ const ProductDetails = () => {
                     </Button>
                   </div>
 
-                  {(design.subtitle || design.description) && (
-                    <div className="rounded-xl bg-card border border-border p-5">
+                  {(design.heading || design.description) && (
+                    <div className="rounded-xl bg-white shadow-card p-5">
                       <h2 className="font-display text-xl font-semibold text-foreground mb-2">
-                        {design.subtitle || "Description"}
+                        {design.heading || "Description"}
                       </h2>
                       {design.description && (
                         <p className="font-body text-muted-foreground leading-relaxed">{design.description}</p>

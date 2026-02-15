@@ -16,7 +16,7 @@ const saveTheDateDesigns = [
   { image: heroImage, title: "Elegant Script", category: "Save The Date", price: "₹1,999" },
 ];
 
-const SaveTheDate = () => {
+const BabyShower = () => {
   const whatsappLink = "https://wa.me/918141721001?text=Hi!%20I%27m%20interested%20in%20Save%20The%20Date%20Video%20Invites.";
 
   return (
@@ -48,7 +48,7 @@ const SaveTheDate = () => {
         </section>
 
         {/* Designs Grid */}
-        <section className="py-12 lg:py-16 bg-ivory">
+        <section className="py-12 lg:py-16 bg-white">
           <div className="container mx-auto px-4">
             <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
               <p className="font-body text-muted-foreground">
@@ -60,7 +60,7 @@ const SaveTheDate = () => {
               </Button> */}
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
               {saveTheDateDesigns.map((design, index) => (
                 <div
                   key={`${design.title}-${index}`}
@@ -75,7 +75,7 @@ const SaveTheDate = () => {
         </section>
 
         {/* CTA Section */}
-        <section className="py-12 lg:py-16 bg-card border-y border-border">
+        <section className="py-12 lg:py-16 bg-white border-y border-border">
           <div className="container mx-auto px-4 text-center">
             <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4">
               Custom Save The Date? We've Got You!
@@ -98,4 +98,4 @@ const SaveTheDate = () => {
   );
 };
 
-export default SaveTheDate;
+export default BabyShower;

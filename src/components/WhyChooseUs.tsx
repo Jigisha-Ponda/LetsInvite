@@ -14,7 +14,7 @@ const features = [
   {
     icon: Film,
     title: "Cinematic Video Quality",
-    description: "Professional-grade 4K videos with smooth animations, beautiful transitions, and stunning effects.",
+    description: "Professional-grade FHD videos with smooth animations, beautiful transitions, and stunning effects.",
   },
   {
     icon: MessageCircle,
@@ -25,7 +25,7 @@ const features = [
 
 const WhyChooseUs = () => {
   return (
-    <section className="py-16 bg-secondary">
+    <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-12 lg:mb-16">
@@ -42,10 +42,10 @@ const WhyChooseUs = () => {
           {features.map((feature, index) => (
             <div
               key={feature.title}
-              className="group p-6 lg:p-8 rounded-2xl bg-card border border-border hover:border-primary hover:shadow-card transition-all duration-300 animate-fade-in"
+              className="group p-6 lg:p-8 rounded-2xl bg-secondary border border-border hover:border-primary hover:shadow-card transition-all duration-300 animate-fade-in"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className="w-14 h-14 rounded-xl bg-secondary flex items-center justify-center mb-5 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
+              <div className="w-14 h-14 rounded-xl bg-white flex items-center justify-center mb-5 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
                 <feature.icon className="w-7 h-7 text-primary group-hover:text-primary-foreground transition-colors" />
               </div>
               <h3 className="font-display text-xl font-semibold text-foreground mb-3">

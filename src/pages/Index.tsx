@@ -18,12 +18,12 @@ const Index = () => {
       <Header />
       <main>
         <InteractiveHeroSection />
-        {/* <HeroSection/> */}
-        <TabsCarouselSection />
-        <HowItWorks />
-        <CategoriesSection />
-        <WhyChooseUs />
         <FeaturedDesigns />
+        {/* <HeroSection/> */}
+        {/* <TabsCarouselSection /> */}
+        <HowItWorks />
+        {/* <CategoriesSection /> */}
+        <WhyChooseUs />
         <AISection />
         <Testimonials />
         <CTASection />

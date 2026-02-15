@@ -134,7 +134,7 @@ const TabsCarouselSection = () => {
   }, [api, current.key]);
 
   return (
-    <section id="tabs-carousel" className="relative py-16 bg-ivory overflow-hidden">
+    <section id="tabs-carousel" className="relative py-16 bg-white overflow-hidden">
       <div
         className="absolute left-0 top-0 bottom-0 w-40 opacity-10"
         // style={{
