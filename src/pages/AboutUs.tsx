@@ -467,7 +467,7 @@ const AboutUs = () => {
         </section>
 
         {/* STORY + MISSION */}
-        <section className="bg-ivory py-14 lg:py-20">
+        <section className="bg-white py-14 lg:py-20">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-center">
               <div>
@@ -480,7 +480,7 @@ const AboutUs = () => {
                   We blend storytelling, motion, and elegance.
                 </p>
 
-                <div className="mt-6 rounded-2xl border border-border bg-card p-4">
+                <div className="mt-6 rounded-2xl border border-border bg-white p-4">
                   <p className="text-sm font-body text-muted-foreground mb-3">
                     Journey timeline
                   </p>
@@ -520,7 +520,7 @@ const AboutUs = () => {
               </div>
 
               {/* STATS */}
-              <div className="rounded-3xl bg-card p-8 shadow-card">
+              <div className="rounded-3xl bg-white p-8 shadow-card">
                 <h3 className="font-display text-2xl font-semibold">
                   Our Impact
                 </h3>
@@ -537,7 +537,7 @@ const AboutUs = () => {
         </section>
 
         {/* VALUES */}
-        <section className="bg-cream py-14 lg:py-20">
+        <section className="bg-secondary py-14 lg:py-20">
           <div className="container mx-auto px-4">
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
               {[
@@ -579,7 +579,7 @@ const AboutUs = () => {
         </section>
 
         {/* FAQ */}
-        <section className="bg-ivory py-14 lg:py-20">
+        <section className="bg-white py-14 lg:py-20">
           <div className="container mx-auto px-4 max-w-3xl">
             {faqs.map((item) => (
               <div

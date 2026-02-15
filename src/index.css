@@ -10,8 +10,10 @@
 @layer base {
   :root {
     /* Ivory & cream backgrounds */
-    --background: 40 33% 98%;
-    --foreground: 30 10% 15%;
+    /* --background: 40 33% 98%;
+    --foreground: 30 10% 15%; */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 10%;
 
     /* Warm ivory card */
     --card: 40 40% 97%;
@@ -26,9 +28,9 @@
     --primary: 218 74% 41%;
     --primary-foreground: 0 0% 100%;
     /* --primary: 243 50% 44%;
---primary-foreground: 0 0% 100%; */
+    --primary-foreground: 0 0% 100%; */
     /* --primary: 319 61% 46%;
---primary-foreground: 0 0% 100%; */
+    --primary-foreground: 0 0% 100%; */
 
 
 
@@ -134,8 +136,10 @@
     --background: 30 15% 8%;
     --foreground: 40 30% 95%;
 
-    --card: 30 15% 12%;
-    --card-foreground: 40 30% 95%;
+    /* --card: 30 15% 12%;
+    --card-foreground: 40 30% 95%; */
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 15%;
 
     --popover: 30 15% 15%;
     --popover-foreground: 40 30% 95%;
@@ -234,9 +238,10 @@
     background: var(--gradient-luxury);
   }
 
-  .header{
-    box-shadow:2px 4px 40px #2623241a;
+  .header {
+    box-shadow: 2px 4px 40px #2623241a;
   }
+
   .shadow-soft {
     box-shadow: var(--shadow-soft);
   }

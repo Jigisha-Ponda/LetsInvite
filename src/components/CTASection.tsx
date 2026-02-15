@@ -5,7 +5,7 @@ const CTASection = () => {
   const whatsappLink = "https://wa.me/918141721001?text=Hi!%20I%27m%20interested%20in%20your%20AI%20video%20invites.";
 
   return (
-    <section className="py-16 bg-ivory relative overflow-hidden">
+    <section className="py-16 bg-white relative overflow-hidden">
       {/* Decorative Background */}
       <div className="absolute inset-0">
         <div className="absolute top-0 left-0 w-full h-full opacity-5"
