@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Sparkles, Instagram, Youtube, Mail, Phone } from "lucide-react";
-import logoIcon from "../assets/logo.png";
+import logoIcon from "../assets/logofinal.png";
 
 const Footer = () => {
   const whatsappLink = "https://wa.me/918141721001?text=Hi!%20I%27m%20interested%20in%20your%20AI%20video%20invites.";

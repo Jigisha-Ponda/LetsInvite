@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X, Sparkles } from "lucide-react";
 import { Button } from "./ui/button";
-import logoIcon from "../assets/logo.png";
+import logoIcon from "../assets/logofinal.png";
 import { NavLink } from "react-router-dom";
 
 const WhatsAppIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
