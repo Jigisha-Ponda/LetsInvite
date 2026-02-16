@@ -48,7 +48,7 @@ const HeroSection = () => {
                     />
 
                     {/* WhatsApp Floating Icon */}
-                    <div className="absolute left-2 top-0 md:-left-24 md:top-10 lg:-left-[5rem] lg:top-[18%] z-20">
+                    <div className="absolute left-2 top-0 md:-left-20 md:top-10 lg:-left-[5rem] lg:top-[18%] z-20">
                         <img
                             src={whatsappIcon}
                             alt="WhatsApp"
