@@ -2,24 +2,24 @@ import { Star, Quote } from "lucide-react";
 
 const testimonials = [
   {
-    name: "Priya & Arjun",
+    name: "Rajit Kothari & Rishta Panchani",
     location: "Mumbai",
     event: "Wedding",
-    quote: "Our wedding invite video was absolutely stunning! Everyone kept asking how we got such a cinematic video made. Invyta made our special day even more memorable.",
+    quote: "We appreciate the excellent work done on our wedding video and invitation card. He was very creative, cooperative and patient in understanding our requirements, as well as professional in his approach. The final output was well-executed and aligned perfectly with our expectations. We are happy with the overall experience.",
     rating: 5,
   },
   {
-    name: "Sneha Sharma",
+    name: "Birva",
     location: "Delhi",
-    event: "Birthday Party",
-    quote: "Ordered a birthday invite for my daughter's first birthday. The video was so beautiful that guests were emotional watching it. Highly recommend!",
+    event: "Wedding",
+    quote: "Great experience with Invyta. The design was creative, innovative and delivered with great attention to detail. The team was patient, understood the requirements well, and helped me achieve exactly the invitation we had in mind. 😊✨",
     rating: 5,
   },
   {
-    name: "Rahul & Neha",
+    name: "Kriti Vivek Mohata",
     location: "Bangalore",
-    event: "Engagement",
-    quote: "The AI-powered customization is incredible. They understood exactly what we wanted and delivered beyond our expectations. Worth every rupee!",
+    event: "Wedding",
+    quote: "Just wanted to appreciate the invitation. We got a lot of positive feedback and everyone quite loved the use of AI in the invite. Thanks again for the creative invitation 😄",
     rating: 5,
   },
 ];
@@ -52,7 +52,7 @@ const Testimonials = () => {
               </div>
 
               {/* Quote */}
-              <p className="font-body text-foreground leading-relaxed mb-6">
+              <p className="font-body text-foreground leading-relaxed mb-6 min-h-[205px]">
                 "{testimonial.quote}"
               </p>
 
@@ -69,7 +69,8 @@ const Testimonials = () => {
                   {testimonial.name}
                 </p>
                 <p className="font-body text-sm text-muted-foreground">
-                  {testimonial.location} • {testimonial.event}
+                  {/* {testimonial.location} • {testimonial.event} */}
+                  {testimonial.event}
                 </p>
               </div>
             </div>

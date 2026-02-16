@@ -1,6 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap"); */
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");  */
+@import url('https://fonts.googleapis.com/css2?family=Satoshi:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -112,9 +116,9 @@
     --shadow-glow: 0 0 40px hsl(38 72% 50% / 0.2);
 
     /* Typography */
-    --font-display: 'Playfair Display', serif;
+    --font-display: 'Fraunces', serif;
     --font-elegant: 'Cormorant Garamond', serif;
-    --font-body: 'Poppins', sans-serif;
+    --font-body: 'Inter', sans-serif;
 
     --sidebar-background: 40 40% 97%;
     --sidebar-foreground: 30 10% 15%;
@@ -450,7 +454,7 @@
 
   /* Luxury card hover */
   .luxury-card {
-    @apply bg-card rounded-2xl shadow-card transition-all duration-500;
+    @apply bg-white rounded-2xl shadow-card transition-all duration-500;
   }
 
   .luxury-card:hover {
