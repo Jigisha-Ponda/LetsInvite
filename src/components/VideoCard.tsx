@@ -14,8 +14,32 @@ interface VideoCardProps {
   videoSrc?: string;
 }
 
+// const toYouTubeEmbedUrl = (url?: string) => {
+//   if (!url) return null;
+//   const patterns = [
+//     /youtube\.com\/watch\?v=([^?&/]+)/,
+//     /youtube\.com\/shorts\/([^?&/]+)/,
+//     /youtu\.be\/([^?&/]+)/,
+//     /youtube\.com\/embed\/([^?&/]+)/,
+//   ];
+
+//   for (const pattern of patterns) {
+//     const match = url.match(pattern);
+//     if (match?.[1]) {
+//       return `https://www.youtube.com/embed/${match[1]}?autoplay=1&mute=1&playsinline=1&rel=0`;
+//     }
+//   }
+//   return null;
+// };
+
 const toYouTubeEmbedUrl = (url?: string) => {
   if (!url) return null;
+
+  // If already a clean video ID
+  if (/^[a-zA-Z0-9_-]{11}$/.test(url)) {
+    return `https://www.youtube.com/embed/${url}?autoplay=1&mute=1&playsinline=1&rel=0`;
+  }
+
   const patterns = [
     /youtube\.com\/watch\?v=([^?&/]+)/,
     /youtube\.com\/shorts\/([^?&/]+)/,
@@ -29,8 +53,10 @@ const toYouTubeEmbedUrl = (url?: string) => {
       return `https://www.youtube.com/embed/${match[1]}?autoplay=1&mute=1&playsinline=1&rel=0`;
     }
   }
+
   return null;
 };
+
 
 const VideoCard = ({ id, image, title, category, price, whatsappMessage, videoSrc }: VideoCardProps) => {
   const defaultMessage = `Hi! I'm interested in the "${title}" video invite design.`;
