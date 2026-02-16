@@ -18,11 +18,11 @@ const CTASection = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6 leading-tight">
-            Your Celebration Deserves More Than a <span className="text-gold">PDF Invite</span>
+              Your Celebration Deserves More Than a <span className="text-gold">Basic Invite</span>
           </h2>
           
           <p className="font-body text-lg md:text-xl text-muted-foreground mb-8">
-            Make your loved ones feel special with a cinematic video invitation that captures the essence of your celebration.
+            Celebrate life’s sweetest moments with beautifully crafted Birthday and Baby Shower video invitations that make your loved ones feel truly special.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

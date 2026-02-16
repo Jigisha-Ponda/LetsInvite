@@ -1,108 +1,92 @@
-import { ArrowRight, MessageCircle, Sparkles } from "lucide-react";
-import { Button } from "./ui/button";
-import { Link } from "react-router-dom";
+import heroBg from "../assets/BannerBG.png";
+import BGPortrait from "../assets/BGPortrait.png";
+import phonesImage from "../assets/banner.png";
+import whatsappIcon from "../assets/WP.png";
+import FloatingLeft from "../assets/499.png";
+import FloatingRight from "../assets/999.png";
+import FloatingRightBottom from "../assets/48hr.png";
 
 const HeroSection = () => {
-  const whatsappLink = "https://wa.me/918141721001?text=Hi!%20I%27m%20interested%20in%20your%20AI%20video%20invites.";
+    return (
+        <section className="relative w-full pt-24 pb-12 md:pt-28 md:pb-16 lg:pt-24 lg:pb-10 min-h-[100svh] flex items-center justify-center overflow-hidden">
 
-  return (
-    <section className="relative flex items-center pt-16 lg:pt-36 pb-16 overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 bg-gradient-luxury opacity-50" />
-      <div 
-        className="absolute inset-0 opacity-5"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23b8860b' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-        }}
-      />
-
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="grid grid-cols-1 gap-8 lg:gap-12 items-center justify-content-center mx-auto lg:w-1/2 text-center">
-          {/* Left Content */}
-          <div className="order-2 lg:order-1 text-center lg:text-center">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary border border-border mb-6 animate-fade-in">
-              <Sparkles className="w-4 h-4 text-primary" />
-              <span className="font-body text-sm font-medium text-foreground">
-                AI-Powered Video Invites
-              </span>
-            </div>
-
-            {/* Headline */}
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6 animate-fade-in stagger-1 text-center">
-              AI-Powered 3D Invites. <span className="text-gold">Made Just for You.</span>
-            </h1>
-
-            {/* Subtext */}
-            <p className="font-body text-lg md:text-xl text-muted-foreground mb-8 max-w-xl mx-auto animate-fade-in stagger-2">
-              Perfect for birthdays, baby showers, announcements & more.
-            </p>
-
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in stagger-3">
-              <Button variant="hero" size="xl" asChild>
-                <a href="#tabs-carousel">
-                  Explore Invyta Invites
-                  <ArrowRight className="w-5 h-5" />
-                </a>
-              </Button>
-              <Button variant="hero-outline" size="xl" asChild>
-                <a href="#how-it-works">
-                  <MessageCircle className="w-5 h-5" />
-                  How It Works
-                </a>
-              </Button>
-            </div>
-
-            {/* Trust Badges */}
-            <div className="mt-12 flex flex-wrap items-center justify-center gap-6 animate-fade-in stagger-4">
-              <div className="text-center">
-                <p className="font-display text-2xl font-bold text-primary">500+</p>
-                <p className="font-body text-xs text-muted-foreground">Happy Couples</p>
-              </div>
-              <div className="w-px h-10 bg-border" />
-              <div className="text-center">
-                <p className="font-display text-2xl font-bold text-primary">4.9★</p>
-                <p className="font-body text-xs text-muted-foreground">Client Rating</p>
-              </div>
-              <div className="w-px h-10 bg-border" />
-              <div className="text-center">
-                <p className="font-display text-2xl font-bold text-primary">24hrs</p>
-                <p className="font-body text-xs text-muted-foreground">Fast Delivery</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Content - Video Preview */}
-          {/* <div className="order-1 lg:order-2 flex justify-center">
-            <div className="relative">
-              <div className="absolute -top-4 -left-4 w-24 h-24 border-2 border-primary/30 rounded-2xl" />
-              <div className="absolute -bottom-4 -right-4 w-24 h-24 border-2 border-primary/30 rounded-2xl" />
-              
-              <div className="relative w-64 md:w-72 lg:w-80 video-preview animate-scale-in shadow-glow">
+            {/* Background */}
+            <div className="absolute inset-0">
                 <img
-                  src={heroImage}
-                  alt="Wedding Video Invite Preview"
-                  className="w-full h-full object-cover"
+                    src={heroBg}
+                    alt="Hero Background"
+                    className="absolute inset-0 hidden h-full w-full object-cover object-center md:block"
                 />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-20 h-20 rounded-full bg-card/80 backdrop-blur-sm flex items-center justify-center shadow-elevated animate-float cursor-pointer hover:scale-110 transition-transform">
-                    <div className="w-0 h-0 border-l-[20px] border-l-primary border-y-[12px] border-y-transparent ml-2" />
-                  </div>
-                </div>
-                <div className="absolute bottom-4 left-4 right-4">
-                  <div className="bg-card/90 backdrop-blur-sm rounded-lg p-3 border border-border">
-                    <p className="font-body text-xs text-muted-foreground">Featured Design</p>
-                    <p className="font-display text-sm font-semibold text-foreground">Royal Wedding Invite</p>
-                  </div>
-                </div>
-              </div>
+                <img
+                    src={BGPortrait}
+                    alt="Hero Background"
+                    className="absolute inset-0 block h-full w-full object-cover object-[50%_35%] md:hidden"
+                />
+                <div className="absolute inset-0 bg-white/55 md:bg-white/60 backdrop-blur-[1px] md:backdrop-blur-sm"></div>
             </div>
-          </div> */}
-        </div>
-      </div>
-    </section>
-  );
+
+            {/* Content */}
+            <div className="relative z-10 container mx-auto px-4 text-center">
+
+                {/* Heading */}
+                <h1 className="text-[2rem] leading-tight md:text-5xl lg:text-6xl font-bold text-[#ea2c74] mb-2">
+                    PREMIUM AI-POWERED <br />
+                    <span className="text-[#393faf]">3D VIDEO INVITES</span>
+                </h1>
+
+                {/* Subheading */}
+                <p className="text-base sm:text-lg md:text-2xl text-[#0e72ca] font-medium mb-8 md:mb-12">
+                    DELIVERED IN 48 HOURS — UNDER ₹999
+                </p>
+
+                {/* Phones Image */}
+                <div className="relative mx-auto flex w-[min(100%,22rem)] md:w-fit justify-center items-center">
+                    <img
+                        src={phonesImage}
+                        alt="Video Invite Examples"
+                        className="w-full md:w-[520px] lg:w-[680px] object-contain"
+                    />
+
+                    {/* WhatsApp Floating Icon */}
+                    <div className="absolute left-2 top-0 md:-left-24 md:top-10 lg:-left-[5rem] lg:top-[18%] z-20">
+                        <img
+                            src={whatsappIcon}
+                            alt="WhatsApp"
+                            className="w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 animate-bounce"
+                        />
+                    </div>
+
+                    {/* Floating Price Left */}
+                    <div className="absolute left-0 -bottom-4 md:-left-36 md:bottom-20 lg:-left-[11.5rem] lg:bottom-[17%] z-20">
+                        <img
+                            src={FloatingLeft}
+                            alt="Video Invite Examples"
+                            className="w-[98px] sm:w-[110px] md:w-[155px] lg:w-[175px] h-auto object-contain"
+                        />
+                    </div>
+
+                    {/* Floating Price Right */}
+                    <div className="absolute right-0 -top-4 md:-right-28 md:top-2 lg:-right-[10.5rem] lg:top-[8%] z-20">
+                        <img
+                            src={FloatingRight}
+                            alt="Video Invite Examples"
+                            className="w-[98px] sm:w-[110px] md:w-[155px] lg:w-[175px] h-auto object-contain"
+                        />
+                    </div>
+
+                    {/* Delivery Badge */}
+                    <div className="absolute right-0 -bottom-6 md:-right-48 md:bottom-10 lg:-right-[18.5rem] lg:bottom-[16%] z-20">
+                        <img
+                            src={FloatingRightBottom}
+                            alt="Video Invite Examples"
+                            className="w-[118px] sm:w-[128px] md:w-[215px] lg:w-[235px] h-auto object-contain"
+                        />
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    );
 };
 
 export default HeroSection;
