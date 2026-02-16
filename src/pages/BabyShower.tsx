@@ -5,7 +5,7 @@ import WhatsAppFloat from "../components/WhatsAppFloat";
 import VideoCard from "../components/VideoCard";
 import { Button } from "../components/ui/button";
 import { MessageCircle } from "lucide-react";
-import babyShowerImage from "../assets/birthda-1.jpg"; // change if needed
+import heroBg from "../assets/BannerBG.png";
 import { fetchDesignsByCategoryName } from "../lib/designs";
 import { hasSupabaseConfig } from "../lib/supabase";
 
@@ -27,14 +27,16 @@ const BabyShower = () => {
       <Header />
       <main className="pt-16 lg:pt-20">
         {/* Hero Section */}
-        <section className="relative py-16 lg:py-24 bg-secondary overflow-hidden">
-          <div className="absolute inset-0 opacity-10">
-            <img src={babyShowerImage} alt="" className="w-full h-full object-cover" />
+        <section className="relative py-16 lg:py-24 overflow-hidden">
+          <div className="absolute inset-0">
+            <img src={heroBg} alt="" className="w-full h-full object-cover object-center" />
+          </div>
+          <div className="absolute inset-0 bg-white/60">
           </div>
           <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-3xl mx-auto text-center">
-              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-                Baby Shower <span className="text-gold">Video Invites</span>
+              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-[#b93b9f] mb-6">
+                Baby Shower <span className="text-[#4161ef]">Video Invites</span>
               </h1>
               <p className="font-body text-lg md:text-xl text-muted-foreground mb-8">
                 Celebrate the joy of welcoming your little one with adorable, heartwarming

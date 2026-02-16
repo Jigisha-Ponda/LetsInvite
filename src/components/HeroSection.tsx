@@ -29,13 +29,13 @@ const HeroSection = () => {
             <div className="relative z-10 container mx-auto px-4 text-center">
 
                 {/* Heading */}
-                <h1 className="text-[2rem] leading-tight md:text-5xl lg:text-6xl font-bold text-[#ea2c74] mb-2">
+                <h1 className="text-[2rem] leading-tight md:text-5xl lg:text-6xl font-bold text-[#b93b9f] mb-2">
                     PREMIUM AI-POWERED <br />
-                    <span className="text-[#393faf]">3D VIDEO INVITES</span>
+                    <span className="text-[#4161ef]">3D VIDEO INVITES</span>
                 </h1>
 
                 {/* Subheading */}
-                <p className="text-base sm:text-lg md:text-2xl text-[#0e72ca] font-medium mb-8 md:mb-12">
+                <p className="text-base sm:text-lg md:text-2xl text-[#7d4cc7] font-medium mb-8 md:mb-12">
                     DELIVERED IN 48 HOURS — UNDER ₹999
                 </p>
 

@@ -340,7 +340,7 @@ import {
   Zap,
   CheckCircle2,
 } from "lucide-react";
-import heroImage from "../assets/hero-wedding-bg.jpg";
+import heroBg from "../assets/BannerBG.png";
 
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { useRef } from "react";
@@ -415,15 +415,15 @@ const AboutUs = () => {
 
       <main className="pt-16 lg:pt-20">
         {/* HERO */}
-        <section className="relative overflow-hidden bg-secondary py-16 lg:py-24">
-          <div className="absolute inset-0 opacity-15">
+        <section className="relative overflow-hidden py-16 lg:py-24">
+          <div className="absolute inset-0">
             <img
-              src={heroImage}
+              src={heroBg}
               alt=""
-              className="h-full w-full object-cover"
+              className="h-full w-full object-cover object-center"
             />
           </div>
-          <div className="absolute inset-0 bg-cream opacity-80" />
+          <div className="absolute inset-0 bg-white/60" />
 
           <div className="container mx-auto px-4 relative z-10">
             <motion.div
@@ -437,8 +437,8 @@ const AboutUs = () => {
                 Invyta • AI Video Invitation Studio
               </div>
 
-              <h1 className="mt-6 font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground">
-                About <span className="text-gold">Invyta</span>
+              <h1 className="mt-6 font-display text-4xl md:text-5xl lg:text-6xl font-bold text-[#b93b9f]">
+                About <span className="text-[#4161ef]">Invyta</span>
               </h1>
 
               <p className="mt-6 font-body text-lg md:text-xl text-muted-foreground">

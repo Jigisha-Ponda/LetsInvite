@@ -29,7 +29,9 @@
     /* Luxurious gold primary */
     /* --primary: 38 72% 50%;
     --primary-foreground: 40 33% 98%; */
-    --primary: 218 74% 41%;
+    /* --primary: 218 74% 41%;
+    --primary-foreground: 0 0% 100%; */
+    --primary: 229 84% 60%;
     --primary-foreground: 0 0% 100%;
     /* --primary: 243 50% 44%;
     --primary-foreground: 0 0% 100%; */
