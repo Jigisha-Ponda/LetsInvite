@@ -44,7 +44,7 @@ const HeroSection = () => {
                     <img
                         src={phonesImage}
                         alt="Video Invite Examples"
-                        className="w-full md:w-[520px] lg:w-[680px] object-contain"
+                        className="w-full md:w-[520px] lg:w-[760px] xl:w-[860px] object-contain"
                     />
 
                     {/* WhatsApp Floating Icon */}
