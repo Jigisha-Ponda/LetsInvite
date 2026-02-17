@@ -13,6 +13,19 @@ interface VideoCardProps {
   whatsappMessage?: string;
   videoSrc?: string;
 }
+const toDriveImageUrl = (url?: string) => {
+  if (!url) return "";
+
+  // If already direct link
+  if (url.includes("drive.google.com/uc?")) return url;
+
+  const match = url.match(/\/file\/d\/([^/]+)\//);
+  if (match?.[1]) {
+    return `https://drive.google.com/uc?export=view&id=${match[1]}`;
+  }
+
+  return url; // fallback normal image
+};
 
 // const toYouTubeEmbedUrl = (url?: string) => {
 //   if (!url) return null;
@@ -31,6 +44,30 @@ interface VideoCardProps {
 //   }
 //   return null;
 // };
+
+const resolveImageUrl = (url?: string) => {
+  if (!url) return "";
+
+  // ✅ If already Supabase public URL
+  if (url.includes("supabase.co/storage")) {
+    return url;
+  }
+
+  // ✅ If already converted Google Drive direct link
+  if (url.includes("drive.google.com/uc?")) {
+    return url;
+  }
+
+  // ✅ Convert Google Drive share link
+  const driveMatch = url.match(/\/file\/d\/([^/]+)\//);
+  if (driveMatch?.[1]) {
+    return `https://drive.google.com/uc?export=view&id=${driveMatch[1]}`;
+  }
+
+  // ✅ Normal image (CDN / external / local)
+  return url;
+};
+
 
 const toYouTubeEmbedUrl = (url?: string) => {
   if (!url) return null;
@@ -101,10 +138,10 @@ const VideoCard = ({ id, image, title, category, price, whatsappMessage, videoSr
       }
     >
       {/* Video Preview Container */}
-      <div className="relative aspect-[9/14] overflow-hidden bg-muted">
+      <div className="relative aspect-[9/13.5] overflow-hidden bg-muted">
         {!isPlaying && (
           <img
-            src={image}
+            src={resolveImageUrl(image)}
             alt={title}
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
           />

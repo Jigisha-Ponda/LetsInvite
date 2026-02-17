@@ -221,14 +221,24 @@ export const fetchFeaturedDesigns = async (limit = 4): Promise<DesignItem[]> => 
 
 export const fetchDesignsByCategoryName = async (
   categoryName: string,
-  limit = 50,
+  limit?:number, 
 ): Promise<DesignItem[]> => {
   const query = new URLSearchParams({
     select: selectedTemplateColumns.join(","),
     order: `${TEMPLATE_ID_COLUMN}.asc`,
     limit: String(limit),
   });
+   if (limit) {
+    console.log("limit",limit);
+    query.set("limit", String(limit));
+  }
+   const data = await fetchTemplateRows(query);
+
   query.set(TEMPLATE_CATEGORY_NAME_COLUMN, `eq.${categoryName}`);
+
+  console.log(`Category: ${categoryName}`);
+  console.log(`Total ${categoryName} records:`, data.length);
+  console.log(data);
   return fetchTemplateRows(query);
 };
 

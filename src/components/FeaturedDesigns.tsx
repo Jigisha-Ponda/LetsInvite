@@ -90,6 +90,11 @@ const FeaturedDesigns = () => {
                     </div>
                   ))}
                 </div>
+                 <h3 className="mt-5 font-display text-md font-semibold mb-6 text-center text-white">
+                  <span className="inline-block bg-[#1B51B6] px-5 py-3 rounded-lg">
+                    View <span className="text-white">All</span>
+                  </span>
+                </h3>
               </div>
             )}
 
