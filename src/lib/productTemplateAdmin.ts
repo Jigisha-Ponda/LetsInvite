@@ -50,7 +50,7 @@ export const insertProductTemplate = async (
     apikey: supabaseAnonKey,
   Authorization: `Bearer ${accessToken}`, // ✅ THIS IS THE FIX
   "Content-Type": "application/json",
-  Prefer: "return=representation",
+  Prefer: "return=minimal",
       },
     body: JSON.stringify(payload),
   });

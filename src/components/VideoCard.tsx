@@ -13,19 +13,6 @@ interface VideoCardProps {
   whatsappMessage?: string;
   videoSrc?: string;
 }
-const toDriveImageUrl = (url?: string) => {
-  if (!url) return "";
-
-  // If already direct link
-  if (url.includes("drive.google.com/uc?")) return url;
-
-  const match = url.match(/\/file\/d\/([^/]+)\//);
-  if (match?.[1]) {
-    return `https://drive.google.com/uc?export=view&id=${match[1]}`;
-  }
-
-  return url; // fallback normal image
-};
 
 // const toYouTubeEmbedUrl = (url?: string) => {
 //   if (!url) return null;
@@ -48,25 +35,21 @@ const toDriveImageUrl = (url?: string) => {
 const resolveImageUrl = (url?: string) => {
   if (!url) return "";
 
-  // ✅ If already Supabase public URL
-  if (url.includes("supabase.co/storage")) {
-    return url;
+  // Supabase public URL
+  if (url.includes("supabase.co")) return url;
+
+  // If already thumbnail format
+  if (url.includes("drive.google.com/thumbnail")) return url;
+
+  // Convert ANY Drive link
+  const match = url.match(/\/file\/d\/([^/]+)/);
+  if (match?.[1]) {
+    return `https://drive.google.com/thumbnail?id=${match[1]}&sz=w1000`;
   }
 
-  // ✅ If already converted Google Drive direct link
-  if (url.includes("drive.google.com/uc?")) {
-    return url;
-  }
-
-  // ✅ Convert Google Drive share link
-  const driveMatch = url.match(/\/file\/d\/([^/]+)\//);
-  if (driveMatch?.[1]) {
-    return `https://drive.google.com/uc?export=view&id=${driveMatch[1]}`;
-  }
-
-  // ✅ Normal image (CDN / external / local)
   return url;
 };
+
 
 
 const toYouTubeEmbedUrl = (url?: string) => {
@@ -94,6 +77,23 @@ const toYouTubeEmbedUrl = (url?: string) => {
   return null;
 };
 
+const toDriveEmbedUrl = (url?: string) => {
+  if (!url) return null;
+
+  // If already preview format
+  if (url.includes("drive.google.com/file") && url.includes("/preview")) {
+    return url;
+  }
+
+  const match = url.match(/\/file\/d\/([^/]+)/);
+  if (match?.[1]) {
+    return `https://drive.google.com/file/d/${match[1]}/preview`;
+  }
+
+  return null;
+};
+
+
 
 const VideoCard = ({ id, image, title, category, price, whatsappMessage, videoSrc }: VideoCardProps) => {
   const defaultMessage = `Hi! I'm interested in the "${title}" video invite design.`;
@@ -105,6 +105,7 @@ const VideoCard = ({ id, image, title, category, price, whatsappMessage, videoSr
   const youtubeEmbedUrl = toYouTubeEmbedUrl(videoSrc);
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const navigate = useNavigate();
+  const driveEmbedUrl = toDriveEmbedUrl(videoSrc);
 
   useEffect(() => {
     if (!isPlaying) return;
@@ -157,19 +158,28 @@ const VideoCard = ({ id, image, title, category, price, whatsappMessage, videoSr
               allowFullScreen
               referrerPolicy="strict-origin-when-cross-origin"
             />
-          ) : (
-            <video
-              ref={videoRef}
-              className="h-full w-full object-cover"
-              src={videoSrc}
-              poster={image}
-              controls
-              autoPlay
-              muted
-              playsInline
-              preload="metadata"
+          ) : driveEmbedUrl ? (
+            <iframe
+              className="h-full w-full"
+              src={driveEmbedUrl}
+              title={title}
+              allow="autoplay"
+              allowFullScreen
             />
-          ))}
+          )
+            : (
+              <video
+                ref={videoRef}
+                className="h-full w-full object-cover"
+                src={videoSrc}
+                poster={image}
+                controls
+                autoPlay
+                muted
+                playsInline
+                preload="metadata"
+              />
+            ))}
         {/* Play Overlay */}
         {hasVideo && !isPlaying && (
           <button

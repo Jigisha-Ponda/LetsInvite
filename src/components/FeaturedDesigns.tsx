@@ -1,7 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
+import { Link } from "react-router-dom";
 import VideoCard from "./VideoCard";
 import { fetchFeaturedDesigns } from "../lib/designs";
 import { hasSupabaseConfig } from "../lib/supabase";
+import birthdayInvites from "../assets/BirthdayInvites.png";
+import babyShowerInvites from "../assets/BabyShowerInvites.png";
 
 const FeaturedDesigns = () => {
   const { data, isLoading, isError } = useQuery({
@@ -73,12 +76,18 @@ const FeaturedDesigns = () => {
             {/* 🎂 Birthday */}
             {birthdayDesigns.length > 0 && (
               <div>
-                <h3 className="font-display text-3xl font-semibold mb-6 text-center text-white">
+                {/* <h3 className="font-display text-3xl font-semibold mb-6 text-center text-white">
                   <span className="inline-block bg-[#1B51B6] px-5 py-3 rounded-lg">
                     Birthday <span className="text-white">Invites</span>
                   </span>
-                </h3>
-
+                </h3> */}
+                <div className="flex items-center justify-center mb-10">
+                  <img
+                    src={birthdayInvites}
+                    alt="Birthday Invite"
+                    className="max-w-52 max-h-52 object-contain"
+                  />
+                </div>
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                   {birthdayDesigns.map((design, index) => (
                     <div
@@ -90,20 +99,27 @@ const FeaturedDesigns = () => {
                     </div>
                   ))}
                 </div>
-                 <h3 className="mt-5 font-display text-md font-semibold mb-6 text-center text-white">
-                  <span className="inline-block bg-[#1B51B6] px-5 py-3 rounded-lg">
-                    View <span className="text-white">All</span>
-                  </span>
-                </h3>
+                <div className="mt-5 mb-6 text-center">
+                  <Link
+                    to="/birthday"
+                    className="inline-block bg-[#1B51B6] px-5 py-3 rounded-lg font-display text-md font-semibold text-white"
+                  >
+                    View All
+                  </Link>
+                </div>
               </div>
             )}
 
             {/* 👶 Baby Shower */}
             {babyShowerDesigns.length > 0 && (
               <div>
-                <h3 className="font-display text-3xl font-semibold mb-6 text-center">
-                  Baby Shower <span className="text-gold">Invites</span>
-                </h3>
+                <div className="flex items-center justify-center mb-10">
+                  <img
+                    src={babyShowerInvites}
+                    alt="Baby Shower Invite"
+                    className="max-w-56 max-h-56 object-contain"
+                  />
+                </div>
 
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                   {babyShowerDesigns.map((design, index) => (
@@ -115,6 +131,14 @@ const FeaturedDesigns = () => {
                       <VideoCard {...design} />
                     </div>
                   ))}
+                </div>
+                <div className="mt-5 mb-6 text-center">
+                  <Link
+                    to="/baby-shower"
+                    className="inline-block bg-[#1B51B6] px-5 py-3 rounded-lg font-display text-md font-semibold text-white"
+                  >
+                    View All
+                  </Link>
                 </div>
               </div>
             )}

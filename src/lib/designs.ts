@@ -212,7 +212,7 @@ if (!templateRes.ok) {
 export const fetchFeaturedDesigns = async (limit = 4): Promise<DesignItem[]> => {
   const query = new URLSearchParams({
     select: selectedTemplateColumns.join(","),
-    order: `${TEMPLATE_ID_COLUMN}.asc`,
+    order: `${TEMPLATE_ID_COLUMN}.desc`,
     limit: String(limit),
   });
 
@@ -225,7 +225,7 @@ export const fetchDesignsByCategoryName = async (
 ): Promise<DesignItem[]> => {
   const query = new URLSearchParams({
     select: selectedTemplateColumns.join(","),
-    order: `${TEMPLATE_ID_COLUMN}.asc`,
+    order: `${TEMPLATE_ID_COLUMN}.desc`,
     limit: String(limit),
   });
    if (limit) {
@@ -234,7 +234,7 @@ export const fetchDesignsByCategoryName = async (
   }
    const data = await fetchTemplateRows(query);
 
-  query.set(TEMPLATE_CATEGORY_NAME_COLUMN, `eq.${categoryName}`);
+  query.set(TEMPLATE_CATEGORY_NAME_COLUMN, `ilike.${categoryName}`);
 
   console.log(`Category: ${categoryName}`);
   console.log(`Total ${categoryName} records:`, data.length);
