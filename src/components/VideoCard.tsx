@@ -170,7 +170,7 @@ const VideoCard = ({ id, image, title, category, price, whatsappMessage, videoSr
             : (
               <video
                 ref={videoRef}
-                className="h-full w-full object-cover"
+                className="h-full w-full object-contain"
                 src={videoSrc}
                 poster={image}
                 controls

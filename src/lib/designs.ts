@@ -219,28 +219,48 @@ export const fetchFeaturedDesigns = async (limit = 4): Promise<DesignItem[]> => 
   return fetchTemplateRows(query);
 };
 
+// export const fetchDesignsByCategoryName = async (
+//   categoryName: string,
+//   limit?:number, 
+// ): Promise<DesignItem[]> => {
+//   const query = new URLSearchParams({
+//     select: selectedTemplateColumns.join(","),
+//     order: `${TEMPLATE_ID_COLUMN}.desc`,
+//     limit: String(limit),
+//   });
+//    if (limit) {
+//     console.log("limit",limit);
+//     query.set("limit", String(limit));
+//   }
+//    const data = await fetchTemplateRows(query);
+
+//   query.set(TEMPLATE_CATEGORY_NAME_COLUMN, `ilike.${categoryName}`);
+
+//   console.log(`Category: ${categoryName}`);
+//   console.log(`Total ${categoryName} records:`, data.length);
+//   console.log(data);
+//   return fetchTemplateRows(query);
+// };
+
 export const fetchDesignsByCategoryName = async (
   categoryName: string,
-  limit?:number, 
+  limit?: number,
 ): Promise<DesignItem[]> => {
   const query = new URLSearchParams({
     select: selectedTemplateColumns.join(","),
     order: `${TEMPLATE_ID_COLUMN}.desc`,
-    limit: String(limit),
   });
-   if (limit) {
-    console.log("limit",limit);
-    query.set("limit", String(limit));
-  }
-   const data = await fetchTemplateRows(query);
 
+  // Apply category filter at DB level
   query.set(TEMPLATE_CATEGORY_NAME_COLUMN, `ilike.${categoryName}`);
 
-  console.log(`Category: ${categoryName}`);
-  console.log(`Total ${categoryName} records:`, data.length);
-  console.log(data);
+  if (limit) {
+    query.set("limit", String(limit));
+  }
+
   return fetchTemplateRows(query);
 };
+
 
 export const fetchDesignById = async (id: string): Promise<DesignItem | null> => {
   const query = new URLSearchParams({

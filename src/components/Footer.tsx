@@ -91,24 +91,25 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="mailto:hello@letsinvite.in"
+                  href="mailto:invyta10@gmail.com"
                   className="flex items-center gap-2 font-body text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   <Mail className="w-4 h-4" />
-                  hello@invyta.com
+                  invyta10@gmail.com
                 </a>
               </li>
             </ul>
             <div className="flex gap-4 mt-4">
               <a
-                href="#"
+                href="https://www.instagram.com/invytai?igsh=Y2YyaHUxaDNsc2Z4"
+                target="_blank"
                 className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-secondary-foreground hover:bg-primary hover:text-primary-foreground transition-colors"
                 aria-label="Instagram"
               >
                 <Instagram className="w-5 h-5" />
               </a>
               <a
-                href="#"
+                href="https://youtube.com/@invytaaivideoinvites?si=r6sH6USfctz-hulu" target="_blank"
                 className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-secondary-foreground hover:bg-primary hover:text-primary-foreground transition-colors"
                 aria-label="YouTube"
               >

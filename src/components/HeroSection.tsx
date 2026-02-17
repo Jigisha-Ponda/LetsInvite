@@ -8,7 +8,7 @@ import FloatingRightBottom from "../assets/48hr.png";
 
 const HeroSection = () => {
     return (
-        <section className="relative w-full pt-24 pb-12 md:pt-28 md:pb-16 lg:pt-24 lg:pb-10 min-h-[100svh] flex items-center justify-center overflow-hidden">
+        <section className="relative w-full pt-24 pb-12 md:pt-28 md:pb-16 lg:pt-36 lg:pb-20 min-h-[100svh] flex items-center justify-center overflow-hidden">
 
             {/* Background */}
             <div className="absolute inset-0">

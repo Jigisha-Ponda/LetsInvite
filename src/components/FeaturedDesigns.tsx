@@ -1,28 +1,45 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import VideoCard from "./VideoCard";
-import { fetchFeaturedDesigns } from "../lib/designs";
+import { fetchDesignsByCategoryName, fetchFeaturedDesigns } from "../lib/designs";
 import { hasSupabaseConfig } from "../lib/supabase";
 import birthdayInvites from "../assets/BirthdayInvites.png";
 import babyShowerInvites from "../assets/BabyShowerInvites.png";
 
 const FeaturedDesigns = () => {
-  const { data, isLoading, isError } = useQuery({
-    queryKey: ["featured-designs"],
-    queryFn: () => fetchFeaturedDesigns(8),
-    enabled: hasSupabaseConfig,
-    staleTime: 60_000,
-  });
-  const designs = data ?? [];
+//   const { data, isLoading, isError } = useQuery({
+//     queryKey: ["featured-designs"],
+//     queryFn: () => fetchFeaturedDesigns(8),
+//     enabled: hasSupabaseConfig,
+//     staleTime: 60_000,
+//   });
+//   const designs = data ?? [];
 
-  const birthdayDesigns = designs
-    .filter((d) => d.category === "Birthday")
-    .slice(0, 4);
+//   const birthdayDesigns = designs
+//     .filter((d) => d.category === "Birthday")
+//     .slice(0, 4);
 
-  const babyShowerDesigns = designs
-    .filter((d) => d.category === "Baby Shower")
-    .slice(0, 4);
+//   const babyShowerDesigns = designs
+//     .filter((d) => d.category === "Baby Shower")
+//     .slice(0, 4);
 
+const { data, isLoading, isError } = useQuery({
+  queryKey: ["featured-designs"],
+  queryFn: () => fetchFeaturedDesigns(8),
+});
+
+
+const { data: birthdayDesigns = [], isLoading: birthdayLoading } = useQuery({
+  queryKey: ["birthday-designs"],
+  queryFn: () => fetchDesignsByCategoryName("Birthday", 4),
+  enabled: hasSupabaseConfig,
+});
+
+const { data: babyShowerDesigns = [], isLoading: babyLoading } = useQuery({
+  queryKey: ["baby-shower-designs"],
+  queryFn: () => fetchDesignsByCategoryName("Baby Shower", 4),
+  enabled: hasSupabaseConfig,
+});
   return (
     <section id="featured" className="py-16 bg-white">
       <div className="container mx-auto px-4">
@@ -50,12 +67,12 @@ const FeaturedDesigns = () => {
             Failed to load featured designs from ProductTemplate.
           </p>
         )}
-        {hasSupabaseConfig && !isLoading && !isError && designs.length === 0 && (
+        {/* {hasSupabaseConfig && !isLoading && !isError && designs.length === 0 && (
           <p className="font-body text-sm text-muted-foreground">
             No featured designs found in ProductTemplate. If rows exist in Supabase dashboard, enable
             anon SELECT policy (RLS) for ProductTemplate and ProductCategory.
           </p>
-        )}
+        )} */}
         {/* {hasSupabaseConfig && !isLoading && !isError && designs.length > 0 && (
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {designs.map((design, index) => (
@@ -70,7 +87,7 @@ const FeaturedDesigns = () => {
           </div>
         )} */}
 
-        {hasSupabaseConfig && !isLoading && !isError && designs.length > 0 && (
+       {hasSupabaseConfig && !birthdayLoading && !babyLoading && (
           <div className="space-y-16">
 
             {/* 🎂 Birthday */}
