@@ -476,11 +476,38 @@ const AboutUs = () => {
                 </h2>
 
                 <p className="mt-4 font-body text-muted-foreground">
-                  Invitations should feel as special as the celebration itself.
-                  We blend storytelling, motion, and elegance.
+                  Invyta was born from a simple belief — inviting people to life’s most special moments should feel just as special as the event itself.
                 </p>
 
-                <div className="mt-6 rounded-2xl border border-border bg-white p-4">
+                <p className="mt-4 font-body text-muted-foreground">
+                  We’re a group of four creative minds who came together with one shared vision: to reinvent the way the world invites. In a time where everything is becoming smarter, faster, and more digital, we saw an opportunity to transform traditional invitations into something more meaningful, more beautiful, and far more effortless.
+                </p>
+
+                <p className="mt-4 font-body text-muted-foreground">
+                  Invyta is not just about digital invites.
+                  It’s about creating experiences.
+                </p>
+
+                <p className="mt-4 font-body text-muted-foreground">
+                  We blend design, motion, technology, and storytelling to craft stunning digital invitations that feel premium, personal, and unforgettable. From birthdays and weddings to baby announcements and celebrations of every kind — we make inviting smarter, simpler, and more stylish.
+                </p>
+
+                <ul className="mt-4 font-body text-muted-foreground">
+                  <li>No printing delays.</li>
+                  <li>No complicated processes.</li>
+                  <li>Just seamless, elegant invitations delivered in a modern way.</li>
+                </ul>
+
+                <p className="mt-4 font-body text-muted-foreground">
+                  We’re building Invyta for the new generation — for people who value aesthetics, convenience, and impact.
+                </p>
+
+                <p className="mt-4 font-body text-muted-foreground">
+                  This is invitation, reimagined.
+                  This is Invyta.
+                </p>
+
+                {/* <div className="mt-6 rounded-2xl border border-border bg-white p-4">
                   <p className="text-sm font-body text-muted-foreground mb-3">
                     Journey timeline
                   </p>
@@ -516,7 +543,7 @@ const AboutUs = () => {
                       </p>
                     </motion.div>
                   </AnimatePresence>
-                </div>
+                </div> */}
               </div>
 
               {/* STATS */}

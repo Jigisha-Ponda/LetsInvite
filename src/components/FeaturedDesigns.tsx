@@ -73,8 +73,10 @@ const FeaturedDesigns = () => {
             {/* 🎂 Birthday */}
             {birthdayDesigns.length > 0 && (
               <div>
-                <h3 className="font-display text-2xl font-semibold mb-6 text-start">
-                  Birthday <span className="text-gold">Invites</span>
+                <h3 className="font-display text-3xl font-semibold mb-6 text-center text-white">
+                  <span className="inline-block bg-[#1B51B6] px-5 py-3 rounded-lg">
+                    Birthday <span className="text-white">Invites</span>
+                  </span>
                 </h3>
 
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -94,7 +96,7 @@ const FeaturedDesigns = () => {
             {/* 👶 Baby Shower */}
             {babyShowerDesigns.length > 0 && (
               <div>
-                <h3 className="font-display text-2xl font-semibold mb-6 text-start">
+                <h3 className="font-display text-3xl font-semibold mb-6 text-center">
                   Baby Shower <span className="text-gold">Invites</span>
                 </h3>
 

@@ -1,22 +1,29 @@
 import { Search, SlidersHorizontal } from "lucide-react";
+import process1 from "../assets/Process1.png";
+import process2 from "../assets/Process2.png";
+import process3 from "../assets/Process3.png";
+import process4 from "../assets/Process4.png";
 
 const steps = [
   {
     number: "01",
     title: "Choose Your Design",
+    src:process1,
     description: "Browse our collection and pick the perfect video invite style for your celebration.",
     icon: Search,
   },
   {
     number: "02",
     title: "Share Details on WhatsApp",
+    src:process2,
     description: "Send us your event details, photos, and preferences via WhatsApp. It's that simple!",
     icon: SlidersHorizontal,
   },
   {
     number: "03",
-    title: "AI + Designers Create Magic",
-    description: "Our AI generates the video while expert designers perfect every detail for you.",
+    title: "Make payment-securely",
+    src:process3,
+    description: "We offer fast and reliable payment methods so you can pay the way you prefer.",
     icon: () => (
       <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
         <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
@@ -26,6 +33,7 @@ const steps = [
   {
     number: "04",
     title: "Preview & Receive",
+    src:process4,
     description: "Review your video invite, request edits if needed, and receive the final masterpiece.",
     icon: () => (
       <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -61,8 +69,9 @@ const HowItWorks = () => {
                 style={{ animationDelay: `${index * 0.15}s` }}
               >
                 {/* Number Circle */}
-                <div className="relative inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary text-primary-foreground font-display text-xl font-bold mb-6 shadow-md z-10">
-                  {step.number}
+                <div className="relative inline-flex items-center justify-center w-52 h-52 text-primary-foreground font-display text-xl font-bold mb-6 shadow-md z-10">
+                  {/* {step.number} */}
+                    <img src={step.src} alt="" className="w-full h-full object-cover object-center" />
                 </div>
                 
                 <h3 className="font-display text-xl font-semibold text-foreground mb-3">
