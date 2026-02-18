@@ -1,4 +1,4 @@
-import { buildSupabaseRestUrl, getSupabaseHeaders, hasSupabaseConfig } from "./supabase";
+import { buildSupabaseRestUrl, hasSupabaseConfig } from "./supabase";
 
 export const TEMPLATE_TABLE =
   import.meta.env.VITE_SUPABASE_TEMPLATE_TABLE ||
@@ -60,5 +60,7 @@ export const insertProductTemplate = async (
     throw new Error(body || `Failed to insert row. HTTP ${response.status}`);
   }
 
-  return response.json();
+  const raw = await response.text();
+  if (!raw.trim()) return null;
+  return JSON.parse(raw);
 };

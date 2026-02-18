@@ -1,8 +1,9 @@
 import { Toaster } from "./components/ui/toaster";
 import { Toaster as Sonner } from "./components/ui/sonner";
 import { TooltipProvider } from "./components/ui/tooltip";
+import { useEffect } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Index from "./pages/Index";
 import Wedding from "./pages/Wedding";
 import Engagement from "./pages/Engagement";
@@ -16,6 +17,16 @@ import AdminTemplateForm from "./pages/AdminTemplateForm";
 
 const queryClient = new QueryClient();
 
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, [pathname]);
+
+  return null;
+};
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
@@ -25,6 +36,7 @@ const App = () => (
         v7_startTransition: true,
         v7_relativeSplatPath: true,
       }}>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
           {/* <Route path="/wedding" element={<Wedding />} /> */}
