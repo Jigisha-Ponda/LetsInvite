@@ -112,8 +112,11 @@ const getYouTubeId = (url: string) => {
 };
 
 const getDriveId = (url: string) => {
-  const match = url.match(/\/file\/d\/([^/]+)/);
-  return match?.[1] ?? null;
+  const filePathMatch = url.match(/\/file\/d\/([^/]+)/);
+  if (filePathMatch?.[1]) return filePathMatch[1];
+  const idParamMatch = url.match(/[?&]id=([^&]+)/);
+  if (idParamMatch?.[1]) return idParamMatch[1];
+  return null;
 };
 
 const thumbnailFromVideo = (videoUrl: string | null) => {
@@ -125,8 +128,18 @@ const thumbnailFromVideo = (videoUrl: string | null) => {
   return null;
 };
 
+const normalizeImageUrl = (imageUrl: string | null) => {
+  if (!imageUrl) return null;
+  const driveId = getDriveId(imageUrl);
+  if (driveId) return `https://drive.google.com/thumbnail?id=${driveId}&sz=w1000`;
+  const ytId = getYouTubeId(imageUrl);
+  if (ytId) return `https://img.youtube.com/vi/${ytId}/hqdefault.jpg`;
+  return imageUrl;
+};
+
 const mapTemplateToDesign = (row: GenericRow): DesignItem | null => {
-  const image = TEMPLATE_IMAGE_COLUMN ? asString(row[TEMPLATE_IMAGE_COLUMN]) : null;
+  const imageRaw = TEMPLATE_IMAGE_COLUMN ? asString(row[TEMPLATE_IMAGE_COLUMN]) : null;
+  const image = normalizeImageUrl(imageRaw);
   const title = pickString(row, [TEMPLATE_TITLE_COLUMN, "title", "Title", "name"]);
   const videoSrc = pickString(row, [TEMPLATE_VIDEO_COLUMN, "video_url", "videoUrl"]) ?? undefined;
   const categoryId = pickValue(row, [TEMPLATE_CATEGORY_ID_COLUMN, "category_id", "categoryId"]);

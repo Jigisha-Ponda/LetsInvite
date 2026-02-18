@@ -17,6 +17,12 @@ const WhatsAppIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
 
 const toYouTubeEmbedUrl = (url?: string) => {
   if (!url) return null;
+
+  // If raw YouTube video id is stored
+  if (/^[a-zA-Z0-9_-]{11}$/.test(url)) {
+    return `https://www.youtube.com/embed/${url}?autoplay=0&mute=0&playsinline=1&rel=0`;
+  }
+
   const patterns = [
     /youtube\.com\/watch\?v=([^?&/]+)/,
     /youtube\.com\/shorts\/([^?&/]+)/,
@@ -30,6 +36,28 @@ const toYouTubeEmbedUrl = (url?: string) => {
     }
   }
   return null;
+};
+
+const getDriveFileId = (url?: string) => {
+  if (!url) return null;
+  const filePathMatch = url.match(/\/file\/d\/([^/]+)/);
+  if (filePathMatch?.[1]) return filePathMatch[1];
+  const idParamMatch = url.match(/[?&]id=([^&]+)/);
+  if (idParamMatch?.[1]) return idParamMatch[1];
+  return null;
+};
+
+const toDriveEmbedUrl = (url?: string) => {
+  const fileId = getDriveFileId(url);
+  if (!fileId) return null;
+  return `https://drive.google.com/file/d/${fileId}/preview`;
+};
+
+const resolveGalleryImageUrl = (url?: string) => {
+  if (!url) return "/placeholder.svg";
+  const driveId = getDriveFileId(url);
+  if (driveId) return `https://drive.google.com/thumbnail?id=${driveId}&sz=w1000`;
+  return url;
 };
 
 const ProductDetails = () => {
@@ -49,6 +77,7 @@ const ProductDetails = () => {
   const whatsappLink = `https://wa.me/918141721001?text=${encodeURIComponent(messageWithVideo)}`;
   const shareUrl = typeof window !== "undefined" ? window.location.href : "";
   const youtubeEmbed = toYouTubeEmbedUrl(design?.videoSrc);
+  const driveEmbed = toDriveEmbedUrl(design?.videoSrc);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
   const galleryImages = [...(design?.cardImages ?? []), design?.image]
@@ -137,7 +166,7 @@ const ProductDetails = () => {
                           }`}
                       >
                         <img
-                          src={thumb}
+                          src={resolveGalleryImageUrl(thumb)}
                           alt={`${design.title} preview ${index + 1}`}
                           className="w-full aspect-[9/14] object-cover"
                         />
@@ -149,6 +178,16 @@ const ProductDetails = () => {
                     {youtubeEmbed ? (
                       <iframe
                         src={youtubeEmbed}
+                        title={design.title}
+                        className="w-full aspect-[9/14]"
+                        frameBorder="0"
+                        allow="autoplay; encrypted-media; picture-in-picture"
+                        allowFullScreen
+                        referrerPolicy="strict-origin-when-cross-origin"
+                      />
+                    ) : driveEmbed ? (
+                      <iframe
+                        src={driveEmbed}
                         title={design.title}
                         className="w-full aspect-[9/14]"
                         frameBorder="0"
@@ -168,7 +207,7 @@ const ProductDetails = () => {
                     ) : (
                       <button type="button" onClick={() => setIsPreviewOpen(true)} className="w-full">
                         <img
-                          src={activeImage}
+                          src={resolveGalleryImageUrl(activeImage)}
                           alt={design.title}
                           className="w-full aspect-[9/14] object-cover"
                         />
@@ -262,7 +301,7 @@ const ProductDetails = () => {
             </>
           )}
           <img
-            src={activeImage}
+            src={resolveGalleryImageUrl(activeImage)}
             alt={design?.title || "Preview"}
             className="max-h-[90vh] max-w-[90vw] rounded-xl object-contain bg-card"
           />

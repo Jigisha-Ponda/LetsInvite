@@ -116,10 +116,10 @@ const BabyShower = () => {
         <section className="py-12 lg:py-16 bg-white border-y border-border">
           <div className="container mx-auto px-4 text-center">
             <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4">
-              Planning a Special Celebration?
+              Your Theme, Your Moment, Your Invite
             </h2>
             <p className="font-body text-muted-foreground mb-6">
-              We create customized baby shower video invites tailored to your theme and style.
+              Beautifully designed baby shower video invitations made just for your special day.
             </p>
             <Button variant="whatsapp" size="lg" asChild>
               <a href={whatsappLink} target="_blank" rel="noopener noreferrer">

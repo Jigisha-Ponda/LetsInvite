@@ -36,7 +36,7 @@ const Birthday = () => {
                 Birthday <span className="text-[#4161ef]">Video Invites</span>
               </h1>
               <p className="font-body text-lg md:text-xl text-muted-foreground mb-8">
-                Make every birthday unforgettable with fun, vibrant video invitations. 
+                Make every birthday unforgettable with fun, vibrant video invitations.
                 From first birthdays to milestone celebrations!
               </p>
               <Button variant="hero" size="xl" asChild>
@@ -101,10 +101,10 @@ const Birthday = () => {
         <section className="py-12 lg:py-16 bg-white border-y border-border">
           <div className="container mx-auto px-4 text-center">
             <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4">
-              Planning a Themed Party?
+              Your Theme. Your Vibe. Your Invite.
             </h2>
             <p className="font-body text-muted-foreground mb-6">
-              From princesses to superheroes, we create custom invites for any theme!
+              Custom-designed birthday invitations made to match your celebration perfectly.
             </p>
             <Button variant="whatsapp" size="lg" asChild>
               <a href={whatsappLink} target="_blank" rel="noopener noreferrer">

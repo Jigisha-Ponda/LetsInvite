@@ -648,11 +648,12 @@ const AboutUs = () => {
 const Stat = ({ end, label, suffix = "" }: any) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
+  const decimals = Number.isInteger(end) ? 0 : 1;
 
   return (
     <div ref={ref} className="rounded-2xl bg-secondary p-4 text-center">
       <p className="text-2xl font-bold text-primary">
-        {isInView ? <CountUp end={end} duration={2} /> : 0}
+        {isInView ? <CountUp end={end} duration={2} decimals={decimals} decimal="."  /> : 0}
         {suffix}
       </p>
       <p className="text-xs text-muted-foreground">{label}</p>
