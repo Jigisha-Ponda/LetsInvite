@@ -1,45 +1,37 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import VideoCard from "./VideoCard";
-import { fetchDesignsByCategoryName, fetchFeaturedDesigns } from "../lib/designs";
+import { fetchDesignsByCategoryName } from "../lib/designs";
 import { hasSupabaseConfig } from "../lib/supabase";
 import birthdayInvites from "../assets/BirthdayInvites.png";
 import babyShowerInvites from "../assets/BabyShowerInvites.png";
 
 const FeaturedDesigns = () => {
-//   const { data, isLoading, isError } = useQuery({
-//     queryKey: ["featured-designs"],
-//     queryFn: () => fetchFeaturedDesigns(8),
-//     enabled: hasSupabaseConfig,
-//     staleTime: 60_000,
-//   });
-//   const designs = data ?? [];
+  const {
+    data: birthdayDesigns = [],
+    isLoading: birthdayLoading,
+    isError: birthdayError,
+  } = useQuery({
+    queryKey: ["featured-birthday-designs"],
+    queryFn: () => fetchDesignsByCategoryName("Birthday", 4),
+    enabled: hasSupabaseConfig,
+    staleTime: 60_000,
+  });
 
-//   const birthdayDesigns = designs
-//     .filter((d) => d.category === "Birthday")
-//     .slice(0, 4);
+  const {
+    data: babyShowerDesigns = [],
+    isLoading: babyLoading,
+    isError: babyShowerError,
+  } = useQuery({
+    queryKey: ["featured-baby-shower-designs"],
+    queryFn: () => fetchDesignsByCategoryName("Baby Shower", 4),
+    enabled: hasSupabaseConfig,
+    staleTime: 60_000,
+  });
 
-//   const babyShowerDesigns = designs
-//     .filter((d) => d.category === "Baby Shower")
-//     .slice(0, 4);
-
-const { data, isLoading, isError } = useQuery({
-  queryKey: ["featured-designs"],
-  queryFn: () => fetchFeaturedDesigns(8),
-});
-
-
-const { data: birthdayDesigns = [], isLoading: birthdayLoading } = useQuery({
-  queryKey: ["birthday-designs"],
-  queryFn: () => fetchDesignsByCategoryName("Birthday", 4),
-  enabled: hasSupabaseConfig,
-});
-
-const { data: babyShowerDesigns = [], isLoading: babyLoading } = useQuery({
-  queryKey: ["baby-shower-designs"],
-  queryFn: () => fetchDesignsByCategoryName("Baby Shower", 4),
-  enabled: hasSupabaseConfig,
-});
+  const isLoading = birthdayLoading || babyLoading;
+  const isError = birthdayError || babyShowerError;
+  const totalDesigns = birthdayDesigns.length + babyShowerDesigns.length;
   return (
     <section id="featured" className="py-16 bg-white">
       <div className="container mx-auto px-4">
@@ -67,27 +59,14 @@ const { data: babyShowerDesigns = [], isLoading: babyLoading } = useQuery({
             Failed to load featured designs from ProductTemplate.
           </p>
         )}
-        {/* {hasSupabaseConfig && !isLoading && !isError && designs.length === 0 && (
+        {hasSupabaseConfig && !isLoading && !isError && totalDesigns === 0 && (
           <p className="font-body text-sm text-muted-foreground">
             No featured designs found in ProductTemplate. If rows exist in Supabase dashboard, enable
             anon SELECT policy (RLS) for ProductTemplate and ProductCategory.
           </p>
-        )} */}
-        {/* {hasSupabaseConfig && !isLoading && !isError && designs.length > 0 && (
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {designs.map((design, index) => (
-              <div
-                key={`${design.title}-${index}`}
-                className="animate-fade-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <VideoCard {...design} />
-              </div>
-            ))}
-          </div>
-        )} */}
+        )}
 
-       {hasSupabaseConfig && !birthdayLoading && !babyLoading && (
+        {hasSupabaseConfig && !isLoading && !isError && totalDesigns > 0 && (
           <div className="space-y-16">
 
             {/* 🎂 Birthday */}
@@ -108,7 +87,7 @@ const { data: babyShowerDesigns = [], isLoading: babyLoading } = useQuery({
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                   {birthdayDesigns.map((design, index) => (
                     <div
-                      key={`birthday-${design.id}`}
+                      key={`birthday-${design.id || design.title}-${index}`}
                       className="animate-fade-in"
                       style={{ animationDelay: `${index * 0.1}s` }}
                     >
@@ -141,7 +120,7 @@ const { data: babyShowerDesigns = [], isLoading: babyLoading } = useQuery({
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                   {babyShowerDesigns.map((design, index) => (
                     <div
-                      key={`baby-${design.id}`}
+                      key={`baby-${design.id || design.title}-${index}`}
                       className="animate-fade-in"
                       style={{ animationDelay: `${index * 0.1}s` }}
                     >

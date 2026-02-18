@@ -42,7 +42,7 @@ const WhyChooseUs = () => {
           {features.map((feature, index) => (
             <div
               key={feature.title}
-              className="luxury-card group p-6 lg:p-8 rounded-2xl border border-border hover:border-primary hover:shadow-card transition-all duration-300 animate-fade-in"
+              className="luxury-card group p-6 lg:p-8 rounded-2xl border border-border hover:shadow-card transition-all duration-300 animate-fade-in"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="w-14 h-14 rounded-xl bg-white flex items-center justify-center mb-5 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">

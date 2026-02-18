@@ -111,10 +111,17 @@ const getYouTubeId = (url: string) => {
   return null;
 };
 
+const getDriveId = (url: string) => {
+  const match = url.match(/\/file\/d\/([^/]+)/);
+  return match?.[1] ?? null;
+};
+
 const thumbnailFromVideo = (videoUrl: string | null) => {
   if (!videoUrl) return null;
   const ytId = getYouTubeId(videoUrl);
   if (ytId) return `https://img.youtube.com/vi/${ytId}/hqdefault.jpg`;
+  const driveId = getDriveId(videoUrl);
+  if (driveId) return `https://drive.google.com/thumbnail?id=${driveId}&sz=w1000`;
   return null;
 };
 

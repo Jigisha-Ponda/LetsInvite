@@ -85,7 +85,7 @@ const Birthday = () => {
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 {birthdayDesigns.map((design, index) => (
                   <div
-                    key={`${design.title}-${index}`}
+                    key={`${design.id || design.title}-${index}`}
                     className="animate-fade-in"
                     style={{ animationDelay: `${index * 0.05}s` }}
                   >
