@@ -266,13 +266,14 @@ export const fetchDesignsByCategoryName = async (
   categoryName: string,
   limit?: number,
 ): Promise<DesignItem[]> => {
+  const safeCategoryName = categoryName.trim();
   const query = new URLSearchParams({
     select: selectedTemplateColumns.join(","),
     order: `${TEMPLATE_ID_COLUMN}.desc`,
   });
 
   // Apply category filter at DB level
-  query.set(TEMPLATE_CATEGORY_NAME_COLUMN, `ilike.${categoryName}`);
+  query.set(TEMPLATE_CATEGORY_NAME_COLUMN, `ilike.%${safeCategoryName}%`);
 
   if (limit) {
     query.set("limit", String(limit));

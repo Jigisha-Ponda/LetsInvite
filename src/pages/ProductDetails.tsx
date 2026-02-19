@@ -80,9 +80,12 @@ const ProductDetails = () => {
   const driveEmbed = toDriveEmbedUrl(design?.videoSrc);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
-  const galleryImages = [...(design?.cardImages ?? []), design?.image]
-    .filter((img): img is string => Boolean(img))
-    .slice(0, 4);
+  const galleryImages =
+    design?.cardImages && design.cardImages.length > 0
+      ? design.cardImages.filter((img): img is string => Boolean(img))
+      : design?.image
+        ? [design.image]
+        : [];
   const activeImage = galleryImages[selectedIndex] || design?.image || "/placeholder.svg";
   const hasGallery = galleryImages.length > 0;
 
