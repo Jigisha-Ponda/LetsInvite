@@ -256,7 +256,7 @@ const ProductDetails = () => {
                       <h5 className="font-display text-xl font-semibold text-foreground mt-5 mb-2">Features ✨</h5>
                       <ul className="font-body text-md text-muted-foreground leading-relaxed">
                         <li>1080×1920 HD Resolution (Mobile Size)</li>
-                        <li>Hand-Drawn Traditional Design</li>
+                        <li>Trending Ai Powered Theme Designs</li>
                         <li>Clean Video (No Watermark)</li>
                         <li>Digitally Shared on WhatsApp</li>
                         <li>Customizable Templates</li>
