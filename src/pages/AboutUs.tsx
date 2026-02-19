@@ -340,7 +340,7 @@ import {
   Zap,
   CheckCircle2,
 } from "lucide-react";
-import heroBg from "../assets/BannerBG.png";
+import heroBg from "../assets/BannerBG.webp";
 
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { useRef } from "react";

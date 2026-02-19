@@ -5,7 +5,7 @@ import WhatsAppFloat from "../components/WhatsAppFloat";
 import VideoCard from "../components/VideoCard";
 import { Button } from "../components/ui/button";
 import { MessageCircle, Filter } from "lucide-react";
-import heroBg from "../assets/BannerBG.png";
+import heroBg from "../assets/BannerBG.webp";
 import { fetchDesignsByCategoryName } from "../lib/designs";
 import { hasSupabaseConfig } from "../lib/supabase";
 
