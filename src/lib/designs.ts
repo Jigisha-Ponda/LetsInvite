@@ -184,7 +184,7 @@ const mapTemplateToDesign = (row: GenericRow): DesignItem | null => {
 ),
 
     subtitle: pickString(row, [TEMPLATE_SUBTITLE_COLUMN, "subtitle", "Subtitle"]) ?? undefined,
-    heading: pickString(row, [TEMPLATE_SUBTITLE_COLUMN, "heading", "Heading"]) ?? undefined,
+    heading: pickString(row, [TEMPLATE_HEADING_COLUMN, "heading", "Heading"]) ?? undefined,
     description: pickString(row, [TEMPLATE_DESCRIPTION_COLUMN, "description", "Description"]) ?? undefined,
     videoSrc,
     whatsappMessage: TEMPLATE_WHATSAPP_COLUMN

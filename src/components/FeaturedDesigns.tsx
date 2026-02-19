@@ -98,7 +98,7 @@ const FeaturedDesigns = () => {
                 <div className="mt-5 mb-6 text-center">
                   <Link
                     to="/birthday"
-                    className="inline-block bg-[#1B51B6] px-5 py-3 rounded-lg font-display text-md font-semibold text-white"
+                    className="inline-block bg-[#1B51B6] px-5 py-2 rounded-lg font-display text-md font-semibold text-white"
                   >
                     View All
                   </Link>
@@ -131,7 +131,7 @@ const FeaturedDesigns = () => {
                 <div className="mt-5 mb-6 text-center">
                   <Link
                     to="/baby-shower"
-                    className="inline-block bg-[#1B51B6] px-5 py-3 rounded-lg font-display text-md font-semibold text-white"
+                    className="inline-block bg-[#1B51B6] px-5 py-2 rounded-lg font-display text-md font-semibold text-white"
                   >
                     View All
                   </Link>
