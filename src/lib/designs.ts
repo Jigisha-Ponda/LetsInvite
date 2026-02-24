@@ -2,6 +2,7 @@ import { buildSupabaseRestUrl, getSupabaseHeaders, hasSupabaseConfig } from "./s
 
 export interface DesignItem {
   id: string;
+  productId?: string;
   image: string;
   cardImages: string[];
   title: string;
@@ -23,6 +24,8 @@ const TEMPLATE_TABLE =
   "ProductTemplate";
 
 const TEMPLATE_ID_COLUMN = import.meta.env.VITE_SUPABASE_TEMPLATE_ID_COLUMN || "id";
+const TEMPLATE_PRODUCT_ID_COLUMN =
+  import.meta.env.VITE_SUPABASE_TEMPLATE_PRODUCT_ID_COLUMN || "ProductID";
 const TEMPLATE_TITLE_COLUMN = import.meta.env.VITE_SUPABASE_TEMPLATE_TITLE_COLUMN || "Title";
 const TEMPLATE_IMAGE_COLUMN = import.meta.env.VITE_SUPABASE_TEMPLATE_IMAGE_COLUMN || "image_url";
 const TEMPLATE_VIDEO_COLUMN = import.meta.env.VITE_SUPABASE_TEMPLATE_VIDEO_COLUMN || "video_url";
@@ -169,6 +172,7 @@ const mapTemplateToDesign = (row: GenericRow): DesignItem | null => {
 
   return {
     id: String(row[TEMPLATE_ID_COLUMN]),
+    productId: pickString(row, [TEMPLATE_PRODUCT_ID_COLUMN, "ProductID", "product_id", "productId"]) ?? undefined,
     image: primaryImage,
     cardImages: cardImages.length > 0 ? cardImages : [primaryImage],
     title,
@@ -195,6 +199,7 @@ const mapTemplateToDesign = (row: GenericRow): DesignItem | null => {
 
 const selectedTemplateColumns = [
   TEMPLATE_ID_COLUMN,
+  TEMPLATE_PRODUCT_ID_COLUMN,
   TEMPLATE_TITLE_COLUMN,
   TEMPLATE_VIDEO_COLUMN,
   TEMPLATE_PRICE_COLUMN,
@@ -272,7 +277,8 @@ export const fetchDesignsByCategoryName = async (
     order: `${TEMPLATE_ID_COLUMN}.desc`,
   });
 
-  // Apply category filter at DB level
+  // Apply tolerant category filter:
+  // include rows where category_name matches OR title contains category keyword.
   query.set(TEMPLATE_CATEGORY_NAME_COLUMN, `ilike.%${safeCategoryName}%`);
 
   if (limit) {

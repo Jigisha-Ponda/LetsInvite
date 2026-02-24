@@ -88,6 +88,8 @@ const ProductDetails = () => {
         : [];
   const activeImage = galleryImages[selectedIndex] || design?.image || "/placeholder.svg";
   const hasGallery = galleryImages.length > 0;
+  const productIdValue = design?.productId || design?.id;
+  const productIdLabel = productIdValue ? `${productIdValue}` : "";
 
   useEffect(() => {
     setSelectedIndex(0);
@@ -221,6 +223,9 @@ const ProductDetails = () => {
 
                 <div>
                   <h1 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-2">{design.title}</h1>
+                  {/* {productIdLabel && (
+                    <p className="font-body text-sm text-muted-foreground mb-2">{productIdLabel}</p>
+                  )} */}
                   <h2 className="font-display text-xl text-foreground mb-2">
                     {design.subtitle || "Description"}
                   </h2>
@@ -251,7 +256,7 @@ const ProductDetails = () => {
                   {(design.heading || design.description) && (
                     <div className="rounded-xl bg-white shadow-card p-5">
                       <h2 className="font-display text-xl font-semibold text-foreground mb-2">
-                        {design.heading || "Description"}
+                        {design.heading || "Product Description"} {productIdLabel ? `(${productIdLabel})` : ""}
                       </h2>
                       {design.description && (
                         <p className="font-body text-muted-foreground leading-relaxed">{design.description}</p>
