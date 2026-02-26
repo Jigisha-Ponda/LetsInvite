@@ -212,8 +212,8 @@ const ProductDetails = () => {
               </div>
 
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-                <div className="flex flex-col lg:flex-row gap-4 items-start">
-                  <div className="w-100 lg:w-28 shrink-0 flex flex-row lg:flex-col mx-auto gap-3">
+                <div className="flex flex-col lg:flex-row gap-4 items-center lg:items-start">
+                  <div className="w-100 lg:w-28 shrink-0 flex flex-row lg:flex-col mx-auto gap-3 order-2 lg:order-1">
                     {galleryImages.map((thumb, index) => (
                       <button
                         key={`${thumb}-${index}`}
@@ -234,7 +234,7 @@ const ProductDetails = () => {
                     ))}
                   </div>
 
-                  <div className="relative flex-1 rounded-2xl overflow-hidden bg-card shadow-card mx-5">
+                  <div className="relative flex-1 rounded-2xl overflow-hidden bg-card shadow-card mx-5 order-1 lg:order-2">
                     {youtubeEmbed ? (
                       <iframe
                         src={youtubeEmbed}
@@ -330,7 +330,7 @@ const ProductDetails = () => {
                 </div>
               </div>
 
-              <section className="relative mt-12 overflow-hidden rounded-3xl">
+              <section className="relative mt-12">
                 <div className="mb-4 flex items-center justify-between gap-3">
                   <div>
                     <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
@@ -377,16 +377,14 @@ const ProductDetails = () => {
                 )}
 
                 {!relatedLoading && !relatedError && relatedDesigns.length > 0 && (
-                  <div className="relative z-10 overflow-hidden rounded-2xl p-2" ref={relatedEmblaRef}>
-                    <div className="-ml-2 flex">
+                  <div className="relative z-10 overflow-hidden" ref={relatedEmblaRef}>
+                    <div className="-ml-6 flex items-stretch">
                       {relatedDesigns.map((item, index) => (
                         <div
                           key={`${item.id || item.title}-${index}`}
-                          className="min-w-0 flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_25%] pl-2"
+                          className="min-w-0 flex-[0_0_50%] sm:flex-[0_0_25%] lg:flex-[0_0_25%] pl-6 py-2"
                         >
-                          <div>
-                            <VideoCard {...item} />
-                          </div>
+                          <VideoCard {...item} />
                         </div>
                       ))}
                     </div>

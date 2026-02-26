@@ -102,6 +102,7 @@ const VideoCard = ({ id, image, title, category, price, whatsappMessage, videoSr
   const whatsappLink = `https://wa.me/918141721001?text=${encodeURIComponent(messageWithVideo)}`;
   const [isPlaying, setIsPlaying] = useState(false);
   const [imageSrc, setImageSrc] = useState(resolveImageUrl(image) || "/placeholder.svg");
+  const [imageFailed, setImageFailed] = useState(false);
   const hasVideo = Boolean(videoSrc);
   const youtubeEmbedUrl = toYouTubeEmbedUrl(videoSrc);
   const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -117,6 +118,7 @@ const VideoCard = ({ id, image, title, category, price, whatsappMessage, videoSr
 
   useEffect(() => {
     setImageSrc(resolveImageUrl(image) || "/placeholder.svg");
+    setImageFailed(false);
   }, [image]);
 
   const handleCardClick = (event: MouseEvent<HTMLDivElement>) => {
@@ -145,13 +147,24 @@ const VideoCard = ({ id, image, title, category, price, whatsappMessage, videoSr
     >
       {/* Video Preview Container */}
       <div className="relative aspect-[9/13.5] overflow-hidden bg-white">
-        {!isPlaying && (
+        {!isPlaying && !imageFailed && (
           <img
             src={imageSrc}
             alt={title}
-            onError={() => setImageSrc("/placeholder.svg")}
+            onError={() => {
+              if (imageSrc !== "/placeholder.svg") {
+                setImageSrc("/placeholder.svg");
+                return;
+              }
+              setImageFailed(true);
+            }}
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
           />
+        )}
+        {!isPlaying && imageFailed && (
+          <div className="h-full w-full bg-gradient-to-br from-slate-100 via-slate-50 to-slate-200 flex items-center justify-center text-center px-4">
+            <p className="text-sm font-medium text-slate-500">Preview not available</p>
+          </div>
         )}
         {hasVideo && isPlaying &&
           (youtubeEmbedUrl ? (
