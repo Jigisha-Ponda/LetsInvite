@@ -1,12 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
+import useEmblaCarousel from "embla-carousel-react";
 import { ChevronLeft, ChevronRight, Share2, X } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import WhatsAppFloat from "../components/WhatsAppFloat";
+import VideoCard from "../components/VideoCard";
 import { Button } from "../components/ui/button";
-import { fetchDesignById } from "../lib/designs";
+import { fetchDesignById, fetchDesignsByCategoryName } from "../lib/designs";
 import { hasSupabaseConfig } from "../lib/supabase";
 
 const WhatsAppIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
@@ -68,6 +70,34 @@ const ProductDetails = () => {
     enabled: Boolean(id) && hasSupabaseConfig,
     staleTime: 60_000,
   });
+  const [relatedEmblaRef, relatedEmblaApi] = useEmblaCarousel({
+    align: "start",
+    slidesToScroll: 1,
+    dragFree: false,
+  });
+  const [canScrollRelatedPrev, setCanScrollRelatedPrev] = useState(false);
+  const [canScrollRelatedNext, setCanScrollRelatedNext] = useState(false);
+  const resolvedCategoryName = useMemo(() => {
+    const raw = (design?.category || "").toLowerCase();
+    if (raw.includes("birthday")) return "Birthday";
+    if (raw.includes("baby")) return "Baby Shower";
+    return design?.category || "";
+  }, [design?.category]);
+  const {
+    data: relatedDesignsRaw = [],
+    isLoading: relatedLoading,
+    isError: relatedError,
+  } = useQuery({
+    queryKey: ["related-designs", design?.id, resolvedCategoryName],
+    queryFn: () =>
+      fetchDesignsByCategoryName(resolvedCategoryName, {
+        limit: 10,
+        exactMatch: true,
+      }),
+    enabled: hasSupabaseConfig && Boolean(design?.id) && Boolean(resolvedCategoryName),
+    staleTime: 60_000,
+  });
+  const relatedDesigns = relatedDesignsRaw.filter((item) => item.id !== design?.id);
 
   const defaultMessage = design
     ? `Hi! I'm interested in the "${design.title}" video invite design.`
@@ -129,6 +159,31 @@ const ProductDetails = () => {
     }
     await navigator.clipboard.writeText(shareUrl);
   };
+
+  const scrollRelated = (direction: "left" | "right") => {
+    if (!relatedEmblaApi) return;
+    if (direction === "left") {
+      relatedEmblaApi.scrollPrev();
+      return;
+    }
+    relatedEmblaApi.scrollNext();
+  };
+
+  useEffect(() => {
+    if (!relatedEmblaApi) return;
+    const updateState = () => {
+      setCanScrollRelatedPrev(relatedEmblaApi.canScrollPrev());
+      setCanScrollRelatedNext(relatedEmblaApi.canScrollNext());
+    };
+
+    updateState();
+    relatedEmblaApi.on("select", updateState);
+    relatedEmblaApi.on("reInit", updateState);
+    return () => {
+      relatedEmblaApi.off("select", updateState);
+      relatedEmblaApi.off("reInit", updateState);
+    };
+  }, [relatedEmblaApi, relatedDesigns.length]);
 
   return (
     <div className="min-h-screen bg-white opacity-100">
@@ -274,6 +329,70 @@ const ProductDetails = () => {
 
                 </div>
               </div>
+
+              <section className="relative mt-12 overflow-hidden rounded-3xl">
+                <div className="mb-4 flex items-center justify-between gap-3">
+                  <div>
+                    <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+                      Related <span className="text-gold">Products</span>
+                    </h2>
+                    <p className="text-sm text-muted-foreground/90">
+                      More {resolvedCategoryName || "similar"} templates you may like.
+                    </p>
+                  </div>
+                  <div className="z-10 flex items-center gap-2">
+                    <Button
+                      type="button"
+                      variant="secondary"
+                      size="icon"
+                      onClick={() => scrollRelated("left")}
+                      disabled={!canScrollRelatedPrev}
+                      className="h-9 w-9 rounded-full border border-sky-200 bg-white/90 shadow-sm disabled:opacity-40"
+                      aria-label="Scroll related products left"
+                    >
+                      <ChevronLeft className="h-4 w-4" />
+                    </Button>
+                    <Button
+                      type="button"
+                      variant="secondary"
+                      size="icon"
+                      onClick={() => scrollRelated("right")}
+                      disabled={!canScrollRelatedNext}
+                      className="h-9 w-9 rounded-full border border-sky-200 bg-white/90 shadow-sm disabled:opacity-40"
+                      aria-label="Scroll related products right"
+                    >
+                      <ChevronRight className="h-4 w-4" />
+                    </Button>
+                  </div>
+                </div>
+
+                {relatedLoading && (
+                  <p className="font-body text-sm text-muted-foreground">Loading related products...</p>
+                )}
+                {relatedError && (
+                  <p className="font-body text-sm text-red-500">Failed to load related products.</p>
+                )}
+                {!relatedLoading && !relatedError && relatedDesigns.length === 0 && (
+                  <p className="font-body text-sm text-muted-foreground">No related products found.</p>
+                )}
+
+                {!relatedLoading && !relatedError && relatedDesigns.length > 0 && (
+                  <div className="relative z-10 overflow-hidden rounded-2xl p-2" ref={relatedEmblaRef}>
+                    <div className="-ml-2 flex">
+                      {relatedDesigns.map((item, index) => (
+                        <div
+                          key={`${item.id || item.title}-${index}`}
+                          className="min-w-0 flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_25%] pl-2"
+                        >
+                          <div>
+                            <VideoCard {...item} />
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </section>
             </>
           )}
         </div>

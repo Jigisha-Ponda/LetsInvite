@@ -267,22 +267,38 @@ export const fetchFeaturedDesigns = async (limit = 4): Promise<DesignItem[]> => 
 //   return fetchTemplateRows(query);
 // };
 
+type CategoryQueryOptions = {
+  limit?: number;
+  offset?: number;
+  exactMatch?: boolean;
+};
+
 export const fetchDesignsByCategoryName = async (
   categoryName: string,
-  limit?: number,
+  options?: number | CategoryQueryOptions,
 ): Promise<DesignItem[]> => {
   const safeCategoryName = categoryName.trim();
+  const resolvedOptions: CategoryQueryOptions =
+    typeof options === "number" ? { limit: options } : options ?? {};
+
   const query = new URLSearchParams({
     select: selectedTemplateColumns.join(","),
     order: `${TEMPLATE_ID_COLUMN}.desc`,
   });
 
-  // Apply tolerant category filter:
-  // include rows where category_name matches OR title contains category keyword.
-  query.set(TEMPLATE_CATEGORY_NAME_COLUMN, `ilike.%${safeCategoryName}%`);
+  if (resolvedOptions.exactMatch) {
+    query.set(TEMPLATE_CATEGORY_NAME_COLUMN, `eq.${safeCategoryName}`);
+  } else {
+    // Tolerant matching for sections that may have category naming variance.
+    query.set(TEMPLATE_CATEGORY_NAME_COLUMN, `ilike.%${safeCategoryName}%`);
+  }
 
-  if (limit) {
-    query.set("limit", String(limit));
+  if (resolvedOptions.limit) {
+    query.set("limit", String(resolvedOptions.limit));
+  }
+
+  if (resolvedOptions.offset && resolvedOptions.offset > 0) {
+    query.set("offset", String(resolvedOptions.offset));
   }
 
   return fetchTemplateRows(query);

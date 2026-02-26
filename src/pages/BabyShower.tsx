@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery } from "@tanstack/react-query";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import WhatsAppFloat from "../components/WhatsAppFloat";
@@ -10,17 +10,26 @@ import { fetchDesignsByCategoryName } from "../lib/designs";
 import { hasSupabaseConfig } from "../lib/supabase";
 
 const BabyShower = () => {
+  const pageSize = 8;
   const whatsappLink =
     "https://wa.me/918141721001?text=Hi!%20I%27m%20interested%20in%20Baby%20Shower%20Video%20Invites.";
 
-  const { data, isLoading, isError } = useQuery({
+  const { data, isLoading, isError, fetchNextPage, hasNextPage, isFetchingNextPage } = useInfiniteQuery({
     queryKey: ["babyshower-designs"],
-    queryFn: () => fetchDesignsByCategoryName("Baby Shower"),
+    queryFn: ({ pageParam }) =>
+      fetchDesignsByCategoryName("Baby Shower", {
+        limit: pageSize,
+        offset: Number(pageParam ?? 0),
+        exactMatch: true,
+      }),
+    initialPageParam: 0,
+    getNextPageParam: (lastPage, allPages) =>
+      lastPage.length < pageSize ? undefined : allPages.length * pageSize,
     enabled: hasSupabaseConfig,
     staleTime: 60_000,
   });
 
-  const babyShowerDesigns = data ?? [];
+  const babyShowerDesigns = data?.pages.flatMap((page) => page) ?? [];
 
   return (
     <div className="min-h-screen bg-background">
@@ -97,17 +106,28 @@ const BabyShower = () => {
               !isLoading &&
               !isError &&
               babyShowerDesigns.length > 0 && (
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                  {babyShowerDesigns.map((design, index) => (
-                    <div
-                      key={`${design.id || design.title}-${index}`}
-                      className="animate-fade-in"
-                      style={{ animationDelay: `${index * 0.05}s` }}
-                    >
-                      <VideoCard {...design} />
-                    </div>
-                  ))}
-                </div>
+                <>
+                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    {babyShowerDesigns.map((design, index) => (
+                      <div
+                        key={`${design.id || design.title}-${index}`}
+                        className="animate-fade-in"
+                        style={{ animationDelay: `${index * 0.05}s` }}
+                      >
+                        <VideoCard {...design} />
+                      </div>
+                    ))}
+                  </div>
+                  <div className="mt-8 flex justify-center">
+                    {hasNextPage ? (
+                      <Button variant="outline" onClick={() => fetchNextPage()} disabled={isFetchingNextPage}>
+                        {isFetchingNextPage ? "Loading more..." : "Load More"}
+                      </Button>
+                    ) : (
+                      <p className="font-body text-sm text-muted-foreground">All items have been loaded.</p>
+                    )}
+                  </div>
+                </>
               )}
           </div>
         </section>

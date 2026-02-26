@@ -101,6 +101,7 @@ const VideoCard = ({ id, image, title, category, price, whatsappMessage, videoSr
   const messageWithVideo = videoSrc ? `${baseMessage}\n\nVideo link: ${videoSrc}` : baseMessage;
   const whatsappLink = `https://wa.me/918141721001?text=${encodeURIComponent(messageWithVideo)}`;
   const [isPlaying, setIsPlaying] = useState(false);
+  const [imageSrc, setImageSrc] = useState(resolveImageUrl(image) || "/placeholder.svg");
   const hasVideo = Boolean(videoSrc);
   const youtubeEmbedUrl = toYouTubeEmbedUrl(videoSrc);
   const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -113,6 +114,10 @@ const VideoCard = ({ id, image, title, category, price, whatsappMessage, videoSr
     if (!video) return;
     video.play().catch(() => { });
   }, [isPlaying]);
+
+  useEffect(() => {
+    setImageSrc(resolveImageUrl(image) || "/placeholder.svg");
+  }, [image]);
 
   const handleCardClick = (event: MouseEvent<HTMLDivElement>) => {
     if (!id) return;
@@ -139,11 +144,12 @@ const VideoCard = ({ id, image, title, category, price, whatsappMessage, videoSr
       }
     >
       {/* Video Preview Container */}
-      <div className="relative aspect-[9/13.5] overflow-hidden bg-muted">
+      <div className="relative aspect-[9/13.5] overflow-hidden bg-white">
         {!isPlaying && (
           <img
-            src={resolveImageUrl(image)}
+            src={imageSrc}
             alt={title}
+            onError={() => setImageSrc("/placeholder.svg")}
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
           />
         )}
