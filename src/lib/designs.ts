@@ -155,7 +155,9 @@ const mapTemplateToDesign = (row: GenericRow): DesignItem | null => {
     pickString(row, [TEMPLATE_CARD_IMAGE_2_COLUMN, "card_image2", "cardImage2", "card_image_2"]),
     pickString(row, [TEMPLATE_CARD_IMAGE_3_COLUMN, "card_image3", "cardImage3", "card_image_3"]),
     pickString(row, [TEMPLATE_CARD_IMAGE_4_COLUMN, "card_image4", "cardImage4", "card_image_4"]),
-  ].filter((value): value is string => Boolean(value));
+  ]
+    .map((value) => normalizeImageUrl(value))
+    .filter((value): value is string => Boolean(value));
   const primaryImage = image ?? cardImages[0] ?? thumbnail ?? "/placeholder.svg";
   const fallbackCategory =
     pickString(row, [

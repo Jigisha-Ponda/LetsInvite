@@ -5,6 +5,7 @@ import { fetchDesignsByCategoryName } from "../lib/designs";
 import { hasSupabaseConfig } from "../lib/supabase";
 import birthdayInvites from "../assets/BirthdayInvites.png";
 import babyShowerInvites from "../assets/BabyShowerInvites.png";
+import websiteInvites from "../assets/websiteInvites2.png";
 
 const FeaturedDesigns = () => {
   const {
@@ -29,9 +30,21 @@ const FeaturedDesigns = () => {
     staleTime: 60_000,
   });
 
-  const isLoading = birthdayLoading || babyLoading;
-  const isError = birthdayError || babyShowerError;
-  const totalDesigns = birthdayDesigns.length + babyShowerDesigns.length;
+  const {
+    data: websiteInviteDesigns = [],
+    isLoading: websiteInviteLoading,
+    isError: websiteInviteError,
+  } = useQuery({
+    queryKey: ["featured-website-invite-designs"],
+    queryFn: () => fetchDesignsByCategoryName("Wedding Website Invites", 4),
+    enabled: hasSupabaseConfig,
+    staleTime: 60_000,
+  });
+
+  const isLoading = birthdayLoading || babyLoading || websiteInviteLoading;
+  const isError = birthdayError || babyShowerError || websiteInviteError;
+  const totalDesigns =
+    birthdayDesigns.length + babyShowerDesigns.length + websiteInviteDesigns.length;
   return (
     <section id="featured" className="py-16 bg-white">
       <div className="container mx-auto px-4">
@@ -131,6 +144,39 @@ const FeaturedDesigns = () => {
                 <div className="mt-5 mb-6 text-center">
                   <Link
                     to="/baby-shower"
+                    className="inline-block bg-[#1B51B6] px-5 py-2 rounded-lg font-display text-md font-semibold text-white"
+                  >
+                    View All
+                  </Link>
+                </div>
+              </div>
+            )}
+
+            {/* 🌐 Website Invites */}
+            {websiteInviteDesigns.length > 0 && (
+              <div>
+                <div className="flex items-center justify-center mb-10">
+                  <img
+                    src={websiteInvites}
+                    alt="Birthday Invite"
+                    className="max-w-52 max-h-52 object-contain"
+                  />
+                </div>
+
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                  {websiteInviteDesigns.map((design, index) => (
+                    <div
+                      key={`website-${design.id || design.title}-${index}`}
+                      className="animate-fade-in"
+                      style={{ animationDelay: `${index * 0.1}s` }}
+                    >
+                      <VideoCard {...design} />
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-5 mb-6 text-center">
+                  <Link
+                    to="/website-invites"
                     className="inline-block bg-[#1B51B6] px-5 py-2 rounded-lg font-display text-md font-semibold text-white"
                   >
                     View All

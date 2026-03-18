@@ -14,6 +14,7 @@ import ProductDetails from "./pages/ProductDetails";
 import WelcomeParty from "./pages/WelcomeParty";
 import BabyShower from "./pages/BabyShower";
 import AdminTemplateForm from "./pages/AdminTemplateForm";
+import WebsiteInvites from "./pages/WebsiteInvites";
 
 const queryClient = new QueryClient();
 
@@ -42,6 +43,7 @@ const App = () => (
           {/* <Route path="/wedding" element={<Wedding />} /> */}
           <Route path="/birthday" element={<Birthday />} />
           <Route path="/baby-shower" element={<BabyShower />} />
+          <Route path="/website-invites" element={<WebsiteInvites />} />
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/admin/template" element={<AdminTemplateForm />} />
           <Route path="/design/:id" element={<ProductDetails />} />
