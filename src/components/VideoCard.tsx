@@ -1,7 +1,7 @@
 import { MessageCircle, Play } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import type { MouseEvent } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Button } from "./ui/button";
 
 interface VideoCardProps {
@@ -12,6 +12,7 @@ interface VideoCardProps {
   price?: string;
   whatsappMessage?: string;
   videoSrc?: string;
+  vercelLink?: string;
 }
 
 // const toYouTubeEmbedUrl = (url?: string) => {
@@ -95,7 +96,16 @@ const toDriveEmbedUrl = (url?: string) => {
 
 
 
-const VideoCard = ({ id, image, title, category, price, whatsappMessage, videoSrc }: VideoCardProps) => {
+const VideoCard = ({
+  id,
+  image,
+  title,
+  category,
+  price,
+  whatsappMessage,
+  videoSrc,
+  vercelLink,
+}: VideoCardProps) => {
   const defaultMessage = `Hi! I'm interested in the "${title}" video invite design.`;
   const baseMessage = whatsappMessage?.trim() || defaultMessage;
   const messageWithVideo = videoSrc ? `${baseMessage}\n\nVideo link: ${videoSrc}` : baseMessage;
@@ -107,7 +117,9 @@ const VideoCard = ({ id, image, title, category, price, whatsappMessage, videoSr
   const youtubeEmbedUrl = toYouTubeEmbedUrl(videoSrc);
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const navigate = useNavigate();
+  const location = useLocation();
   const driveEmbedUrl = toDriveEmbedUrl(videoSrc);
+  const isWebsiteInvites = location.pathname === "/website-invites";
 
   useEffect(() => {
     if (!isPlaying) return;
@@ -213,8 +225,8 @@ const VideoCard = ({ id, image, title, category, price, whatsappMessage, videoSr
           </button>
         )}
         {/* Category Badge */}
-        <div className="absolute top-3 left-3">
-          <span className="px-3 py-1 rounded-full bg-card/90 backdrop-blur-sm text-xs font-body font-medium text-foreground border border-border">
+        <div className="absolute top-3 left-3 right-3 flex justify-start">
+          <span className="max-w-full px-3 py-1 rounded-full bg-card/90 backdrop-blur-sm text-[11px] font-body font-medium text-foreground border border-border truncate">
             {category}
           </span>
         </div>
@@ -230,13 +242,48 @@ const VideoCard = ({ id, image, title, category, price, whatsappMessage, videoSr
             Starting at <span className="text-primary font-semibold">{price}</span>
           </p>
         )}
-        <Button variant="whatsapp" size="sm" className="w-full bg-[linear-gradient(110deg,hsl(240,60%,36%)_0%,hsl(232,66%,40%)_30%,hsl(222,72%,46%)_65%,hsl(212,82%,54%)_100%)] 
- text-white px-5 py-2 rounded-lg transition-all duration-300 hover:brightness-110 hover:-translate-y-0.5" asChild>
-          <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
-            <MessageCircle className="w-4 h-4" />
-            Inquire Now
-          </a>
-        </Button>
+        {isWebsiteInvites ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            {vercelLink ? (
+              <Button variant="outline" size="sm" className="w-full" asChild>
+                <a href={vercelLink} target="_blank" rel="noopener noreferrer">
+                  Have a look
+                </a>
+              </Button>
+            ) : (
+              <Button
+                variant="outline"
+                size="sm"
+                className="w-full"
+                onClick={() => {
+                  if (!id) return;
+                  navigate(`/design/${id}`);
+                }}
+              >
+                Have a look
+              </Button>
+            )}
+            <Button variant="whatsapp" size="sm" className="w-full" asChild>
+              <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
+                <MessageCircle className="w-4 h-4" />
+                Order
+              </a>
+            </Button>
+          </div>
+        ) : (
+          <Button
+            variant="whatsapp"
+            size="sm"
+            className="w-full bg-[linear-gradient(110deg,hsl(240,60%,36%)_0%,hsl(232,66%,40%)_30%,hsl(222,72%,46%)_65%,hsl(212,82%,54%)_100%)] 
+ text-white px-5 py-2 rounded-lg transition-all duration-300 hover:brightness-110 hover:-translate-y-0.5"
+            asChild
+          >
+            <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
+              <MessageCircle className="w-4 h-4" />
+              Inquire Now
+            </a>
+          </Button>
+        )}
       </div>
     </div>
   );

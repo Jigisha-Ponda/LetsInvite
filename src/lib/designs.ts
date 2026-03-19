@@ -14,6 +14,7 @@ export interface DesignItem {
   heading?:string;
   whatsappMessage?: string;
   videoSrc?: string;
+  vercelLink?: string;
 }
 
 type GenericRow = Record<string, unknown>;
@@ -51,6 +52,8 @@ const TEMPLATE_CARD_IMAGE_3_COLUMN =
   import.meta.env.VITE_SUPABASE_TEMPLATE_CARD_IMAGE_3_COLUMN || "card_image3";
 const TEMPLATE_CARD_IMAGE_4_COLUMN =
   import.meta.env.VITE_SUPABASE_TEMPLATE_CARD_IMAGE_4_COLUMN || "card_image4";
+const TEMPLATE_VERCEL_LINK_COLUMN =
+  import.meta.env.VITE_SUPABASE_TEMPLATE_VERCEL_LINK_COLUMN || "VercelLink";
 
 // const toPriceLabel = (price: unknown) => {
 //   if (price === null || price === undefined || price === "") return undefined;
@@ -193,6 +196,7 @@ const mapTemplateToDesign = (row: GenericRow): DesignItem | null => {
     heading: pickString(row, [TEMPLATE_HEADING_COLUMN, "heading", "Heading"]) ?? undefined,
     description: pickString(row, [TEMPLATE_DESCRIPTION_COLUMN, "description", "Description"]) ?? undefined,
     videoSrc,
+    vercelLink: pickString(row, [TEMPLATE_VERCEL_LINK_COLUMN, "vercelLink", "vercel_link"]) ?? undefined,
     whatsappMessage: TEMPLATE_WHATSAPP_COLUMN
       ? asString(row[TEMPLATE_WHATSAPP_COLUMN]) ?? undefined
       : undefined,
@@ -215,6 +219,7 @@ const selectedTemplateColumns = [
   TEMPLATE_CARD_IMAGE_2_COLUMN,
   TEMPLATE_CARD_IMAGE_3_COLUMN,
   TEMPLATE_CARD_IMAGE_4_COLUMN,
+  TEMPLATE_VERCEL_LINK_COLUMN,
   ...(TEMPLATE_IMAGE_COLUMN ? [TEMPLATE_IMAGE_COLUMN] : []),
   ...(TEMPLATE_WHATSAPP_COLUMN ? [TEMPLATE_WHATSAPP_COLUMN] : []),
 ];
