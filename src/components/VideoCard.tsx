@@ -120,6 +120,7 @@ const VideoCard = ({
   const location = useLocation();
   const driveEmbedUrl = toDriveEmbedUrl(videoSrc);
   const isWebsiteInvites = location.pathname === "/website-invites";
+  const allowVideoPlayback = !isWebsiteInvites;
 
   useEffect(() => {
     if (!isPlaying) return;
@@ -178,7 +179,7 @@ const VideoCard = ({
             <p className="text-sm font-medium text-slate-500">Preview not available</p>
           </div>
         )}
-        {hasVideo && isPlaying &&
+        {hasVideo && allowVideoPlayback && isPlaying &&
           (youtubeEmbedUrl ? (
             <iframe
               className="h-full w-full"
@@ -212,7 +213,7 @@ const VideoCard = ({
               />
             ))}
         {/* Play Overlay */}
-        {hasVideo && !isPlaying && (
+        {hasVideo && allowVideoPlayback && !isPlaying && (
           <button
             type="button"
             onClick={() => setIsPlaying(true)}
