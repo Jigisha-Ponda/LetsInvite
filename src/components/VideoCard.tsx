@@ -246,7 +246,7 @@ const VideoCard = ({
         {isWebsiteInvites ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             {vercelLink ? (
-              <Button variant="outline" size="sm" className="w-full" asChild>
+              <Button variant="outline" size="sm" className="w-full hover:bg-primary/10 hover:text-primary hover:border-primary/30 border" asChild>
                 <a href={vercelLink} target="_blank" rel="noopener noreferrer">
                   Have a look
                 </a>
