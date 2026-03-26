@@ -11,7 +11,7 @@ import { hasSupabaseConfig } from "../lib/supabase";
 
 const Birthday = () => {
   const pageSize = 8;
-  const whatsappLink = "https://wa.me/918141721001?text=Hi!%20I%27m%20interested%20in%20Birthday%20Video%20Invites.";
+  const whatsappLink = "https://wa.me/918487908430?text=Hi!%20I%27m%20interested%20in%20Birthday%20Video%20Invites.";
   const { data, isLoading, isError, fetchNextPage, hasNextPage, isFetchingNextPage } = useInfiniteQuery({
     queryKey: ["birthday-designs"],
     queryFn: ({ pageParam }) =>

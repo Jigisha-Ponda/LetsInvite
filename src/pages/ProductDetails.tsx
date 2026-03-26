@@ -104,7 +104,7 @@ const ProductDetails = () => {
     : "Hi! I'm interested in this video invite design.";
   const messageWithVideo =
     design?.videoSrc ? `${defaultMessage}\n\nVideo link: ${design.videoSrc}` : defaultMessage;
-  const whatsappLink = `https://wa.me/918141721001?text=${encodeURIComponent(messageWithVideo)}`;
+  const whatsappLink = `https://wa.me/918487908430?text=${encodeURIComponent(messageWithVideo)}`;
   const shareUrl = typeof window !== "undefined" ? window.location.href : "";
   const youtubeEmbed = toYouTubeEmbedUrl(design?.videoSrc);
   const driveEmbed = toDriveEmbedUrl(design?.videoSrc);

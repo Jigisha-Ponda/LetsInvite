@@ -109,7 +109,7 @@ const VideoCard = ({
   const defaultMessage = `Hi! I'm interested in the "${title}" video invite design.`;
   const baseMessage = whatsappMessage?.trim() || defaultMessage;
   const messageWithVideo = videoSrc ? `${baseMessage}\n\nVideo link: ${videoSrc}` : baseMessage;
-  const whatsappLink = `https://wa.me/918141721001?text=${encodeURIComponent(messageWithVideo)}`;
+  const whatsappLink = `https://wa.me/918487908430?text=${encodeURIComponent(messageWithVideo)}`;
   const [isPlaying, setIsPlaying] = useState(false);
   const [imageSrc, setImageSrc] = useState(resolveImageUrl(image) || "/placeholder.svg");
   const [imageFailed, setImageFailed] = useState(false);

@@ -61,7 +61,7 @@
 
 // const AboutUs = () => {
 //   const whatsappLink =
-//     "https://wa.me/918141721001?text=Hi!%20I%27m%20interested%20in%20Invyta%20video%20invites.";
+//     "https://wa.me/918487908430?text=Hi!%20I%27m%20interested%20in%20Invyta%20video%20invites.";
 //   const [activeJourney, setActiveJourney] = useState(journey[0].id);
 //   const currentJourney = journey.find((item) => item.id === activeJourney) ?? journey[0];
 
@@ -401,7 +401,7 @@ const faqs = [
 
 const AboutUs = () => {
   const whatsappLink =
-    "https://wa.me/918141721001?text=Hi!%20I%27m%20interested%20in%20Invyta%20video%20invites.";
+    "https://wa.me/918487908430?text=Hi!%20I%27m%20interested%20in%20Invyta%20video%20invites.";
 
   const [activeJourney, setActiveJourney] = useState(journey[0].id);
   const [openFAQ, setOpenFAQ] = useState<string | null>(null);

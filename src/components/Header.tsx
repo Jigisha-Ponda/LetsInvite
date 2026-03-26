@@ -24,7 +24,7 @@ const Header = () => {
     { name: "About Us", href: "/about-us" },
   ];
 
-  const whatsappLink = "https://wa.me/918141721001?text=Hi!%20I%27m%20interested%20in%20your%20AI%20video%20invites.";
+  const whatsappLink = "https://wa.me/918487908430?text=Hi!%20I%27m%20interested%20in%20your%20AI%20video%20invites.";
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white backdrop-blur-md border-b border-border backdrop-blur-md border-gray-100 header">

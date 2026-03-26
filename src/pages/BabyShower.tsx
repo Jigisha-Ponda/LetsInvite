@@ -12,7 +12,7 @@ import { hasSupabaseConfig } from "../lib/supabase";
 const BabyShower = () => {
   const pageSize = 8;
   const whatsappLink =
-    "https://wa.me/918141721001?text=Hi!%20I%27m%20interested%20in%20Baby%20Shower%20Video%20Invites.";
+    "https://wa.me/918487908430?text=Hi!%20I%27m%20interested%20in%20Baby%20Shower%20Video%20Invites.";
 
   const { data, isLoading, isError, fetchNextPage, hasNextPage, isFetchingNextPage } = useInfiniteQuery({
     queryKey: ["babyshower-designs"],

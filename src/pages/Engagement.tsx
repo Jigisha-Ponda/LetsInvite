@@ -17,7 +17,7 @@ const engagementDesigns = [
 ];
 
 const Engagement = () => {
-  const whatsappLink = "https://wa.me/918141721001?text=Hi!%20I%27m%20interested%20in%20Engagement%20%2F%20Ring%20Ceremony%20Video%20Invites.";
+  const whatsappLink = "https://wa.me/918487908430?text=Hi!%20I%27m%20interested%20in%20Engagement%20%2F%20Ring%20Ceremony%20Video%20Invites.";
 
   return (
     <div className="min-h-screen bg-background">

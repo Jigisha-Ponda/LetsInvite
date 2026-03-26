@@ -3,7 +3,7 @@ import { Instagram, Youtube, Mail, Phone } from "lucide-react";
 import logoIcon from "../assets/logofinal.png";
 
 const Footer = () => {
-  const whatsappLink = "https://wa.me/918141721001?text=Hi!%20I%27m%20interested%20in%20your%20AI%20video%20invites.";
+  const whatsappLink = "https://wa.me/918487908430?text=Hi!%20I%27m%20interested%20in%20your%20AI%20video%20invites.";
 
   return (
     <footer className="bg-secondary border-t border-border">
@@ -86,7 +86,7 @@ const Footer = () => {
                   className="group flex items-center gap-2 font-body text-sm md:text-[15px] text-foreground/80 hover:text-primary transition-colors duration-200"
                 >
                   <Phone className="w-4 h-4 transition-transform duration-200 group-hover:scale-110" />
-                  +91 81417 21001
+                  +91 84879 08430
                 </a>
               </li>
               <li>
