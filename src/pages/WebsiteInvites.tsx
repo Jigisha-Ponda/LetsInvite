@@ -39,57 +39,64 @@ const WebsiteInvites = () => {
       <Header />
       <main className="pt-16 lg:pt-20">
         {/* Hero Section */}
-        <section className="relative py-16 lg:py-24 overflow-hidden">
+        <section className="relative py-20 lg:py-28 overflow-hidden bg-[radial-gradient(70%_60%_at_70%_10%,rgba(185,59,159,0.18),transparent),radial-gradient(70%_60%_at_0%_20%,rgba(65,97,239,0.18),transparent)]">
           <div className="absolute inset-0">
             <img src={heroBg} alt="" className="w-full h-full object-cover object-center" />
           </div>
-          <div className="absolute inset-0 bg-white/60"></div>
+          <div className="absolute inset-0 bg-white/75 backdrop-blur-[2px]"></div>
           <div className="container mx-auto px-4 relative z-10">
-            <div className="max-w-3xl mx-auto text-center">
-              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-[#b93b9f] mb-6">
-                Website <span className="text-[#4161ef]">Invites</span>
-              </h1>
-              <p className="font-body text-lg md:text-xl text-muted-foreground mb-8">
-                Modern, shareable website invitations that make RSVPs and details effortless.
-              </p>
-              <Button variant="hero" size="xl" asChild>
-                <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
-                  <MessageCircle className="w-5 h-5" />
-                  Order on WhatsApp
-                </a>
-              </Button>
-            </div>
-          </div>
-        </section>
-
-        {/* Social Proof */}
-        <section className="py-10 lg:py-14 bg-white border-b border-border">
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-              <div className="rounded-2xl border border-border bg-background/60 p-6">
-                <p className="font-display text-3xl font-bold text-foreground">500+ Couples</p>
-                <p className="font-body text-sm text-muted-foreground mt-2">
-                  Celebrated with a custom invite site
+            <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-10 items-center">
+              <div className="text-center lg:text-left">
+                <p className="inline-flex items-center gap-2 rounded-full border border-[#4161ef]/30 bg-white/70 px-4 py-1 text-xs font-semibold tracking-wide text-[#4161ef]">
+                  Premium Wedding Website Invites
                 </p>
+                <h1 className="mt-4 font-display text-4xl md:text-5xl lg:text-6xl font-bold text-[#b93b9f]">
+                  Website <span className="text-[#4161ef]">Invites</span>
+                </h1>
+                <p className="font-body text-lg md:text-xl text-[#5f3f9a] mt-4">
+                  One elegant link for your wedding details, RSVP, and guest updates.
+                </p>
+                <div className="mt-8 flex flex-col sm:flex-row gap-4 items-center lg:items-start justify-center lg:justify-start">
+                  <Button variant="hero" size="xl" asChild>
+                    <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
+                      <MessageCircle className="w-5 h-5" />
+                      Order on WhatsApp
+                    </a>
+                  </Button>
+                  <Button variant="hero-outline" size="xl" asChild>
+                    <a href="#designs">View Designs</a>
+                  </Button>
+                </div>
               </div>
-              <div className="rounded-2xl border border-border bg-background/60 p-6">
-                <p className="font-display text-3xl font-bold text-foreground">24–48 Hrs</p>
-                <p className="font-body text-sm text-muted-foreground mt-2">
-                  Typical delivery after details are shared
-                </p>
-              </div>
-              <div className="rounded-2xl border border-border bg-background/60 p-6">
-                <p className="font-display text-3xl font-bold text-foreground">1 Link</p>
-                <p className="font-body text-sm text-muted-foreground mt-2">
-                  Share everywhere for RSVP & event info
-                </p>
+              <div className="rounded-3xl border border-white/60 bg-white/70 backdrop-blur-md shadow-[0_40px_80px_-60px_rgba(0,0,0,0.5)] p-6">
+                <div className="rounded-2xl border border-border bg-white p-6 text-left">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                    Featured Highlights
+                  </p>
+                  <h3 className="mt-2 font-display text-2xl font-semibold text-foreground">
+                    RSVP, Schedule, Gallery — all included
+                  </h3>
+                  <p className="mt-3 text-sm text-muted-foreground">
+                    A polished invite site that looks premium on every device and is easy to share.
+                  </p>
+                  <div className="mt-6 grid grid-cols-2 gap-4 text-sm">
+                    <div className="rounded-xl border border-border bg-secondary p-3">
+                      <p className="font-semibold text-foreground">24–48 Hrs</p>
+                      <p className="text-xs text-muted-foreground">Typical delivery</p>
+                    </div>
+                    <div className="rounded-xl border border-border bg-secondary p-3">
+                      <p className="font-semibold text-foreground">1 Link</p>
+                      <p className="text-xs text-muted-foreground">Share everywhere</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
         {/* Benefits */}
-        <section className="py-12 lg:py-16 bg-[#F7F5FF]">
+        <section className="py-14 lg:py-20 bg-secondary">
           <div className="container mx-auto px-4">
             <div className="max-w-2xl mx-auto text-center mb-10">
               <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">
@@ -100,7 +107,7 @@ const WebsiteInvites = () => {
               </p>
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-8 items-start">
-              <div className="rounded-2xl border border-border bg-white p-6">
+              <div className="rounded-2xl border border-border bg-white p-6 shadow-[0_18px_50px_-32px_rgba(0,0,0,0.35)]">
                 <div className="flex flex-wrap gap-2 mb-6">
                   {[
                     { id: "rsvp", label: "RSVP Tracking" },
@@ -113,7 +120,7 @@ const WebsiteInvites = () => {
                       onClick={() => setActiveFeature(tab.id)}
                       className={`px-4 py-2 rounded-full text-sm font-semibold border transition-colors ${
                         activeFeature === tab.id
-                          ? "bg-[#4161ef] text-white border-[#4161ef]"
+                          ? "bg-primary text-white border-[#4161ef]"
                           : "bg-white text-foreground border-border hover:border-[#4161ef]"
                       }`}
                       aria-pressed={activeFeature === tab.id}
@@ -194,7 +201,7 @@ const WebsiteInvites = () => {
                 ].map((item) => (
                   <div
                     key={item.title}
-                    className="rounded-2xl border border-border bg-white p-6"
+                    className="rounded-2xl border border-border bg-white p-6 shadow-[0_18px_50px_-38px_rgba(0,0,0,0.3)]"
                   >
                     <h3 className="font-display text-xl font-semibold text-foreground">
                       {item.title}
@@ -208,7 +215,7 @@ const WebsiteInvites = () => {
         </section>
 
         {/* How It Works */}
-        <section className="py-12 lg:py-16 bg-white">
+        <section className="py-14 lg:py-20 bg-white">
           <div className="container mx-auto px-4">
             <div className="max-w-2xl mx-auto text-center mb-10">
               <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">
@@ -236,8 +243,11 @@ const WebsiteInvites = () => {
                   copy: "We deliver your website invite ready to share.",
                 },
               ].map((item) => (
-                <div key={item.step} className="rounded-2xl border border-border p-6">
-                  <p className="font-display text-2xl font-bold text-[#4161ef]">
+                <div
+                  key={item.step}
+                  className="rounded-2xl border border-border bg-secondary p-6 shadow-[0_18px_50px_-38px_rgba(0,0,0,0.3)]"
+                >
+                  <p className="font-display text-2xl font-bold text-primary">
                     {item.step}
                   </p>
                   <h3 className="font-display text-xl font-semibold text-foreground mt-2">
@@ -261,15 +271,20 @@ const WebsiteInvites = () => {
         </section>
 
         {/* Designs Grid */}
-        <section className="py-12 lg:py-16 bg-white">
+        <section id="designs" className="py-14 lg:py-20 bg-secondary">
           <div className="container mx-auto px-4">
             <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
-              <p className="font-body text-muted-foreground">
-                Showing{" "}
-                <span className="font-semibold text-foreground">
-                  {websiteInviteDesigns.length} designs
-                </span>
-              </p>
+              <div>
+                <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">
+                  Explore Designs
+                </h2>
+                <p className="font-body text-muted-foreground mt-2">
+                  Showing{" "}
+                  <span className="font-semibold text-foreground">
+                    {websiteInviteDesigns.length} designs
+                  </span>
+                </p>
+              </div>
             </div>
 
             {!hasSupabaseConfig && (
@@ -331,7 +346,7 @@ const WebsiteInvites = () => {
         </section>
 
         {/* FAQ */}
-        <section className="py-12 lg:py-16 bg-[#F7F5FF]">
+        <section className="py-14 lg:py-20 bg-white">
           <div className="container mx-auto px-4">
             <div className="max-w-2xl mx-auto text-center mb-10">
               <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">
@@ -370,7 +385,7 @@ const WebsiteInvites = () => {
                     key={item.id}
                     type="button"
                     onClick={() => setOpenFaq(isOpen ? null : item.id)}
-                    className="w-full text-left rounded-2xl border border-border bg-white px-6 py-4"
+                    className="w-full text-left rounded-2xl border border-border bg-white px-6 py-4 shadow-[0_18px_50px_-38px_rgba(0,0,0,0.3)]"
                     aria-expanded={isOpen}
                   >
                     <div className="flex items-center justify-between">
@@ -394,20 +409,22 @@ const WebsiteInvites = () => {
         </section>
 
         {/* CTA Section */}
-        <section className="py-12 lg:py-16 bg-white border-y border-border">
-          <div className="container mx-auto px-4 text-center">
-            <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4">
-              Your Event, Your Link, Your Invite
-            </h2>
-            <p className="font-body text-muted-foreground mb-6">
-              Share a beautiful website invite with all the details your guests need.
-            </p>
-            <Button variant="whatsapp" size="lg" asChild>
-              <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
-                <MessageCircle className="w-5 h-5" />
-                Request Custom Design
-              </a>
-            </Button>
+        <section className="py-14 lg:py-20 bg-white border-t border-border">
+          <div className="container mx-auto px-4">
+            <div className="rounded-3xl border border-border bg-secondary p-8 md:p-12 text-center shadow-[0_30px_80px_-60px_rgba(0,0,0,0.4)]">
+              <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4">
+                Your Event, Your Link, Your Invite
+              </h2>
+              <p className="font-body text-muted-foreground mb-6">
+                Share a beautiful website invite with all the details your guests need.
+              </p>
+              <Button variant="whatsapp" size="lg" asChild>
+                <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
+                  <MessageCircle className="w-5 h-5" />
+                  Request Custom Design
+                </a>
+              </Button>
+            </div>
           </div>
         </section>
       </main>
