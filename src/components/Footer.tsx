@@ -122,7 +122,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="font-body text-xs md:text-sm tracking-wide text-foreground/70">
-            © 2026 Invita. All rights reserved.
+            © 2026 Invyta. All rights reserved.
           </p>
           <p className="font-body text-xs md:text-sm tracking-wide text-foreground/70">
             Made with ❤️ in India
