@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -12,6 +13,8 @@ const WebsiteInvites = () => {
   const pageSize = 8;
   const whatsappLink =
     "https://wa.me/918487908430?text=Hi!%20I%27m%20interested%20in%20Website%20Invites.";
+  const [activeFeature, setActiveFeature] = useState("rsvp");
+  const [openFaq, setOpenFaq] = useState<string | null>("delivery");
 
   const { data, isLoading, isError, fetchNextPage, hasNextPage, isFetchingNextPage } =
     useInfiniteQuery({
@@ -53,6 +56,204 @@ const WebsiteInvites = () => {
                 <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
                   <MessageCircle className="w-5 h-5" />
                   Order on WhatsApp
+                </a>
+              </Button>
+            </div>
+          </div>
+        </section>
+
+        {/* Social Proof */}
+        <section className="py-10 lg:py-14 bg-white border-b border-border">
+          <div className="container mx-auto px-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+              <div className="rounded-2xl border border-border bg-background/60 p-6">
+                <p className="font-display text-3xl font-bold text-foreground">500+ Couples</p>
+                <p className="font-body text-sm text-muted-foreground mt-2">
+                  Celebrated with a custom invite site
+                </p>
+              </div>
+              <div className="rounded-2xl border border-border bg-background/60 p-6">
+                <p className="font-display text-3xl font-bold text-foreground">24–48 Hrs</p>
+                <p className="font-body text-sm text-muted-foreground mt-2">
+                  Typical delivery after details are shared
+                </p>
+              </div>
+              <div className="rounded-2xl border border-border bg-background/60 p-6">
+                <p className="font-display text-3xl font-bold text-foreground">1 Link</p>
+                <p className="font-body text-sm text-muted-foreground mt-2">
+                  Share everywhere for RSVP & event info
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Benefits */}
+        <section className="py-12 lg:py-16 bg-[#F7F5FF]">
+          <div className="container mx-auto px-4">
+            <div className="max-w-2xl mx-auto text-center mb-10">
+              <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">
+                Everything Guests Need, In One Place
+              </h2>
+              <p className="font-body text-muted-foreground mt-3">
+                Clean design, simple sharing, and a smooth RSVP experience.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-8 items-start">
+              <div className="rounded-2xl border border-border bg-white p-6">
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {[
+                    { id: "rsvp", label: "RSVP Tracking" },
+                    { id: "schedule", label: "Schedule & Maps" },
+                    { id: "story", label: "Photos & Story" },
+                  ].map((tab) => (
+                    <button
+                      key={tab.id}
+                      type="button"
+                      onClick={() => setActiveFeature(tab.id)}
+                      className={`px-4 py-2 rounded-full text-sm font-semibold border transition-colors ${
+                        activeFeature === tab.id
+                          ? "bg-[#4161ef] text-white border-[#4161ef]"
+                          : "bg-white text-foreground border-border hover:border-[#4161ef]"
+                      }`}
+                      aria-pressed={activeFeature === tab.id}
+                    >
+                      {tab.label}
+                    </button>
+                  ))}
+                </div>
+
+                {activeFeature === "rsvp" && (
+                  <div className="animate-fade-in">
+                    <h3 className="font-display text-2xl font-semibold text-foreground">
+                      Instant RSVP Tracking
+                    </h3>
+                    <p className="font-body text-sm text-muted-foreground mt-2">
+                      Collect responses in real time, track guest counts, and manage notes
+                      without messy spreadsheets.
+                    </p>
+                    <ul className="mt-4 text-sm text-muted-foreground list-disc list-inside space-y-1">
+                      <li>Names + RSVP status in one place</li>
+                      <li>Meal preferences or notes included</li>
+                      <li>Quick updates for last-minute changes</li>
+                    </ul>
+                  </div>
+                )}
+
+                {activeFeature === "schedule" && (
+                  <div className="animate-fade-in">
+                    <h3 className="font-display text-2xl font-semibold text-foreground">
+                      Schedule, Location & Maps
+                    </h3>
+                    <p className="font-body text-sm text-muted-foreground mt-2">
+                      Keep every function organized so guests never miss a moment.
+                    </p>
+                    <ul className="mt-4 text-sm text-muted-foreground list-disc list-inside space-y-1">
+                      <li>Timeline for each ceremony</li>
+                      <li>Google Maps links for venue</li>
+                      <li>Dress code and important notes</li>
+                    </ul>
+                  </div>
+                )}
+
+                {activeFeature === "story" && (
+                  <div className="animate-fade-in">
+                    <h3 className="font-display text-2xl font-semibold text-foreground">
+                      Photo & Story Sections
+                    </h3>
+                    <p className="font-body text-sm text-muted-foreground mt-2">
+                      Add your story, engagement photos, or a gallery for guests.
+                    </p>
+                    <ul className="mt-4 text-sm text-muted-foreground list-disc list-inside space-y-1">
+                      <li>Couple story timeline</li>
+                      <li>Photo gallery grid</li>
+                      <li>Shareable highlight moments</li>
+                    </ul>
+                  </div>
+                )}
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {[
+                  {
+                    title: "Mobile First Design",
+                    copy: "Looks perfect on phones, tablets, and desktops.",
+                  },
+                  {
+                    title: "Customizable Theme",
+                    copy: "Colors, fonts, and layout tailored to your vibe.",
+                  },
+                  {
+                    title: "Shareable Link",
+                    copy: "One link for WhatsApp, Instagram, and SMS.",
+                  },
+                  {
+                    title: "Fast Delivery",
+                    copy: "Typically ready in 24–48 hours after details are shared.",
+                  },
+                ].map((item) => (
+                  <div
+                    key={item.title}
+                    className="rounded-2xl border border-border bg-white p-6"
+                  >
+                    <h3 className="font-display text-xl font-semibold text-foreground">
+                      {item.title}
+                    </h3>
+                    <p className="font-body text-sm text-muted-foreground mt-2">{item.copy}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* How It Works */}
+        <section className="py-12 lg:py-16 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="max-w-2xl mx-auto text-center mb-10">
+              <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">
+                How It Works
+              </h2>
+              <p className="font-body text-muted-foreground mt-3">
+                Simple steps to go live fast.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {[
+                {
+                  step: "01",
+                  title: "Pick a Design",
+                  copy: "Choose a layout you love from our templates.",
+                },
+                {
+                  step: "02",
+                  title: "Share Your Details",
+                  copy: "Send names, dates, venue, schedule, and photos.",
+                },
+                {
+                  step: "03",
+                  title: "Get Your Link",
+                  copy: "We deliver your website invite ready to share.",
+                },
+              ].map((item) => (
+                <div key={item.step} className="rounded-2xl border border-border p-6">
+                  <p className="font-display text-2xl font-bold text-[#4161ef]">
+                    {item.step}
+                  </p>
+                  <h3 className="font-display text-xl font-semibold text-foreground mt-2">
+                    {item.title}
+                  </h3>
+                  <p className="font-body text-sm text-muted-foreground mt-2">
+                    {item.copy}
+                  </p>
+                </div>
+              ))}
+            </div>
+            <div className="mt-8 flex justify-center">
+              <Button variant="hero" size="lg" asChild>
+                <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
+                  <MessageCircle className="w-5 h-5" />
+                  Start on WhatsApp
                 </a>
               </Button>
             </div>
@@ -126,6 +327,69 @@ const WebsiteInvites = () => {
                 </div>
               </>
             )}
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section className="py-12 lg:py-16 bg-[#F7F5FF]">
+          <div className="container mx-auto px-4">
+            <div className="max-w-2xl mx-auto text-center mb-10">
+              <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">
+                FAQs
+              </h2>
+              <p className="font-body text-muted-foreground mt-3">
+                Quick answers to common questions.
+              </p>
+            </div>
+            <div className="max-w-3xl mx-auto space-y-3">
+              {[
+                {
+                  id: "delivery",
+                  q: "How long does it take?",
+                  a: "Most invites are ready in 24–48 hours after you share details.",
+                },
+                {
+                  id: "edits",
+                  q: "Can I edit after delivery?",
+                  a: "Yes, you can request minor updates to text or photos.",
+                },
+                {
+                  id: "app",
+                  q: "Do guests need an app?",
+                  a: "No, it’s a simple web link that works on any device.",
+                },
+                {
+                  id: "rsvp",
+                  q: "Can I include RSVP?",
+                  a: "Yes, RSVP tracking is available on request.",
+                },
+              ].map((item) => {
+                const isOpen = openFaq === item.id;
+                return (
+                  <button
+                    key={item.id}
+                    type="button"
+                    onClick={() => setOpenFaq(isOpen ? null : item.id)}
+                    className="w-full text-left rounded-2xl border border-border bg-white px-6 py-4"
+                    aria-expanded={isOpen}
+                  >
+                    <div className="flex items-center justify-between">
+                      <h3 className="font-display text-lg font-semibold text-foreground">
+                        {item.q}
+                      </h3>
+                      <span className="font-display text-2xl text-[#4161ef]">
+                        {isOpen ? "–" : "+"}
+                      </span>
+                    </div>
+                    {isOpen && (
+                      <p className="font-body text-sm text-muted-foreground mt-2">
+                        {item.a}
+                      </p>
+                    )}
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </section>
 
