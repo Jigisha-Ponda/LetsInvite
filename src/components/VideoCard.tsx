@@ -13,6 +13,7 @@ interface VideoCardProps {
   whatsappMessage?: string;
   videoSrc?: string;
   vercelLink?: string;
+  forceWebsiteInvitesUi?: boolean;
 }
 
 // const toYouTubeEmbedUrl = (url?: string) => {
@@ -133,6 +134,7 @@ const VideoCard = ({
   whatsappMessage,
   videoSrc,
   vercelLink,
+  forceWebsiteInvitesUi,
 }: VideoCardProps) => {
   const defaultMessage = `Hi! I'm interested in the "${title}" video invite design.`;
   const baseMessage = whatsappMessage?.trim() || defaultMessage;
@@ -149,7 +151,10 @@ const VideoCard = ({
   const navigate = useNavigate();
   const location = useLocation();
   const driveEmbedUrl = toDriveEmbedUrl(videoSrc);
-  const isWebsiteInvites = location.pathname === "/website-invites";
+  const isWebsiteInvites =
+    typeof forceWebsiteInvitesUi === "boolean"
+      ? forceWebsiteInvitesUi
+      : location.pathname === "/website-invites";
   const allowVideoPlayback = !isWebsiteInvites;
 
   useEffect(() => {

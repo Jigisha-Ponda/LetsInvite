@@ -153,7 +153,7 @@ const FeaturedDesigns = () => {
             )}
 
             {/* 🌐 Website Invites */}
-            {/* {websiteInviteDesigns.length > 0 && (
+            {websiteInviteDesigns.length > 0 && (
               <div>
                 <div className="flex items-center justify-center mb-10">
                   <img
@@ -170,7 +170,7 @@ const FeaturedDesigns = () => {
                       className="animate-fade-in"
                       style={{ animationDelay: `${index * 0.1}s` }}
                     >
-                      <VideoCard {...design} />
+                      <VideoCard {...design} forceWebsiteInvitesUi />
                     </div>
                   ))}
                 </div>
@@ -183,7 +183,7 @@ const FeaturedDesigns = () => {
                   </Link>
                 </div>
               </div>
-            )} */}
+            )}
           </div>
         )}
       </div>
