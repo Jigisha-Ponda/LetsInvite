@@ -78,6 +78,34 @@ const toYouTubeEmbedUrl = (url?: string) => {
   return null;
 };
 
+const toYouTubeShareUrl = (url?: string) => {
+  if (!url) return null;
+
+  // If already a full URL, keep as-is
+  if (/^https?:\/\//i.test(url)) return url;
+
+  // If already a clean video ID
+  if (/^[a-zA-Z0-9_-]{11}$/.test(url)) {
+    return `https://www.youtube.com/shorts/${url}`;
+  }
+
+  const patterns = [
+    /youtube\.com\/watch\?v=([^?&/]+)/,
+    /youtube\.com\/shorts\/([^?&/]+)/,
+    /youtu\.be\/([^?&/]+)/,
+    /youtube\.com\/embed\/([^?&/]+)/,
+  ];
+
+  for (const pattern of patterns) {
+    const match = url.match(pattern);
+    if (match?.[1]) {
+      return `https://www.youtube.com/shorts/${match[1]}`;
+    }
+  }
+
+  return url;
+};
+
 const toDriveEmbedUrl = (url?: string) => {
   if (!url) return null;
 
@@ -108,8 +136,10 @@ const VideoCard = ({
 }: VideoCardProps) => {
   const defaultMessage = `Hi! I'm interested in the "${title}" video invite design.`;
   const baseMessage = whatsappMessage?.trim() || defaultMessage;
-  const messageWithVideo = videoSrc ? `${baseMessage}\n\nVideo link: ${videoSrc}` : baseMessage;
+  const videoLinkForMessage = toYouTubeShareUrl(videoSrc) || videoSrc;
+  const messageWithVideo = videoSrc ? `${baseMessage}\n\nVideo link: ${videoLinkForMessage}` : baseMessage;
   const whatsappLink = `https://wa.me/918487908430?text=${encodeURIComponent(messageWithVideo)}`;
+  const youtubeShareUrl = toYouTubeShareUrl(videoSrc);
   const [isPlaying, setIsPlaying] = useState(false);
   const [imageSrc, setImageSrc] = useState(resolveImageUrl(image) || "/placeholder.svg");
   const [imageFailed, setImageFailed] = useState(false);
@@ -272,18 +302,27 @@ const VideoCard = ({
             </Button>
           </div>
         ) : (
-          <Button
-            variant="whatsapp"
-            size="sm"
-            className="w-full bg-[linear-gradient(110deg,hsl(240,60%,36%)_0%,hsl(232,66%,40%)_30%,hsl(222,72%,46%)_65%,hsl(212,82%,54%)_100%)] 
+          <div className="grid grid-cols-1 gap-2">
+            <Button
+              variant="whatsapp"
+              size="sm"
+              className="w-full bg-[linear-gradient(110deg,hsl(240,60%,36%)_0%,hsl(232,66%,40%)_30%,hsl(222,72%,46%)_65%,hsl(212,82%,54%)_100%)] 
  text-white px-5 py-2 rounded-lg transition-all duration-300 hover:brightness-110 hover:-translate-y-0.5"
-            asChild
-          >
-            <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
-              <MessageCircle className="w-4 h-4" />
-              Inquire Now
-            </a>
-          </Button>
+              asChild
+            >
+              <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
+                <MessageCircle className="w-4 h-4" />
+                Inquire Now
+              </a>
+            </Button>
+            {/* {youtubeShareUrl && (
+              <Button variant="outline" size="sm" className="w-full" asChild>
+                <a href={youtubeShareUrl} target="_blank" rel="noopener noreferrer">
+                  Watch on YouTube
+                </a>
+              </Button>
+            )} */}
+          </div>
         )}
       </div>
     </div>

@@ -40,6 +40,33 @@ const toYouTubeEmbedUrl = (url?: string) => {
   return null;
 };
 
+const toYouTubeShareUrl = (url?: string) => {
+  if (!url) return null;
+
+  // If already a full URL, keep as-is
+  if (/^https?:\/\//i.test(url)) return url;
+
+  // If raw YouTube video id is stored
+  if (/^[a-zA-Z0-9_-]{11}$/.test(url)) {
+    return `https://www.youtube.com/shorts/${url}`;
+  }
+
+  const patterns = [
+    /youtube\.com\/watch\?v=([^?&/]+)/,
+    /youtube\.com\/shorts\/([^?&/]+)/,
+    /youtu\.be\/([^?&/]+)/,
+    /youtube\.com\/embed\/([^?&/]+)/,
+  ];
+  for (const pattern of patterns) {
+    const match = url.match(pattern);
+    if (match?.[1]) {
+      return `https://www.youtube.com/shorts/${match[1]}`;
+    }
+  }
+
+  return url;
+};
+
 const getDriveFileId = (url?: string) => {
   if (!url) return null;
   const filePathMatch = url.match(/\/file\/d\/([^/]+)/);
@@ -102,8 +129,9 @@ const ProductDetails = () => {
   const defaultMessage = design
     ? `Hi! I'm interested in the "${design.title}" video invite design.`
     : "Hi! I'm interested in this video invite design.";
+  const videoLinkForMessage = toYouTubeShareUrl(design?.videoSrc) || design?.videoSrc;
   const messageWithVideo =
-    design?.videoSrc ? `${defaultMessage}\n\nVideo link: ${design.videoSrc}` : defaultMessage;
+    design?.videoSrc ? `${defaultMessage}\n\nVideo link: ${videoLinkForMessage}` : defaultMessage;
   const whatsappLink = `https://wa.me/918487908430?text=${encodeURIComponent(messageWithVideo)}`;
   const shareUrl = typeof window !== "undefined" ? window.location.href : "";
   const youtubeEmbed = toYouTubeEmbedUrl(design?.videoSrc);
