@@ -424,23 +424,21 @@ const WebsiteInvites = () => {
           </div>
         </section>
 
-        {/* CTA Section */} 
-        <section className="py-16 lg:py-24 bg-white border-t border-border/70">
-          <div className="container mx-auto px-4">
-            <div className="rounded-3xl border border-border/70 bg-secondary p-8 md:p-12 text-center shadow-[0_40px_100px_-70px_rgba(0,0,0,0.5)]">
-              <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4">
-                Your Event, Your Link, Your Invite
-              </h2>
-              <p className="font-body text-muted-foreground mb-6">
-                Share a beautiful website invite with all the details your guests need.
-              </p>
-              <Button variant="whatsapp" size="lg" asChild>
-                <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
-                  <MessageCircle className="w-5 h-5" />
-                  Request Custom Design
-                </a>
-              </Button>
-            </div>
+        {/* CTA Section */}
+        <section className="py-12 lg:py-16 bg-white border-y border-border">
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4">
+              Your Event, Your Link, Your Invite
+            </h2>
+            <p className="font-body text-muted-foreground mb-6">
+              Share a beautiful website invite with all the details your guests need.
+            </p>
+            <Button variant="whatsapp" size="lg" asChild>
+              <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
+                <MessageCircle className="w-5 h-5" />
+                Request Custom Design
+              </a>
+            </Button>
           </div>
         </section>
       </main>
