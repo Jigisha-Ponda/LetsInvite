@@ -15,6 +15,7 @@ import WelcomeParty from "./pages/WelcomeParty";
 import BabyShower from "./pages/BabyShower";
 import AdminTemplateForm from "./pages/AdminTemplateForm";
 import WebsiteInvites from "./pages/WebsiteInvites";
+import ThreeDAIBirthday from "./pages/ThreeDAIBirthday";
 
 const queryClient = new QueryClient();
 
@@ -42,6 +43,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           {/* <Route path="/wedding" element={<Wedding />} /> */}
           <Route path="/birthday" element={<Birthday />} />
+          <Route path="/3d-ai-birthday" element={<ThreeDAIBirthday />} />
           <Route path="/baby-shower" element={<BabyShower />} />
           <Route path="/website-invites" element={<WebsiteInvites />} />
           <Route path="/about-us" element={<AboutUs />} />

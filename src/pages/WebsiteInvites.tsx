@@ -5,7 +5,8 @@ import Footer from "../components/Footer";
 import VideoCard from "../components/VideoCard";
 import { Button } from "../components/ui/button";
 import { MessageCircle } from "lucide-react";
-import heroBg from "../assets/BannerBG.webp";
+import websiteInvitesHero from "../assets/hero.png";
+import websiteInvitesHeroMobile from "../assets/mobile-hero.png";
 import { fetchDesignsByCategoryName } from "../lib/designs";
 import { hasSupabaseConfig } from "../lib/supabase";
 
@@ -39,16 +40,19 @@ const WebsiteInvites = () => {
       <Header />
       <main className="pt-16 lg:pt-20">
         {/* Hero Section */}
-        <section className="relative py-20 lg:py-28 overflow-hidden bg-[radial-gradient(70%_60%_at_70%_10%,rgba(185,59,159,0.18),transparent),radial-gradient(70%_60%_at_0%_20%,rgba(65,97,239,0.18),transparent)]">
+        <section className="relative h-[75vh] lg:h-[90vh] overflow-hidden">
           <div className="absolute inset-0">
-            <img
-              src={heroBg}
-              alt=""
-              className="w-full h-full object-cover object-[50%_35%]"
-            />
+            <picture>
+              <source srcSet={websiteInvitesHeroMobile} media="(max-width: 768px)" />
+              <img
+                src={websiteInvitesHero}
+                alt=""
+                className="w-full h-full object-cover object-center"
+              />
+            </picture>
           </div>
-          <div className="absolute inset-0 bg-white/60"></div>
           <div className="container mx-auto px-4 relative z-10">
+            {/*
             <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-10 items-center">
               <div className="text-center lg:text-left">
                 <p className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary px-4 py-1 text-xs font-semibold tracking-wide text-primary">
@@ -99,6 +103,7 @@ const WebsiteInvites = () => {
                 </div>
               </div>
             </div>
+            */}
           </div>
         </section>
 

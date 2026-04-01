@@ -17,6 +17,7 @@ const Header = () => {
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "Birthday", href: "/birthday" },
+    { name: "3D AI Birthday", href: "/3d-ai-birthday" },
     { name: "Baby Shower", href: "/baby-shower" },
     { name: "Website Invites", href: "/website-invites" },
     // { name: "Gender Reveal", href: "/engagement" },
