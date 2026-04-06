@@ -138,6 +138,7 @@ const ProductDetails = () => {
   const driveEmbed = toDriveEmbedUrl(design?.videoSrc);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
+  const isWebsiteInvite = (design?.category || "").toLowerCase().includes("website invite");
   const galleryImages =
     design?.cardImages && design.cardImages.length > 0
       ? design.cardImages.filter((img): img is string => Boolean(img))
@@ -327,8 +328,15 @@ const ProductDetails = () => {
                       )}
                     </div>
                   )}
-                  <div className="space-y-4 mb-8">
-                    <Button variant="whatsapp" size="lg" className="w-48" asChild>
+                  <div className="mb-8 flex flex-col sm:flex-row gap-3 sm:items-center">
+                    {isWebsiteInvite && design.vercelLink && (
+                      <Button variant="outline" size="lg" className="w-full sm:w-48" asChild>
+                        <a href={design.vercelLink} target="_blank" rel="noopener noreferrer">
+                          Have a look
+                        </a>
+                      </Button>
+                    )}
+                    <Button variant="whatsapp" size="lg" className="w-full sm:w-48" asChild>
                       <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
                         <WhatsAppIcon className="w-5 h-5" />
                         Order On WhatsApp

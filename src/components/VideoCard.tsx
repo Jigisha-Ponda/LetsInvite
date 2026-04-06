@@ -151,10 +151,11 @@ const VideoCard = ({
   const navigate = useNavigate();
   const location = useLocation();
   const driveEmbedUrl = toDriveEmbedUrl(videoSrc);
+  const isWebsiteInviteCategory = (category || "").toLowerCase().includes("website invite");
   const isWebsiteInvites =
     typeof forceWebsiteInvitesUi === "boolean"
       ? forceWebsiteInvitesUi
-      : location.pathname === "/website-invites";
+      : location.pathname === "/website-invites" || isWebsiteInviteCategory;
   const allowVideoPlayback = !isWebsiteInvites;
 
   useEffect(() => {
